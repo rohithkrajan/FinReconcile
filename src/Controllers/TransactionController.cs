@@ -17,22 +17,31 @@ namespace FinReconcile.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Compare(HttpPostedFile clientMarkOffFile,HttpPostedFile tutukaMarkOfffile)
+        public ActionResult Compare(HttpPostedFileBase clientMarkOffFile,HttpPostedFileBase tutukaMarkOfffile)
         {
             try
             {
+                string clientFileName=null, tutukaFileName=null;
                 if (clientMarkOffFile.ContentLength>0)
                 {
-                    clientMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString(), Path.GetFileName(clientMarkOffFile.FileName));
+                    clientFileName = Path.GetFileName(clientMarkOffFile.FileName);
+                    clientMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString()+"_"+clientFileName);
                     clientMarkOffFile.SaveAs(clientMarkOffFilePath);
                 }
                 if (tutukaMarkOfffile.ContentLength > 0)
                 {
-                    tutukaMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString(), Path.GetFileName(tutukaMarkOfffile.FileName));
+                    tutukaFileName = Path.GetFileName(tutukaMarkOfffile.FileName);
+                    tutukaMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString() + "_" + tutukaFileName );
                     tutukaMarkOfffile.SaveAs(tutukaMarkOffFilePath);
+                }
+                if (!string.IsNullOrEmpty(clientFileName) && !string.IsNullOrEmpty(tutukaFileName))
+                {
+                    CompareResult model = new CompareResult(clientFileName, tutukaFileName);
+                    return View("CompareResult", model);
                 }
 
                 return View();
+                
             }
             catch (Exception)
             {
