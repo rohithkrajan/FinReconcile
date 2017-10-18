@@ -38,6 +38,7 @@ namespace FinReconcile.Controllers
                 if (!string.IsNullOrEmpty(clientFileName) && !string.IsNullOrEmpty(tutukaFileName))
                 {
                     CompareResult model = new CompareResult(clientFileName, tutukaFileName);
+                    ViewBag.Title = "Compare Files Result";
                     return View("CompareResult", model);
                 }
 

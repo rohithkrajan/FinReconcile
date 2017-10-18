@@ -80,6 +80,27 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("On Successful upload of Transaction Files,user should be redirected Comparison Re" +
+            "sult Page")]
+        [NUnit.Framework.CategoryAttribute("transactioncompare")]
+        public virtual void OnSuccessfulUploadOfTransactionFilesUserShouldBeRedirectedComparisonResultPage()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("On Successful upload of Transaction Files,user should be redirected Comparison Re" +
+                    "sult Page", new string[] {
+                        "transactioncompare"});
+#line 12
+this.ScenarioSetup(scenarioInfo);
+#line 13
+ testRunner.Given("ClientMarkOffFile and TutukaMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 14
+ testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 15
+ testRunner.Then("user should be redirected to the compare result Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
