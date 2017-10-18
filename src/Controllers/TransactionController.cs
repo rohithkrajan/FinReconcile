@@ -14,6 +14,7 @@ namespace FinReconcile.Controllers
         // GET: Transaction
         public ActionResult Compare()
         {
+            ViewBag.Title = "Compare Files";
             return View();
         }
         [HttpPost]
