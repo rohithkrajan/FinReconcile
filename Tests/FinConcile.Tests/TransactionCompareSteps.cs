@@ -1,6 +1,7 @@
 ﻿using FinConcile.Tests.Properties;
 using FinConcile.Tests.TestUtils;
 using FinReconcile.Controllers;
+using FinReconcile.Models;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -50,13 +51,43 @@ namespace FinConcile.Tests
            _result= _controller.Compare(_clientMarkOffFile, _tutukaMarkOffFile);
         }
 
-        [Then(@"user should be redirected to the compare result Page")]
+        [Then(@"user should be shown compare result Page")]
         public void ThenUserShouldBeRedirectedToTheCompareResultPage()
         {
             Assert.IsInstanceOf<ViewResult>(_result);
             Assert.AreEqual("CompareResult", ((ViewResult)_result).ViewName);
             
         }
+
+        [Then(@"Comparison Result should contain Both Names of the Files '(.*)' and '(.*)'")]
+        public void ThenComparisonResultShouldContainBothNamesOfTheFilesAnd(string clientFileName, string tutukaFileName)
+        {
+            var model = (CompareResult)((ViewResult)_result).Model;
+            Assert.AreEqual(clientFileName, model.ClientMarkOffFile);
+            Assert.AreEqual(tutukaFileName, model.TutukaMarkOffFile);
+        }
+
+        [Then(@"TotalRecords (.*)")]
+        public void ThenTotalRecords(int totalRecords)
+        {
+            var model = (CompareResult)((ViewResult)_result).Model;
+            Assert.AreEqual(totalRecords, model.TotalRecords);
+        }
+
+        [Then(@"MatchingRecords (.*)")]
+        public void ThenMatchingRecords(int matchingRecords)
+        {
+            var model = (CompareResult)((ViewResult)_result).Model;
+            Assert.AreEqual(matchingRecords, model.MatchingRecords);
+        }
+
+        [Then(@"UnmatchedRecords (.*)")]
+        public void ThenUnmatchedRecords(int unMatchedRecords)
+        {
+            var model = (CompareResult)((ViewResult)_result).Model;
+            Assert.AreEqual(unMatchedRecords, model.UnmatchedRecords);
+        }
+
 
 
     }

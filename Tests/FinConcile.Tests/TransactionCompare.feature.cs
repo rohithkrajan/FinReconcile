@@ -82,13 +82,13 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("On Successful upload of Transaction Files,user should be redirected Comparison Re" +
-            "sult Page")]
+        [NUnit.Framework.DescriptionAttribute("On Successful upload of Transaction Files,user should be shown Comparison Result " +
+            "Page")]
         [NUnit.Framework.CategoryAttribute("transactioncompare")]
-        public virtual void OnSuccessfulUploadOfTransactionFilesUserShouldBeRedirectedComparisonResultPage()
+        public virtual void OnSuccessfulUploadOfTransactionFilesUserShouldBeShownComparisonResultPage()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("On Successful upload of Transaction Files,user should be redirected Comparison Re" +
-                    "sult Page", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("On Successful upload of Transaction Files,user should be shown Comparison Result " +
+                    "Page", new string[] {
                         "transactioncompare"});
 #line 12
 this.ScenarioSetup(scenarioInfo);
@@ -97,7 +97,33 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
  testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.Then("user should be redirected to the compare result Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("user should be shown compare result Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Details in Comparison Result Page")]
+        [NUnit.Framework.CategoryAttribute("transactioncompare")]
+        public virtual void DetailsInComparisonResultPage()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Details in Comparison Result Page", new string[] {
+                        "transactioncompare"});
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 19
+ testRunner.Given("ClientMarkOffFile and TutukaMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 20
+ testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
+ testRunner.Then("Comparison Result should contain Both Names of the Files \'ClientMarkoffFile201401" +
+                    "13\' and \'TutukaMarkoffFile20140113\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
+ testRunner.And("TotalRecords 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+ testRunner.And("MatchingRecords 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
+ testRunner.And("UnmatchedRecords 7", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
