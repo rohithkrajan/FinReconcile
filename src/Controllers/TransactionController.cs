@@ -1,4 +1,5 @@
 ﻿using FinReconcile.Models;
+using FinReconcile.Providers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,13 @@ namespace FinReconcile.Controllers
 {
     public class TransactionController : Controller
     {
-        string clientMarkOffFilePath, tutukaMarkOffFilePath;
+        string _clientMarkOffFilePath, _tutukaMarkOffFilePath;
+        private IMarkOffFileProvider _markOffFileProvider;
+
+        public TransactionController(IMarkOffFileProvider markoffFileProvider)
+        {
+            _markOffFileProvider = markoffFileProvider;
+        }
         // GET: Transaction
         public ActionResult Compare()
         {
@@ -22,21 +29,16 @@ namespace FinReconcile.Controllers
         {
             try
             {
-                string clientFileName=null, tutukaFileName=null;
-                if (clientMarkOffFile.ContentLength>0)
-                {
+                string clientFileName = null, tutukaFileName = null, sessionId;
+                if (clientMarkOffFile.ContentLength>0 && tutukaMarkOfffile.ContentLength > 0)
+                {                    
                     clientFileName = Path.GetFileName(clientMarkOffFile.FileName);
-                    clientMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString()+"_"+clientFileName);
-                    clientMarkOffFile.SaveAs(clientMarkOffFilePath);
-                }
-                if (tutukaMarkOfffile.ContentLength > 0)
-                {
+                    sessionId = SessionIdGenerator.CreateNewId();
+                    _markOffFileProvider.SaveMarkOffFile(clientMarkOffFile.InputStream, sessionId, clientFileName);
+               
                     tutukaFileName = Path.GetFileName(tutukaMarkOfffile.FileName);
-                    tutukaMarkOffFilePath = Path.Combine(Server.MapPath("~/Uploads"), Guid.NewGuid().ToString() + "_" + tutukaFileName );
-                    tutukaMarkOfffile.SaveAs(tutukaMarkOffFilePath);
-                }
-                if (!string.IsNullOrEmpty(clientFileName) && !string.IsNullOrEmpty(tutukaFileName))
-                {
+                    _markOffFileProvider.SaveMarkOffFile(tutukaMarkOfffile.InputStream, sessionId, tutukaFileName);
+               
                     CompareResult model = new CompareResult(clientFileName, tutukaFileName);
                     ViewBag.Title = "Compare Files Result";
                     return View("CompareResult", model);

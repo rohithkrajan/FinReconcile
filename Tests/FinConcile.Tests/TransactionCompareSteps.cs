@@ -2,6 +2,8 @@
 using FinConcile.Tests.TestUtils;
 using FinReconcile.Controllers;
 using FinReconcile.Models;
+using FinReconcile.Providers;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -18,10 +20,28 @@ namespace FinConcile.Tests
         ActionResult _result;
         TransactionController _controller;
         HttpPostedFileBase _clientMarkOffFile, _tutukaMarkOffFile;
+
+        Mock<IMarkOffFileProvider> _mockMarkOffFileProvider;
+        const string ClientMarkoffFileName = "ClientMarkoffFile20140113";
+        const string TutukaMarkoffFileName = "TutukaMarkoffFile20140113";
+        string _sessionId;
+
+        [BeforeScenario]
+        public void InitScenario()
+        {
+            _mockMarkOffFileProvider = new Mock<IMarkOffFileProvider>();
+            _sessionId = SessionIdGenerator.CreateNewId();
+            _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, ClientMarkoffFileName)).Returns(ClientMarkoffFileName);
+            _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, TutukaMarkoffFileName)).Returns(TutukaMarkoffFileName);
+
+            _mockMarkOffFileProvider.Setup(x=>x.GetMarkOffFile(_sessionId,ClientMarkoffFileName)).Returns(Resources.ClientMarkoffFile20140113);
+            _mockMarkOffFileProvider.Setup(x => x.GetMarkOffFile(_sessionId, TutukaMarkoffFileName)).Returns(Resources.TutukaMarkoffFile20140113);
+        }
+
         [When(@"the user goes to compare user screen")]
         public void WhenTheUserGoesToCompareUserScreen()
         {
-            _controller = new TransactionController();
+            _controller = new TransactionController(_mockMarkOffFileProvider.Object);
             _result = _controller.Compare();
         }
 
@@ -47,7 +67,7 @@ namespace FinConcile.Tests
         [When(@"the user clicks on the Compare button")]
         public void WhenTheUserClicksOnTheCompareButton()
         {
-            _controller = new TransactionController();
+            _controller = new TransactionController(_mockMarkOffFileProvider.Object);
            _result= _controller.Compare(_clientMarkOffFile, _tutukaMarkOffFile);
         }
 
