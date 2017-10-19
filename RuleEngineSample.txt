@@ -1,0 +1,66 @@
+ public class Transaction
+    {
+        public string ProfileName { get; set; }
+        public DateTime Date { get; set; }
+
+        public long Amount { get; set; }
+
+        public string Narative { get; set; }
+
+        public string Description { get; set; }
+
+        public string Id { get; set; }
+
+        public TransactionType Type {get;set;}
+
+        public string WalletReference { get; set; }
+
+}
+    public class Command
+    {
+        public string SourceMember
+        {
+            get;
+            set;
+        }
+
+        public string Operator
+        {
+            get;
+            set;
+        }
+
+        public string TargetMember
+        {
+            get;
+            set;
+        }
+
+        public Command(string SourceMember, string Operator, string TargetMember)
+        {
+            this.SourceMember = SourceMember;
+            this.Operator = Operator;
+            this.TargetMember = TargetMember;
+        }
+    }
+    public class RuleEngine
+    {
+        ParameterExpression transParam = Expression.Parameter(typeof(Transaction), "transactionSource");
+        ParameterExpression transTarget = Expression.Parameter(typeof(Transaction), "transactionTarget");
+
+        Command _command = new Command("Id", "Equal", "Id");
+        private Expression BuildExpression()
+        {
+            return Expression.Equal(Expression.Property(transParam, _command.SourceMember),
+                Expression.Property(transTarget,_command.TargetMember));
+
+        }
+        public  Func<Transaction,Transaction,bool> CompileRule()
+        {
+            var finalExpression = BuildExpression();
+
+            return Expression.Lambda<Func<Transaction, Transaction, bool>>(finalExpression,
+                new ParameterExpression[] { transParam, transTarget }).Compile();
+        }
+
+    }
