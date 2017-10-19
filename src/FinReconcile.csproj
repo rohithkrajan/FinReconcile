@@ -187,6 +187,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Domain\Interfaces\IReconcileEngine.cs" />
+    <Compile Include="Domain\Interfaces\IReconcileResult.cs" />
+    <Compile Include="Domain\ReconciledItem.cs" />
+    <Compile Include="Domain\ReconciledMatchType.cs" />
+    <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +201,9 @@
     <Compile Include="Providers\IMarkOffFileProvider.cs" />
     <Compile Include="Providers\MarkOffFileProvider.cs" />
     <Compile Include="Providers\SessionIdGenerator.cs" />
+    <Compile Include="RuleEngine\Rule.cs" />
+    <Compile Include="RuleEngine\ReconcileEngine.cs" />
+    <Compile Include="RuleEngine\RuleSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
