@@ -7,5 +7,8 @@ namespace FinReconcile.Domain
 {
     public enum TransactionType
     {
+        Store = 0,
+        ATM =1       
+
     }
 }

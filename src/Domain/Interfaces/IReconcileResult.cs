@@ -4,7 +4,7 @@ namespace FinReconcile.Domain.Interfaces
 {
     public interface IReconcileResult
     {
-        IEnumerable<ReconciledItem> MatchedItems { get; }
-        IEnumerable<ReconciledItem> NotMatchedItems { get;  }
+        IList<ReconciledItem> MatchedItems { get; }
+        IList<ReconciledItem> NotMatchedItems { get;  }
     }
 }

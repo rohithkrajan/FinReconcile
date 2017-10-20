@@ -8,11 +8,11 @@ namespace FinReconcile.Domain
 {
     public class ReconcileResult : IReconcileResult
     {
-        private IList<ReconciledItem> _reconciledItems;
+        private IEnumerable<ReconciledItem> _reconciledItems;
         private IList<ReconciledItem> _matchedItems;
         private IList<ReconciledItem> _notMatchedItems;
 
-        public ReconcileResult(IList<ReconciledItem> items)
+        public ReconcileResult(IEnumerable<ReconciledItem> items)
         {
             _reconciledItems = items;
             _matchedItems = new List<ReconciledItem>();
@@ -30,12 +30,12 @@ namespace FinReconcile.Domain
                 }
             }
         }
-        public IEnumerable<ReconciledItem> MatchedItems
+        public IList<ReconciledItem> MatchedItems
         {
             get { return _matchedItems; }
             
         }
-        public IEnumerable<ReconciledItem> NotMatchedItems
+        public IList<ReconciledItem> NotMatchedItems
         {
             get { return _notMatchedItems; }
             

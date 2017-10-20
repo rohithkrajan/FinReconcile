@@ -65,11 +65,11 @@ namespace FinConcile.Tests
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Match Ids of two transactions")]
-        [NUnit.Framework.CategoryAttribute("ruleengine")]
+        [NUnit.Framework.CategoryAttribute("rules")]
         public virtual void MatchIdsOfTwoTransactions()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match Ids of two transactions", new string[] {
-                        "ruleengine"});
+                        "rules"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -80,6 +80,48 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
  testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Match Ids and Amount")]
+        [NUnit.Framework.CategoryAttribute("rules")]
+        public virtual void MatchIdsAndAmount()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match Ids and Amount", new string[] {
+                        "rules"});
+#line 14
+this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.Given("two transacions with same Ids\tand amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
+ testRunner.And("A rule to match Ids and amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+ testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 18
+ testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Match Ids and But Not Amount")]
+        [NUnit.Framework.CategoryAttribute("rules")]
+        public virtual void MatchIdsAndButNotAmount()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match Ids and But Not Amount", new string[] {
+                        "rules"});
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 22
+ testRunner.Given("two transacions with same Ids\tand different amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 23
+ testRunner.And("A rule to match Ids and amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
+ testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
+ testRunner.Then("the result should be not matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

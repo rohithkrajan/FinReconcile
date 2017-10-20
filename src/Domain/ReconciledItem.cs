@@ -7,8 +7,14 @@ namespace FinReconcile.Domain
 {
     public class ReconciledItem
     {
-        public Transaction ClientTransaction { get; set; }
-        public Transaction TutukaTransaction { get; set; }
-        public ReconciledMatchType MatchType { get; set; }
+        public ReconciledItem(Transaction clientTrans,Transaction tutukaTrans,ReconciledMatchType matchedType)
+        {
+            ClientTransaction = clientTrans;
+            TutukaTransaction = tutukaTrans;
+            MatchType = matchedType;
+        }
+        public Transaction ClientTransaction { get; private set; }
+        public Transaction TutukaTransaction { get; private set; }
+        public ReconciledMatchType MatchType { get; private set; }
     }
 }
