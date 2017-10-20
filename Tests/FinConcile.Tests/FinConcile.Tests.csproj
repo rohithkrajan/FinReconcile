@@ -84,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RulesEngine.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RulesEngine.feature</DependentUpon>
+    </Compile>
+    <Compile Include="RulesEngineSteps.cs" />
     <Compile Include="TestUtils\Utilities.cs" />
     <Compile Include="TransactionCompare.feature.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +103,10 @@
     <None Include="packages.config" />
     <None Include="Resources\ClientMarkoffFile20140113.csv" />
     <None Include="Resources\TutukaMarkoffFile20140113.csv" />
+    <None Include="RulesEngine.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RulesEngine.feature.cs</LastGenOutput>
+    </None>
     <None Include="TransactionCompare.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>TransactionCompare.feature.cs</LastGenOutput>

@@ -12,13 +12,14 @@ namespace FinReconcile.RuleEngine
     {
         ParameterExpression transParam = Expression.Parameter(typeof(Transaction), "transactionSource");
 
-        List<Rule> _rules = new List<Rule>();
+        RuleSet _ruleSet;
 
-        public ReconcileEngine(params Rule[] rules)
+        public ReconcileEngine(RuleSet ruleSet)
         {
-            _rules.AddRange(rules);
+            _ruleSet = ruleSet;
         }
         Rule _command = new Rule("Id", "Equal", "Id");
+
         private Expression BuildExpression()
         {
             return Expression.Equal(Expression.Property(transParam, _command.SourceMember),
@@ -33,9 +34,9 @@ namespace FinReconcile.RuleEngine
                 new ParameterExpression[] { transParam, transParam }).Compile();
         }
 
-        public IReconcileResult Reconcile()
+        public IReconcileResult Reconcile(Transaction clientTransaction,Transaction tutukaTransaction)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

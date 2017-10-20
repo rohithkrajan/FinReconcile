@@ -7,6 +7,12 @@ namespace FinReconcile.RuleEngine
 {
     public class RuleSet
     {
-        public Rule[] Rules { get; set; }
+        private IEnumerable<Rule> _rules;
+
+        public RuleSet(IEnumerable<Rule> rules)
+        {
+            _rules = rules;
+        }
+        public IEnumerable<Rule> Rules { get;  }
     }
 }

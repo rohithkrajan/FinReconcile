@@ -191,6 +191,7 @@
     <Compile Include="Domain\Interfaces\IReconcileResult.cs" />
     <Compile Include="Domain\ReconciledItem.cs" />
     <Compile Include="Domain\ReconciledMatchType.cs" />
+    <Compile Include="Domain\ReconcileResult.cs" />
     <Compile Include="Domain\Transaction.cs" />
     <Compile Include="Domain\TransactionType.cs" />
     <Compile Include="Global.asax.cs">

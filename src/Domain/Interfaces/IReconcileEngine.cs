@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinReconcile.RuleEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace FinReconcile.Domain.Interfaces
 {
     public interface IReconcileEngine
     {
-        IReconcileResult Reconcile();
+        IReconcileResult Reconcile(Transaction clientTransaction,Transaction tutukaTransaction);
     }
 }

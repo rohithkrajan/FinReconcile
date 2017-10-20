@@ -1,7 +1,10 @@
-﻿namespace FinReconcile.Domain.Interfaces
+﻿using System.Collections.Generic;
+
+namespace FinReconcile.Domain.Interfaces
 {
     public interface IReconcileResult
     {
-        ReconciledItem[] ReconciledSet { get; set; }
+        IEnumerable<ReconciledItem> MatchedItems { get; }
+        IEnumerable<ReconciledItem> NotMatchedItems { get;  }
     }
 }
