@@ -13,7 +13,7 @@ namespace FinReconcile.Domain
 
         public long Amount { get; set; }
 
-        public string Narative { get; set; }
+        public string Narrative { get; set; }
 
         public string Description { get; set; }
 

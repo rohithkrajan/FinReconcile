@@ -7,16 +7,16 @@ namespace FinReconcile.RuleEngine
 {
     public class RuleSet
     {
-        private IList<Rule> _rules;
+        private IList<IRule> _rules;
 
-        public RuleSet(IEnumerable<Rule> rules)
+        public RuleSet(IEnumerable<IRule> rules)
         {
-            _rules = new List<Rule>();
+            _rules = new List<IRule>();
             foreach (var item in rules)
             {
                 _rules.Add(item);
             }
         }
-        public IList<Rule> Rules { get { return _rules; }  }
+        public IList<IRule> Rules { get { return _rules; }  }
     }
 }

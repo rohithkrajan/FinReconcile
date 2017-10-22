@@ -20,24 +20,17 @@ namespace FinReconcile.RuleEngine
         {
             _ruleSet = ruleSet;
             _compiledRule = CompileRule();
-
         }
          
 
-        private Expression BuildExpression(Rule _rule)
-        {
-            return Expression.Equal(Expression.Property(transSource, _rule.SourceMember),
-                Expression.Property(transSource, _rule.TargetMember));
-
-        }
+      
         public Func<Transaction, Transaction, bool> CompileRule()
-        {
-            
+        {            
             Expression finalExpression = null;
             
             for (int i = 0; i < _ruleSet.Rules.Count; i++)
             {
-                Expression currentExp = BuildExpression(_ruleSet.Rules[i]);
+                Expression currentExp = _ruleSet.Rules[i].BuildExpression(transSource, transTarget);
                 
                 if (finalExpression != null&&i<=_ruleSet.Rules.Count-1)
                 {

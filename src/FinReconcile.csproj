@@ -202,9 +202,12 @@
     <Compile Include="Providers\IMarkOffFileProvider.cs" />
     <Compile Include="Providers\MarkOffFileProvider.cs" />
     <Compile Include="Providers\SessionIdGenerator.cs" />
-    <Compile Include="RuleEngine\Rule.cs" />
+    <Compile Include="RuleEngine\IRule.cs" />
+    <Compile Include="RuleEngine\Rules\DateMatchWithDeltaRule.cs" />
+    <Compile Include="RuleEngine\Rules\PropertyMatchRule.cs" />
     <Compile Include="RuleEngine\ReconcileEngine.cs" />
     <Compile Include="RuleEngine\RuleSet.cs" />
+    <Compile Include="RuleEngine\RuleType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

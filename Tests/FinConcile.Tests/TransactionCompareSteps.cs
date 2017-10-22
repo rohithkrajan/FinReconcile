@@ -60,7 +60,7 @@ namespace FinConcile.Tests
             var assembly = Assembly.GetExecutingAssembly();
             //read the file from assembly resource and convert to http posted file
             _clientMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.ClientMarkoffFile20140113,"ClientMarkoffFile20140113");
-            _clientMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.TutukaMarkoffFile20140113, "TutukaMarkoffFile20140113");            
+            _tutukaMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.TutukaMarkoffFile20140113, "TutukaMarkoffFile20140113");            
         }
 
 
