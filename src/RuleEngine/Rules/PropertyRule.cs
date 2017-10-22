@@ -6,9 +6,9 @@ using System.Web;
 
 namespace FinReconcile.RuleEngine.Rules
 {
-    public class PropertyMatchRule:IRule
+    public class PropertyRule:IRule
     {
-        public string SourceMember
+        public string SourceProperty
         {
             get;
             set;
@@ -20,23 +20,23 @@ namespace FinReconcile.RuleEngine.Rules
             set;
         }
 
-        public string TargetMember
+        public string TargetProperty
         {
             get;
             set;
         }
 
-        public PropertyMatchRule(string SourceMember, string Operator, string TargetMember)
+        public PropertyRule(string SourceProperty, string Operator, string targetProperty)
         {
-            this.SourceMember = SourceMember;
+            this.SourceProperty = SourceProperty;
             this.Operator = Operator;
-            this.TargetMember = TargetMember;
+            this.TargetProperty = targetProperty;
         }
 
         public Expression BuildExpression(ParameterExpression source,ParameterExpression target)
         {
-            return Expression.Equal(Expression.Property(source, this.SourceMember),
-                Expression.Property(target, this.TargetMember));
+            return Expression.Equal(Expression.Property(source, this.SourceProperty),
+                Expression.Property(target, this.TargetProperty));
         }
     }
 }

@@ -77,7 +77,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.And("A rule to match Ids", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
  testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -99,7 +99,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 16
  testRunner.And("A rule to match Ids and Dates with a delta of 120 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
  testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -120,7 +120,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 23
  testRunner.And("A rule to match Ids and amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 24
- testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 25
  testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -142,7 +142,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 30
  testRunner.And("A rule to match Ids and amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
- testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 32
  testRunner.Then("the result should be not matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -174,8 +174,40 @@ this.ScenarioSetup(scenarioInfo);
 #line 38
  testRunner.And("A ruleset to match all fields of Transaction", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39
- testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 40
+ testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Match all the fields exactly and dates with a delta of 120 seconds")]
+        [NUnit.Framework.CategoryAttribute("rules")]
+        [NUnit.Framework.TestCaseAttribute("584011808649511", "584011808649511", "Card Campaign", "Card Campaign", "1/11/2014  10:27:00 PM", "1/11/2014  10:27:44 PM", "-20000", "-20000", "*MOLEPS ATM25             MOLEPOLOLE    BW", "*MOLEPS ATM25             MOLEPOLOLE    BW", "DEDUCT", "DEDUCT", "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5", "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5", null)]
+        [NUnit.Framework.TestCaseAttribute("84012233581869", "84012233581869", "Card Campaign", "Card Campaign", "1/12/2014  6:26:00 AM", "1/12/2014  6:26:17 AM", "-20000", "-20000", "Molepolole Filli100558    Gaborone      BW", "Molepolole Filli100558    Gaborone      BW", "DEDUCT", "DEDUCT", "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2", "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2", null)]
+        [NUnit.Framework.TestCaseAttribute("0584012395072004", "0584012395072004", "Card Campaign", "Card Campaign", "2014-01-12 14:58:40", "2014-01-12 14:58:27", "-10000", "-10000", "MAHALAPYE BRANCH          BOTSWANA      BW", "MAHALAPYE BRANCH          BOTSWANA      BW", "DEDUCT", "DEDUCT", "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2", "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2", null)]
+        [NUnit.Framework.TestCaseAttribute("0164012401925347", "0164012401925347", "Card Campaign", "Card Campaign", "2014-01-12 15:09:00", "2014-01-12 15:10:20", "3880", "3880", "370592 ENGEN LOBATSE      BOTSWANA      BW", "370592 ENGEN LOBATSE      BOTSWANA      BW", "REVERSAL", "REVERSAL", "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1", "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1", null)]
+        public virtual void MatchAllTheFieldsExactlyAndDatesWithADeltaOf120Seconds(string c_Id, string t_Id, string c_Profilename, string t_Profilename, string c_Date, string t_Date, string c_Amount, string t_Amount, string c_Narrative, string t_Narrative, string c_Description, string t_Description, string c_Walletreference, string t_Walletreference, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "rules"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Match all the fields exactly and dates with a delta of 120 seconds", @__tags);
+#line 51
+this.ScenarioSetup(scenarioInfo);
+#line 52
+ testRunner.Given(string.Format("ClientTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", c_Id, c_Profilename, c_Date, c_Amount, c_Narrative, c_Description, c_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 53
+ testRunner.And(string.Format("TutukaTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", t_Id, t_Profilename, t_Date, t_Amount, t_Narrative, t_Description, t_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 54
+ testRunner.And("A ruleset to match all fields exactly and date field with a delta of 120 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+ testRunner.When("I call Evaluate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
  testRunner.Then("the result should be matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FinReconcile.Domain.Interfaces
 {
-    public interface IReconcileEngine
+    public interface IRuleEngine
     {
-        IReconcileResult Reconcile(Transaction clientTransaction,Transaction tutukaTransaction);
+        ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction);
     }
 }

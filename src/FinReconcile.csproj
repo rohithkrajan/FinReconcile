@@ -193,6 +193,7 @@
     <Compile Include="Domain\ReconciledMatchType.cs" />
     <Compile Include="Domain\ReconcileResult.cs" />
     <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionSet.cs" />
     <Compile Include="Domain\TransactionType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,10 +203,12 @@
     <Compile Include="Providers\IMarkOffFileProvider.cs" />
     <Compile Include="Providers\MarkOffFileProvider.cs" />
     <Compile Include="Providers\SessionIdGenerator.cs" />
+    <Compile Include="ReconcileEngine\IReconcileEngine.cs" />
+    <Compile Include="ReconcileEngine\ReconcileEngine.cs" />
     <Compile Include="RuleEngine\IRule.cs" />
-    <Compile Include="RuleEngine\Rules\DateMatchWithDeltaRule.cs" />
-    <Compile Include="RuleEngine\Rules\PropertyMatchRule.cs" />
-    <Compile Include="RuleEngine\ReconcileEngine.cs" />
+    <Compile Include="RuleEngine\Rules\DateRule.cs" />
+    <Compile Include="RuleEngine\Rules\PropertyRule.cs" />
+    <Compile Include="RuleEngine\RuleEngine.cs" />
     <Compile Include="RuleEngine\RuleSet.cs" />
     <Compile Include="RuleEngine\RuleType.cs" />
   </ItemGroup>

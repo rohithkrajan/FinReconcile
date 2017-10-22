@@ -15,8 +15,8 @@ namespace FinConcile.Tests
         Transaction trans1, trans2;
         IRule rule;
         private RuleSet _ruleSet;
-        IReconcileEngine _reconcileEngine;
-        private IReconcileResult _reconciledResult;
+        IRuleEngine _reconcileEngine;
+        private ReconciledItem _reconciledResult;
 
         [Given(@"two transacions with same Ids")]
         public void GivenTwoTransacionsWithSameIds()
@@ -28,26 +28,22 @@ namespace FinConcile.Tests
         [Given(@"A rule to match Ids")]
         public void GivenARuleToMatchIds()
         {
-            rule = new PropertyMatchRule("Id", "Equal", "Id");
+            rule = new PropertyRule("Id", "Equal", "Id");
              _ruleSet = new RuleSet(new IRule[] { rule });
         }
 
 
-        [When(@"I call Reconcile")]
+        [When(@"I call Evaluate")]
         public void WhenICallReconcile()
         {
-            _reconcileEngine = new ReconcileEngine(_ruleSet);
-            _reconciledResult=_reconcileEngine.Reconcile(trans1,trans2);
+            _reconcileEngine = new SimpleRuleEngine(_ruleSet);
+            _reconciledResult=_reconcileEngine.Evaluate(trans1,trans2);
         }
         
         [Then(@"the result should be matched ReconciledItem")]
         public void ThenTheResultShouldBeMatchedReconciledItem()
-        {            
-            Assert.AreEqual(1, _reconciledResult.MatchedItems.Count);
-            Assert.AreEqual(0, _reconciledResult.NotMatchedItems.Count);
-            
-
-            Assert.IsTrue(_reconciledResult.MatchedItems[0].MatchType == ReconciledMatchType.Matched);
+        {   
+            Assert.IsTrue(_reconciledResult.MatchType == ReconciledMatchType.Matched);
         }
 
         [Given(@"two transacions with same '(.*)' and amount (.*)")]
@@ -83,9 +79,9 @@ namespace FinConcile.Tests
         [Given(@"A rule to match Ids and amount")]
         public void GivenARuleToMatchIdsAndAmount()
         {            
-            _ruleSet = new RuleSet(new PropertyMatchRule[] {
-                new PropertyMatchRule("Id", "Equal", "Id") ,
-                new PropertyMatchRule("Amount", "Equal", "Amount")
+            _ruleSet = new RuleSet(new PropertyRule[] {
+                new PropertyRule("Id", "Equal", "Id") ,
+                new PropertyRule("Amount", "Equal", "Amount")
             });
         }
 
@@ -119,9 +115,8 @@ namespace FinConcile.Tests
 
         [Then(@"the result should be not matched ReconciledItem")]
         public void ThenTheResultShouldBeNotMatchedReconciledItem()
-        {
-            Assert.AreEqual(1, _reconciledResult.NotMatchedItems.Count);
-            Assert.IsTrue(_reconciledResult.NotMatchedItems[0].MatchType == ReconciledMatchType.NotMatched);
+        {            
+            Assert.IsTrue(_reconciledResult.MatchType == ReconciledMatchType.NotMatched);
         }
 
       
@@ -161,14 +156,14 @@ namespace FinConcile.Tests
         [Given(@"A ruleset to match all fields of Transaction")]
         public void GivenARulesetToMatchAllFieldsOfTransaction()
         {
-            _ruleSet = new RuleSet(new PropertyMatchRule[] {
-                new PropertyMatchRule("Id", "Equal", "Id") ,
-                new PropertyMatchRule("Amount", "Equal", "Amount"),
-                new PropertyMatchRule("ProfileName", "Equal", "ProfileName"),
-                new PropertyMatchRule("Description", "Equal", "Description"),
-                new PropertyMatchRule("Narrative", "Equal", "Narrative"),
-                new PropertyMatchRule("WalletReference", "Equal", "WalletReference"),
-                new PropertyMatchRule("Date", "Equal", "Date")
+            _ruleSet = new RuleSet(new PropertyRule[] {
+                new PropertyRule("Id", "Equal", "Id") ,
+                new PropertyRule("Amount", "Equal", "Amount"),
+                new PropertyRule("ProfileName", "Equal", "ProfileName"),
+                new PropertyRule("Description", "Equal", "Description"),
+                new PropertyRule("Narrative", "Equal", "Narrative"),
+                new PropertyRule("WalletReference", "Equal", "WalletReference"),
+                new PropertyRule("Date", "Equal", "Date")
             });
         }
 
@@ -176,13 +171,13 @@ namespace FinConcile.Tests
         public void GivenARulesetToMatchAllFieldsExactlyAndDateFieldWithADeltaOfSeconds(int seconds)
         {
             _ruleSet = new RuleSet(new IRule[] {
-                new PropertyMatchRule("Id", "Equal", "Id") ,
-                new PropertyMatchRule("Amount", "Equal", "Amount"),
-                new PropertyMatchRule("ProfileName", "Equal", "ProfileName"),
-                new PropertyMatchRule("Description", "Equal", "Description"),
-                new PropertyMatchRule("Narrative", "Equal", "Narrative"),
-                new PropertyMatchRule("WalletReference", "Equal", "WalletReference"),
-                new PropertyMatchRule("Date", "Equal", "Date")
+                new PropertyRule("Id", "Equal", "Id") ,
+                new PropertyRule("Amount", "Equal", "Amount"),
+                new PropertyRule("ProfileName", "Equal", "ProfileName"),
+                new PropertyRule("Description", "Equal", "Description"),
+                new PropertyRule("Narrative", "Equal", "Narrative"),
+                new PropertyRule("WalletReference", "Equal", "WalletReference"),
+                new DateRule(seconds)
             });
         }
 
@@ -205,8 +200,8 @@ namespace FinConcile.Tests
         public void GivenARuleToMatchIdsAndDatesWithADeltaOfSeconds(int deltaSeconds)
         {
             _ruleSet = new RuleSet(new IRule[] {
-                new PropertyMatchRule("Id", "Equal", "Id") ,               
-                new DateMatchWithDeltaRule(deltaSeconds)
+                new PropertyRule("Id", "Equal", "Id") ,               
+                new DateRule(deltaSeconds)
             });
         }
 

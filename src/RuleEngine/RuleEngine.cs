@@ -8,7 +8,7 @@ using System.Web;
 
 namespace FinReconcile.RuleEngine
 {
-    public class ReconcileEngine:IReconcileEngine
+    public class SimpleRuleEngine:IRuleEngine
     {
         ParameterExpression transSource = Expression.Parameter(typeof(Transaction), "transactionSource");
         ParameterExpression transTarget= Expression.Parameter(typeof(Transaction), "transactionTarget");
@@ -16,12 +16,11 @@ namespace FinReconcile.RuleEngine
         RuleSet _ruleSet;
         Func<Transaction, Transaction, bool> _compiledRule;
 
-        public ReconcileEngine(RuleSet ruleSet)
+        public SimpleRuleEngine(RuleSet ruleSet)
         {
             _ruleSet = ruleSet;
             _compiledRule = CompileRule();
-        }
-         
+        } 
 
       
         public Func<Transaction, Transaction, bool> CompileRule()
@@ -46,12 +45,12 @@ namespace FinReconcile.RuleEngine
                 new ParameterExpression[] { transSource, transTarget }).Compile();
         }
 
-        public IReconcileResult Reconcile(Transaction clientTransaction,Transaction tutukaTransaction)
+        public ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction)
         {
             bool matched = _compiledRule(clientTransaction, tutukaTransaction);
             ReconciledItem resultItem = new ReconciledItem(clientTransaction, tutukaTransaction, matched ? ReconciledMatchType.Matched : ReconciledMatchType.NotMatched);
 
-            return new ReconcileResult(new ReconciledItem[] { resultItem });
+            return resultItem;
         }
     }
 }
