@@ -67,7 +67,7 @@ namespace FinReconcile.ReconcileEngine
             }
         }
 
-        protected  void ReconcileTransactionSet(TransactionSet transSet)
+        private  void ReconcileTransactionSet(TransactionSet transSet)
         {
             List<ReconciledItem> reconciledItemList = new List<ReconciledItem>();
 
@@ -99,7 +99,7 @@ namespace FinReconcile.ReconcileEngine
 
       
 
-        protected void AlignTransaction(Transaction clientTranaction,Transaction tutukaTransaction)
+        private void AlignTransaction(Transaction clientTranaction,Transaction tutukaTransaction)
         {
             if (clientTranaction!=null)
             {

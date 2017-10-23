@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using FinReconcile.MarkOffReader;
 using FinReconcile.Providers;
+using FinReconcile.ReconcileEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +47,9 @@ namespace FinReconcile
         private static void RegisterTypes()
         {
             _builder.RegisterType<MarkOffFileProvider>().As<IMarkOffFileProvider>();
+            _builder.RegisterType<CSVMarkOffFileReader>().As<IMarkOffFileReader>();
+            _builder.RegisterType<ReconcileEngine.ReconcileEngine>().As<IReconcileEngine>();
+
         }
     
     }

@@ -17,9 +17,10 @@ namespace FinReconcile.Providers
         }
 
         public string SaveMarkOffFile(Stream stream,string sessionId,string fileName)
-        { 
-
-            var clientMarkOffFilePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads"), sessionId, fileName);
+        {
+            var sessionDirectory = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads"), sessionId);
+            DirectoryInfo di = Directory.CreateDirectory(sessionDirectory);
+            var clientMarkOffFilePath = Path.Combine(sessionDirectory, fileName);
 
             using (FileStream fileStream = File.Create(clientMarkOffFilePath, (int)stream.Length))
             {
