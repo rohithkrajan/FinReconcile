@@ -42,5 +42,34 @@ namespace FinConcile.Tests
             Assert.AreEqual(matchedCount, _result.MatchedItems.Count);
             Assert.AreEqual(0, _result.NotMatchedItems.Count);
         }
+
+        [Given(@"a list of Non matching Tutuka Transactions With Different Ids")]
+        public void GivenAListOfNonMatchingTutukaTransactionsWithDifferentIds(Table table)
+        {
+            _tutukaTransactions = table.GetTransactions();
+        }
+
+        [Then(@"the result should be (.*) Matched and (.*) NonMatched ReconciledItems")]
+        public void ThenTheResultShouldBeMatchedAndNonMatchedReconciledItems(int matchedCount, int nonMatchedCount)
+        {
+            Assert.AreEqual(matchedCount, _result.MatchedItems.Count);
+            Assert.AreEqual(nonMatchedCount, _result.NotMatchedItems.Count);
+        }
+
+        [Then(@"the result should be (.*) Matched ReconciledItems and (.*) Non Matched ReconciledItems")]
+        public void ThenTheResultShouldBeMatchedReconciledItemsAndNonMatchedReconciledItems(int matched, int notMatched)
+        {
+            Assert.AreEqual(matched, _result.MatchedItems.Count);
+            Assert.AreEqual(notMatched, _result.NotMatchedItems.Count);
+        }
+
+        [Then(@"the result should (.*) Matched ReconciledItem")]
+        public void ThenTheResultShouldMatchedReconciledItem(int matched)
+        {
+            Assert.AreEqual(matched, _result.MatchedItems.Count);
+        }
+
+
+
     }
 }

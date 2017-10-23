@@ -37,6 +37,18 @@ namespace FinReconcile.Domain
                 }
             }
         }
+        public void Add(ReconciledItem item)
+        {           
+                switch (item.MatchType)
+                {
+                    case ReconciledMatchType.Matched:
+                        _matchedItems.Add(item);
+                        break;
+                    case ReconciledMatchType.NotMatched:
+                        _notMatchedItems.Add(item);
+                        break;
+                }            
+        }
 
         public IList<ReconciledItem> MatchedItems
         {

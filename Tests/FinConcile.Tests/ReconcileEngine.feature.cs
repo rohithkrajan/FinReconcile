@@ -176,6 +176,309 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Reconcile Non Matching Client and Tutuka Transactions")]
+        [NUnit.Framework.CategoryAttribute("reconcileengine")]
+        public virtual void ReconcileNonMatchingClientAndTutukaTransactions()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Non Matching Client and Tutuka Transactions", new string[] {
+                        "reconcileengine"});
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table3.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table3.AddRow(new string[] {
+                        "84012233581869",
+                        "Card Campaign",
+                        "1/12/2014  6:26:00 AM",
+                        "-20000",
+                        "Molepolole Filli100558    Gaborone      BW",
+                        "DEDUCT",
+                        "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2",
+                        "1"});
+            table3.AddRow(new string[] {
+                        "0584012395072004",
+                        "Card Campaign",
+                        "2014-01-12 14:58:27",
+                        "-10000",
+                        "MAHALAPYE BRANCH          BOTSWANA      BW",
+                        "DEDUCT",
+                        "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2",
+                        "1"});
+            table3.AddRow(new string[] {
+                        "0164012401925347",
+                        "Card Campaign",
+                        "2014-01-12 15:09:52",
+                        "3880",
+                        "370592 ENGEN LOBATSE      BOTSWANA      BW",
+                        "REVERSAL",
+                        "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
+                        "1"});
+#line 25
+ testRunner.Given("A list of Client transactions", ((string)(null)), table3, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table4.AddRow(new string[] {
+                        "5840118086495112",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table4.AddRow(new string[] {
+                        "840122335818692",
+                        "Card Campaign",
+                        "1/12/2014  6:26:00 AM",
+                        "-20000",
+                        "Molepolole Filli100558    Gaborone      BW",
+                        "DEDUCT",
+                        "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2",
+                        "1"});
+            table4.AddRow(new string[] {
+                        "05840123950720042",
+                        "Card Campaign",
+                        "2014-01-12 14:58:27",
+                        "-10000",
+                        "MAHALAPYE BRANCH          BOTSWANA      BW",
+                        "DEDUCT",
+                        "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2",
+                        "1"});
+            table4.AddRow(new string[] {
+                        "01640124019253472",
+                        "Card Campaign",
+                        "2014-01-12 15:09:52",
+                        "3880",
+                        "370592 ENGEN LOBATSE      BOTSWANA      BW",
+                        "REVERSAL",
+                        "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
+                        "1"});
+#line 31
+ testRunner.And("a list of Non matching Tutuka Transactions With Different Ids", ((string)(null)), table4, "And ");
+#line 37
+ testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
+ testRunner.Then("the result should be 0 Matched and 8 NonMatched ReconciledItems", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Reconcile mix of matching and non matching Client and Tutuka Transactions")]
+        [NUnit.Framework.CategoryAttribute("reconcileengine")]
+        public virtual void ReconcileMixOfMatchingAndNonMatchingClientAndTutukaTransactions()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile mix of matching and non matching Client and Tutuka Transactions", new string[] {
+                        "reconcileengine"});
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table5.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table5.AddRow(new string[] {
+                        "84012233581869",
+                        "Card Campaign",
+                        "1/12/2014  6:26:00 AM",
+                        "-20000",
+                        "Molepolole Filli100558    Gaborone      BW",
+                        "DEDUCT",
+                        "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2",
+                        "1"});
+            table5.AddRow(new string[] {
+                        "0584012395072004",
+                        "Card Campaign",
+                        "2014-01-12 14:58:27",
+                        "-10000",
+                        "MAHALAPYE BRANCH          BOTSWANA      BW",
+                        "DEDUCT",
+                        "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2",
+                        "1"});
+            table5.AddRow(new string[] {
+                        "0164012401925347",
+                        "Card Campaign",
+                        "2014-01-12 15:09:52",
+                        "3880",
+                        "370592 ENGEN LOBATSE      BOTSWANA      BW",
+                        "REVERSAL",
+                        "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
+                        "1"});
+#line 42
+ testRunner.Given("A list of Client transactions", ((string)(null)), table5, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table6.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table6.AddRow(new string[] {
+                        "84012233581869",
+                        "Card Campaign",
+                        "1/12/2014  6:26:00 AM",
+                        "-20005",
+                        "Molepolole Filli100558    Gaborone      BW",
+                        "DEDUCT",
+                        "P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2",
+                        "1"});
+            table6.AddRow(new string[] {
+                        "0584012395072004",
+                        "Card Campaign",
+                        "2014-01-12 14:58:27",
+                        "-10000",
+                        "MAHALAPYE BRANCH          BOTSWANA      BW",
+                        "DEDUCT",
+                        "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2",
+                        "1"});
+            table6.AddRow(new string[] {
+                        "01640124019253472",
+                        "Card Campaign",
+                        "2014-01-12 15:09:52",
+                        "3880",
+                        "370592 ENGEN LOBATSE      BOTSWANA      BW",
+                        "REVERSAL",
+                        "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
+                        "1"});
+#line 48
+ testRunner.And("a list of matching Tutuka Transactions", ((string)(null)), table6, "And ");
+#line 54
+ testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+ testRunner.Then("the result should be 2 Matched ReconciledItems and 3 Non Matched ReconciledItems", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Reconcile Client and Tutuka Transactions With Duplicate TransactionIds")]
+        [NUnit.Framework.CategoryAttribute("reconcileengine")]
+        public virtual void ReconcileClientAndTutukaTransactionsWithDuplicateTransactionIds()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Client and Tutuka Transactions With Duplicate TransactionIds", new string[] {
+                        "reconcileengine"});
+#line 58
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table7.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table7.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "REVERSAL",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+#line 59
+ testRunner.Given("A list of Client transactions", ((string)(null)), table7, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "ProfileName",
+                        "Date",
+                        "Amount",
+                        "Narrative",
+                        "Description",
+                        "WalletReference",
+                        "Type"});
+            table8.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "-20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "DEDUCT",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+            table8.AddRow(new string[] {
+                        "584011808649511",
+                        "Card Campaign",
+                        "1/11/2014  10:27:00 PM",
+                        "20000",
+                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "REVERSAL",
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                        "1"});
+#line 63
+ testRunner.And("a list of matching Tutuka Transactions", ((string)(null)), table8, "And ");
+#line 67
+ testRunner.When("I call Reconcile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 68
+ testRunner.Then("the result should 2 Matched ReconciledItem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

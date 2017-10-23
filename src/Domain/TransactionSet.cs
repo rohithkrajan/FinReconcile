@@ -29,7 +29,9 @@ namespace FinReconcile.Domain
                 }
 
                 return false;
-            } }
+            }
+        }
+        
         public void AddClientTransaction(Transaction clientTransaction)
         {
             _clientSet.Add(clientTransaction);

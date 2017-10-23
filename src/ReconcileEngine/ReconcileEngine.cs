@@ -39,21 +39,13 @@ namespace FinReconcile.ReconcileEngine
                 }), ReconciledMatchType.Matched));
 
             _result = new ReconcileResult();
+            _alignedTransactions = new Dictionary<string, TransactionSet>();
         }
 
         public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
-        {
-            
-            _alignedTransactions = new Dictionary<string, TransactionSet>();
-            
-            foreach (var clientTransaction in clientTransactions)
-            {
-                AlignTransaction(clientTransaction, null);
-            }
-            foreach (var tutkaTransaction in tutukaTransactions)
-            {
-                AlignTransaction(null, tutkaTransaction);
-            }
+        {          
+
+            AlignTransactions(clientTransactions, tutukaTransactions);
 
             foreach (var transId in _alignedTransactions.Keys)
             {
@@ -62,6 +54,19 @@ namespace FinReconcile.ReconcileEngine
             return _result;
 
         }
+
+        private void AlignTransactions(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
+        {
+            foreach (var clientTransaction in clientTransactions)
+            {
+                AlignTransaction(clientTransaction, null);
+            }
+            foreach (var tutkaTransaction in tutukaTransactions)
+            {
+                AlignTransaction(null, tutkaTransaction);
+            }
+        }
+
         protected  void ReconcileTransactionSet(TransactionSet transSet)
         {
             List<ReconciledItem> reconciledItemList = new List<ReconciledItem>();
@@ -69,24 +74,31 @@ namespace FinReconcile.ReconcileEngine
             foreach (var ruleEvaluator in _ruleSetEvaulators.Where(rule=>rule.RuleType==ReconciledMatchType.Matched))
             {
                 foreach (var cTrans in transSet.ClientSet.ToList())
-                {
-                    ReconciledItem currentResult;
+                {                     
                     foreach (var tTrans in transSet.TutukaSet.ToList())
                     {
-                        currentResult = ruleEvaluator.Evaluate(cTrans, tTrans);
+                        ReconciledItem currentResult = ruleEvaluator.Evaluate(cTrans, tTrans);
                         if (currentResult.MatchType == ReconciledMatchType.Matched)
                         {
                             reconciledItemList.Add(currentResult);
                             transSet.RemoveTransactions(currentResult.ClientTransaction, currentResult.TutukaTransaction);
-                        }
+                        }                       
                     }
                 }
             }
+
+            if (!transSet.IsReconciled)
+            {
+                _result.Add(new ReconciledItem(transSet, ReconciledMatchType.NotMatched));
+            }       
 
             _result.AddItems(reconciledItemList);
                     
                        
         }
+
+      
+
         protected void AlignTransaction(Transaction clientTranaction,Transaction tutukaTransaction)
         {
             if (clientTranaction!=null)
