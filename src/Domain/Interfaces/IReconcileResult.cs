@@ -6,5 +6,6 @@ namespace FinReconcile.Domain.Interfaces
     {
         IList<ReconciledItem> MatchedItems { get; }
         IList<ReconciledItem> NotMatchedItems { get;  }
+        void AddItems(IEnumerable<ReconciledItem> items);
     }
 }

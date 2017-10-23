@@ -37,7 +37,7 @@ namespace FinReconcile.Domain
         }
         public void AddTutukaTransaction(Transaction tutukaTransaction)
         {
-            _tutukaSet.Remove(tutukaTransaction);
+            _tutukaSet.Add(tutukaTransaction);
             _initialized = true;
         }
         public void RemoveTransactions(Transaction clientTransaction, Transaction tutukaTransaction)

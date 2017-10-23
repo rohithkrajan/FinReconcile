@@ -84,12 +84,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RulesEngine.feature.cs">
+    <Compile Include="ReconcileEngine.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RulesEngine.feature</DependentUpon>
+      <DependentUpon>ReconcileEngine.feature</DependentUpon>
     </Compile>
-    <Compile Include="RulesEngineSteps.cs" />
+    <Compile Include="ReconcileEngineSteps.cs" />
+    <Compile Include="RulesEvaluator.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RulesEvaluator.feature</DependentUpon>
+    </Compile>
+    <Compile Include="RulesEvaluatorSteps.cs" />
+    <Compile Include="Steps\TransactionTestData.cs" />
+    <Compile Include="TestUtils\SpecflowExtensions.cs" />
     <Compile Include="TestUtils\Utilities.cs" />
     <Compile Include="TransactionCompare.feature.cs">
       <AutoGen>True</AutoGen>
@@ -101,11 +109,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="ReconcileEngine.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ReconcileEngine.feature.cs</LastGenOutput>
+    </None>
     <None Include="Resources\ClientMarkoffFile20140113.csv" />
     <None Include="Resources\TutukaMarkoffFile20140113.csv" />
-    <None Include="RulesEngine.feature">
+    <None Include="RulesEvaluator.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>RulesEngine.feature.cs</LastGenOutput>
+      <LastGenOutput>RulesEvaluator.feature.cs</LastGenOutput>
     </None>
     <None Include="TransactionCompare.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

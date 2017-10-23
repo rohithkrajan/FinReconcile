@@ -13,11 +13,12 @@ namespace FinReconcile.ReconcileEngine
 {
     public class ReconcileEngine : IReconcileEngine
     {
-        SimpleRuleEngine _matchAllPropsEngine, _matchAllPropsAndDateWithDelta;
+        IList<IRuleEvaluator> _ruleSetEvaulators = new List<IRuleEvaluator>();
         IDictionary<string, TransactionSet> _alignedTransactions;
+        IReconcileResult _result;
         public ReconcileEngine()
         {
-            _matchAllPropsEngine = new SimpleRuleEngine(new RuleSet(new IRule[] {
+            _ruleSetEvaulators.Add(new RuleSetEvaluator("MatchAllFields",new RuleSet(new IRule[] {
                 new PropertyRule("Id", "Equal", "Id") ,
                 new PropertyRule("Amount", "Equal", "Amount"),
                 new PropertyRule("ProfileName", "Equal", "ProfileName"),
@@ -25,8 +26,9 @@ namespace FinReconcile.ReconcileEngine
                 new PropertyRule("Narrative", "Equal", "Narrative"),
                 new PropertyRule("WalletReference", "Equal", "WalletReference"),
                 new PropertyRule("Date", "Equal", "Date")
-                }));
-            _matchAllPropsAndDateWithDelta = new SimpleRuleEngine(new RuleSet(new IRule[] {
+                }), ReconciledMatchType.Matched));
+
+            _ruleSetEvaulators.Add(new RuleSetEvaluator("MatchDateWithDeltaof120SecondsAndAllOtherFields", new RuleSet(new IRule[] {
                 new PropertyRule("Id", "Equal", "Id") ,
                 new PropertyRule("Amount", "Equal", "Amount"),
                 new PropertyRule("ProfileName", "Equal", "ProfileName"),
@@ -34,12 +36,14 @@ namespace FinReconcile.ReconcileEngine
                 new PropertyRule("Narrative", "Equal", "Narrative"),
                 new PropertyRule("WalletReference", "Equal", "WalletReference"),
                 new DateRule(120)
-                }));
+                }), ReconciledMatchType.Matched));
+
+            _result = new ReconcileResult();
         }
 
         public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
         {
-            IReconcileResult result = null;
+            
             _alignedTransactions = new Dictionary<string, TransactionSet>();
             
             foreach (var clientTransaction in clientTransactions)
@@ -51,34 +55,37 @@ namespace FinReconcile.ReconcileEngine
                 AlignTransaction(null, tutkaTransaction);
             }
 
-            for (int i = 0; i < _alignedTransactions.Count; i++)
+            foreach (var transId in _alignedTransactions.Keys)
             {
-
+                ReconcileTransactionSet(_alignedTransactions[transId]);
             }
-            return result;
+            return _result;
 
         }
         protected  void ReconcileTransactionSet(TransactionSet transSet)
         {
-            List<ReconciledItem> reconciledList = new List<ReconciledItem>();
+            List<ReconciledItem> reconciledItemList = new List<ReconciledItem>();
 
-            foreach (var cTrans in transSet.ClientSet)
+            foreach (var ruleEvaluator in _ruleSetEvaulators.Where(rule=>rule.RuleType==ReconciledMatchType.Matched))
             {
-                ReconciledItem currentResult;
-                foreach (var tTrans in transSet.TutukaSet)
+                foreach (var cTrans in transSet.ClientSet.ToList())
                 {
-                    currentResult= _matchAllPropsEngine.Evaluate(cTrans, tTrans);
-                    if (currentResult.MatchType==ReconciledMatchType.Matched)
+                    ReconciledItem currentResult;
+                    foreach (var tTrans in transSet.TutukaSet.ToList())
                     {
-                        break;
+                        currentResult = ruleEvaluator.Evaluate(cTrans, tTrans);
+                        if (currentResult.MatchType == ReconciledMatchType.Matched)
+                        {
+                            reconciledItemList.Add(currentResult);
+                            transSet.RemoveTransactions(currentResult.ClientTransaction, currentResult.TutukaTransaction);
+                        }
                     }
-
                 }
-
-
-                
             }
-           
+
+            _result.AddItems(reconciledItemList);
+                    
+                       
         }
         protected void AlignTransaction(Transaction clientTranaction,Transaction tutukaTransaction)
         {
@@ -96,7 +103,7 @@ namespace FinReconcile.ReconcileEngine
                 {
                     _alignedTransactions.Add(tutukaTransaction.Id, new TransactionSet());
                 }
-                _alignedTransactions[clientTranaction.Id].AddTutukaTransaction(tutukaTransaction);
+                _alignedTransactions[tutukaTransaction.Id].AddTutukaTransaction(tutukaTransaction);
             }
         }
     }

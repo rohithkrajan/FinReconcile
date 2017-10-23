@@ -1,4 +1,4 @@
-﻿Feature: RulesEngine
+﻿Feature: RulesEvaluator
 	In order to reconcile transactions
 	As a user
 	I want to define rules

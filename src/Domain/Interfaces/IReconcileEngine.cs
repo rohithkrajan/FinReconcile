@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FinReconcile.Domain.Interfaces
 {
-    public interface IRuleEngine
+    public interface IRuleEvaluator
     {
         ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction);
+        string RuleName { get; }
+        ReconciledMatchType RuleType { get; }
     }
 }

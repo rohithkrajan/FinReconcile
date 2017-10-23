@@ -9,13 +9,13 @@ using TechTalk.SpecFlow;
 namespace FinConcile.Tests
 {
     [Binding]
-    public class RulesEngineSteps
+    public class RulesEvaluatorSteps
     {
 
         Transaction trans1, trans2;
         IRule rule;
         private RuleSet _ruleSet;
-        IRuleEngine _reconcileEngine;
+        IRuleEvaluator _reconcileEngine;
         private ReconciledItem _reconciledResult;
 
         [Given(@"two transacions with same Ids")]
@@ -36,7 +36,7 @@ namespace FinConcile.Tests
         [When(@"I call Evaluate")]
         public void WhenICallReconcile()
         {
-            _reconcileEngine = new SimpleRuleEngine(_ruleSet);
+            _reconcileEngine = new RuleSetEvaluator(_ruleSet);
             _reconciledResult=_reconcileEngine.Evaluate(trans1,trans2);
         }
         

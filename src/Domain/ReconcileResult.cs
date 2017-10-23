@@ -12,24 +12,32 @@ namespace FinReconcile.Domain
         private IList<ReconciledItem> _matchedItems;
         private IList<ReconciledItem> _notMatchedItems;
 
-        public ReconcileResult(IEnumerable<ReconciledItem> items)
+        public ReconcileResult(IEnumerable<ReconciledItem> items):this()
+        {          
+            AddItems(items);
+        }
+        public ReconcileResult()
         {
-            _reconciledItems = items;
+            _reconciledItems = new List<ReconciledItem>();
             _matchedItems = new List<ReconciledItem>();
             _notMatchedItems = new List<ReconciledItem>();
-            foreach (var item in _reconciledItems)
+        }
+        public void AddItems(IEnumerable<ReconciledItem> items)
+        {
+            foreach (var item in items)
             {
                 switch (item.MatchType)
                 {
                     case ReconciledMatchType.Matched:
                         _matchedItems.Add(item);
-                        break;                   
+                        break;
                     case ReconciledMatchType.NotMatched:
                         _notMatchedItems.Add(item);
-                        break;                   
+                        break;
                 }
             }
         }
+
         public IList<ReconciledItem> MatchedItems
         {
             get { return _matchedItems; }
