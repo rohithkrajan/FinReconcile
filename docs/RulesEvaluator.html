@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>RulesEvaluator</title>
+    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+  initializeToc();
+});
+</script>
+    <!-- We are using Font Awesome - http://fortawesome.github.com/Font-Awesome - licensed under CC BY 3.0 -->
+  </head>
+  <body>
+    <div id="container">
+      <div id="top" />
+      <div id="toc">
+        <p class="tocCollapser" title="Collapse Table of Content">«</p>
+        <ul class="features">
+          <li class="file" id="root">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="file">
+            <a href="TransactionCompare.html">Compare Transactions</a>
+          </li>
+          <li class="file">
+            <a href="CSVParser.html">CSVParser</a>
+          </li>
+          <li class="file">
+            <a href="ReconcileEngine.html">ReconcileEngine</a>
+          </li>
+          <li class="file">
+            <span class="current">RulesEvaluator</span>
+          </li>
+        </ul>
+      </div>
+      <div id="feature">
+        <h1>RulesEvaluator</h1>
+        <div class="description">
+          <p>In order to reconcile transactions
+As a user
+I want to define rules</p>
+        </div>
+        <ul id="scenarios">
+          <li class="scenario">
+            <div class="scenario-heading" id="match-ids-of-two-transactions">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match Ids of two transactions</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>two transacions with same Ids</li>
+                <li class="step">
+                  <span class="keyword">And </span>A rule to match Ids</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-ids-of-two-transactions')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="match-dates-of-two-transactions-which-are-within-2-minutes">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match Dates of two transactions which are within 2 minutes</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>two transacions with same id '584011808649511' and dates '1/11/2014  10:27:00 PM' and '1/11/2014  10:27:44 PM' respectively</li>
+                <li class="step">
+                  <span class="keyword">And </span>A rule to match Ids and Dates with a delta of 120 seconds</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-dates-of-two-transactions-which-are-within-2-minutes')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="match-ids-and-amount">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match Ids and Amount</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>two transacions with same '584011808649511' and amount -20000</li>
+                <li class="step">
+                  <span class="keyword">And </span>A rule to match Ids and amount</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-ids-and-amount')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="match-ids-and-but-not-amount">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match Ids and But Not Amount</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>two transacions with same Id '584011808649511' and different amount -20000 and -20002</li>
+                <li class="step">
+                  <span class="keyword">And </span>A rule to match Ids and amount</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be not matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-ids-and-but-not-amount')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="match-all-the-fields-of-transactions">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match all the fields of transactions</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>ClientTransacion with '&lt;c_id&gt;' '&lt;c_profilename&gt;' '&lt;c_date&gt;' '&lt;c_amount&gt;' '&lt;c_narrative&gt;' '&lt;c_description&gt;' '&lt;c_walletreference&gt;'</li>
+                <li class="step">
+                  <span class="keyword">And </span>TutukaTransacion with '&lt;t_id&gt;' '&lt;t_profilename&gt;' '&lt;t_date&gt;' '&lt;t_amount&gt;' '&lt;t_narrative&gt;' '&lt;t_description&gt;' '&lt;t_walletreference&gt;'</li>
+                <li class="step">
+                  <span class="keyword">And </span>A ruleset to match all fields of Transaction</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-all-the-fields-of-transactions')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+            <div>
+              <div class="examples">
+                <h3>Examples: </h3>
+                <div class="table_container">
+                  <table class="datatable">
+                    <thead>
+                      <tr>
+                        <th>c_id</th>
+                        <th>t_id</th>
+                        <th>c_profilename</th>
+                        <th>t_profilename</th>
+                        <th>c_date</th>
+                        <th>t_date</th>
+                        <th>c_amount</th>
+                        <th>t_amount</th>
+                        <th>c_narrative</th>
+                        <th>t_narrative</th>
+                        <th>c_description</th>
+                        <th>t_description</th>
+                        <th>c_walletreference</th>
+                        <th>t_walletreference</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>584011808649511</td>
+                        <td>584011808649511</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>1/11/2014  10:27:00 PM</td>
+                        <td>1/11/2014  10:27:00 PM</td>
+                        <td>-20000</td>
+                        <td>-20000</td>
+                        <td>*MOLEPS ATM25             MOLEPOLOLE    BW</td>
+                        <td>*MOLEPS ATM25             MOLEPOLOLE    BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td>
+                        <td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>84012233581869</td>
+                        <td>84012233581869</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>1/12/2014  6:26:00 AM</td>
+                        <td>1/12/2014  6:26:00 AM</td>
+                        <td>-20000</td>
+                        <td>-20000</td>
+                        <td>Molepolole Filli100558    Gaborone      BW</td>
+                        <td>Molepolole Filli100558    Gaborone      BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td>
+                        <td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>0584012395072004</td>
+                        <td>0584012395072004</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>2014-01-12 14:58:27</td>
+                        <td>2014-01-12 14:58:27</td>
+                        <td>-10000</td>
+                        <td>-10000</td>
+                        <td>MAHALAPYE BRANCH          BOTSWANA      BW</td>
+                        <td>MAHALAPYE BRANCH          BOTSWANA      BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td>
+                        <td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>0164012401925347</td>
+                        <td>0164012401925347</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>2014-01-12 15:09:52</td>
+                        <td>2014-01-12 15:09:52</td>
+                        <td>3880</td>
+                        <td>3880</td>
+                        <td>370592 ENGEN LOBATSE      BOTSWANA      BW</td>
+                        <td>370592 ENGEN LOBATSE      BOTSWANA      BW</td>
+                        <td>REVERSAL</td>
+                        <td>REVERSAL</td>
+                        <td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td>
+                        <td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td>
+                        <td />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="match-all-the-fields-exactly-and-dates-with-a-delta-of-120-seconds">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Match all the fields exactly and dates with a delta of 120 seconds</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>ClientTransacion with '&lt;c_id&gt;' '&lt;c_profilename&gt;' '&lt;c_date&gt;' '&lt;c_amount&gt;' '&lt;c_narrative&gt;' '&lt;c_description&gt;' '&lt;c_walletreference&gt;'</li>
+                <li class="step">
+                  <span class="keyword">And </span>TutukaTransacion with '&lt;t_id&gt;' '&lt;t_profilename&gt;' '&lt;t_date&gt;' '&lt;t_amount&gt;' '&lt;t_narrative&gt;' '&lt;t_description&gt;' '&lt;t_walletreference&gt;'</li>
+                <li class="step">
+                  <span class="keyword">And </span>A ruleset to match all fields exactly and date field with a delta of 120 seconds</li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Evaluate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItem</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('match-all-the-fields-exactly-and-dates-with-a-delta-of-120-seconds')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+            <div>
+              <div class="examples">
+                <h3>Examples: </h3>
+                <div class="table_container">
+                  <table class="datatable">
+                    <thead>
+                      <tr>
+                        <th>c_id</th>
+                        <th>t_id</th>
+                        <th>c_profilename</th>
+                        <th>t_profilename</th>
+                        <th>c_date</th>
+                        <th>t_date</th>
+                        <th>c_amount</th>
+                        <th>t_amount</th>
+                        <th>c_narrative</th>
+                        <th>t_narrative</th>
+                        <th>c_description</th>
+                        <th>t_description</th>
+                        <th>c_walletreference</th>
+                        <th>t_walletreference</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>584011808649511</td>
+                        <td>584011808649511</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>1/11/2014  10:27:00 PM</td>
+                        <td>1/11/2014  10:27:44 PM</td>
+                        <td>-20000</td>
+                        <td>-20000</td>
+                        <td>*MOLEPS ATM25             MOLEPOLOLE    BW</td>
+                        <td>*MOLEPS ATM25             MOLEPOLOLE    BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td>
+                        <td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>84012233581869</td>
+                        <td>84012233581869</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>1/12/2014  6:26:00 AM</td>
+                        <td>1/12/2014  6:26:17 AM</td>
+                        <td>-20000</td>
+                        <td>-20000</td>
+                        <td>Molepolole Filli100558    Gaborone      BW</td>
+                        <td>Molepolole Filli100558    Gaborone      BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td>
+                        <td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>0584012395072004</td>
+                        <td>0584012395072004</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>2014-01-12 14:58:40</td>
+                        <td>2014-01-12 14:58:27</td>
+                        <td>-10000</td>
+                        <td>-10000</td>
+                        <td>MAHALAPYE BRANCH          BOTSWANA      BW</td>
+                        <td>MAHALAPYE BRANCH          BOTSWANA      BW</td>
+                        <td>DEDUCT</td>
+                        <td>DEDUCT</td>
+                        <td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td>
+                        <td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td>
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>0164012401925347</td>
+                        <td>0164012401925347</td>
+                        <td>Card Campaign</td>
+                        <td>Card Campaign</td>
+                        <td>2014-01-12 15:09:00</td>
+                        <td>2014-01-12 15:10:20</td>
+                        <td>3880</td>
+                        <td>3880</td>
+                        <td>370592 ENGEN LOBATSE      BOTSWANA      BW</td>
+                        <td>370592 ENGEN LOBATSE      BOTSWANA      BW</td>
+                        <td>REVERSAL</td>
+                        <td>REVERSAL</td>
+                        <td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td>
+                        <td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td>
+                        <td />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p>Test results generated for: Reconcile, version beta</p>
+        <p>Generated on: 25 October 2017 02:18:07</p>
+        <p>Produced by Pickles, version 2.16.2.0</p>
+      </div>
+    </div>
+  </body>
+</html>

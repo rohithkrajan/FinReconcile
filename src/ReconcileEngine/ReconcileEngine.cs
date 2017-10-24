@@ -103,19 +103,19 @@ namespace FinReconcile.ReconcileEngine
         {
             if (clientTranaction!=null)
             {
-                if (!_alignedTransactions.ContainsKey(clientTranaction.Id))
+                if (!_alignedTransactions.ContainsKey(clientTranaction.WalletReference))
                 {
-                    _alignedTransactions.Add(clientTranaction.Id, new TransactionSet());                   
+                    _alignedTransactions.Add(clientTranaction.WalletReference, new TransactionSet());                   
                 }
-                _alignedTransactions[clientTranaction.Id].AddClientTransaction(clientTranaction);
+                _alignedTransactions[clientTranaction.WalletReference].AddClientTransaction(clientTranaction);
             }
             if (tutukaTransaction != null)
             {
-                if (!_alignedTransactions.ContainsKey(tutukaTransaction.Id))
+                if (!_alignedTransactions.ContainsKey(tutukaTransaction.WalletReference))
                 {
-                    _alignedTransactions.Add(tutukaTransaction.Id, new TransactionSet());
+                    _alignedTransactions.Add(tutukaTransaction.WalletReference, new TransactionSet());
                 }
-                _alignedTransactions[tutukaTransaction.Id].AddTutukaTransaction(tutukaTransaction);
+                _alignedTransactions[tutukaTransaction.WalletReference].AddTutukaTransaction(tutukaTransaction);
             }
         }
     }

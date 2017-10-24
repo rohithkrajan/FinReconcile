@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Compare Transactions</title>
+    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+  initializeToc();
+});
+</script>
+    <!-- We are using Font Awesome - http://fortawesome.github.com/Font-Awesome - licensed under CC BY 3.0 -->
+  </head>
+  <body>
+    <div id="container">
+      <div id="top" />
+      <div id="toc">
+        <p class="tocCollapser" title="Collapse Table of Content">«</p>
+        <ul class="features">
+          <li class="file" id="root">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="file">
+            <span class="current">Compare Transactions</span>
+          </li>
+          <li class="file">
+            <a href="CSVParser.html">CSVParser</a>
+          </li>
+          <li class="file">
+            <a href="ReconcileEngine.html">ReconcileEngine</a>
+          </li>
+          <li class="file">
+            <a href="RulesEvaluator.html">RulesEvaluator</a>
+          </li>
+        </ul>
+      </div>
+      <div id="feature">
+        <h1>Compare Transactions</h1>
+        <div class="description">
+          <p>In order to reconcile transactions
+As a user
+I want to compare client and tutuka markoff files</p>
+        </div>
+        <ul id="scenarios">
+          <li class="scenario">
+            <div class="scenario-heading" id="browse-compare-page">
+              <p class="tags">Tags: <span>@tranascationcompare</span></p>
+              <h2>Browse Compare Page</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">When </span>the user goes to compare user screen</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the compare user view should be displayed</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('browse-compare-page')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="on-successful-upload-of-transaction-filesuser-should-be-shown-comparison-result-page">
+              <p class="tags">Tags: <span>@transactioncompare</span></p>
+              <h2>On Successful upload of Transaction Files,user should be shown Comparison Result Page</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>ClientMarkOffFile and TutukaMarkOffFile</li>
+                <li class="step">
+                  <span class="keyword">When </span>the user clicks on the Compare button</li>
+                <li class="step">
+                  <span class="keyword">Then </span>user should be redirected to compare result Page</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('on-successful-upload-of-transaction-filesuser-should-be-shown-comparison-result-page')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="details-in-comparison-result-page">
+              <p class="tags">Tags: <span>@transactioncompare</span></p>
+              <h2>Details in Comparison Result Page</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>ClientMarkOffFile and TutukaMarkOffFile</li>
+                <li class="step">
+                  <span class="keyword">When </span>the user clicks on the Compare button</li>
+                <li class="step">
+                  <span class="keyword">Then </span>Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'TutukaMarkoffFile20140113'</li>
+                <li class="step">
+                  <span class="keyword">And </span>TotalRecords 5</li>
+                <li class="step">
+                  <span class="keyword">And </span>MatchingRecords 6</li>
+                <li class="step">
+                  <span class="keyword">And </span>UnmatchedRecords 7</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('details-in-comparison-result-page')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p>Test results generated for: Reconcile, version beta</p>
+        <p>Generated on: 25 October 2017 02:18:07</p>
+        <p>Produced by Pickles, version 2.16.2.0</p>
+      </div>
+    </div>
+  </body>
+</html>
