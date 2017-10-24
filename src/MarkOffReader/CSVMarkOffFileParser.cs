@@ -8,13 +8,18 @@ using System;
 
 namespace FinReconcile.MarkOffReader
 {
-    public class CSVMarkOffFileReader : IMarkOffFileReader
+    public class CSVMarkOffFileParser : IMarkOffFileParser
     {       
-        public IEnumerable<Transaction> GetRecords(TextReader reader)
+        public ParserResult GetRecords(TextReader reader)
         {
             var csv = new CsvReader(reader);
-            csv.Read();//skips the heade
-            IList<Transaction> transactions = new List<Transaction>();
+            ParserResult result = new ParserResult();
+            csv.Read();//read the header
+            for (int i = 0; i <= 7; i++)
+            {
+                result.Headers.Add(csv.GetField<string>(i));
+            }
+            
             
             while (csv.Read())
             {
@@ -32,18 +37,18 @@ namespace FinReconcile.MarkOffReader
                         WalletReference= csv.GetField<string>(7)
 
                     };
-                    transactions.Add(trans);
+                    result.Add(trans);
 
                 }
                 catch (System.Exception ex)
                 {
-                    //ignore unreadable rows
+                    result.InvalidEntries.Add(csv.Context.RawRecord);
                 }
             }
-            return transactions;
+            return result;
         }
 
-        public IEnumerable<Transaction> GetRecords(string markOffFileContent)
+        public ParserResult GetRecords(string markOffFileContent)
         {
             using (TextReader sr = new StringReader(markOffFileContent))
             {

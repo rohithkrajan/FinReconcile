@@ -24,7 +24,7 @@ namespace FinConcile.Tests
         HttpPostedFileBase _clientMarkOffFile, _tutukaMarkOffFile;
 
         Mock<IMarkOffFileProvider> _mockMarkOffFileProvider;
-        IMarkOffFileReader _csvReader;
+        IMarkOffFileParser _csvReader;
         Mock<IReconcileEngine> _mockReconcileEngine;
         const string ClientMarkoffFileName = "ClientMarkoffFile20140113";
         const string TutukaMarkoffFileName = "TutukaMarkoffFile20140113";
@@ -35,7 +35,7 @@ namespace FinConcile.Tests
         {
             _mockMarkOffFileProvider = new Mock<IMarkOffFileProvider>();
             _mockReconcileEngine = new Mock<IReconcileEngine>();
-            _csvReader = new CSVMarkOffFileReader();
+            _csvReader = new CSVMarkOffFileParser();
             _sessionId = SessionIdGenerator.CreateNewId();
             _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, ClientMarkoffFileName)).Returns(ClientMarkoffFileName);
             _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, TutukaMarkoffFileName)).Returns(TutukaMarkoffFileName);

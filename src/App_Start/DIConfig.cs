@@ -47,7 +47,7 @@ namespace FinReconcile
         private static void RegisterTypes()
         {
             _builder.RegisterType<MarkOffFileProvider>().As<IMarkOffFileProvider>();
-            _builder.RegisterType<CSVMarkOffFileReader>().As<IMarkOffFileReader>();
+            _builder.RegisterType<CSVMarkOffFileParser>().As<IMarkOffFileParser>();
             _builder.RegisterType<ReconcileEngine.ReconcileEngine>().As<IReconcileEngine>();
 
         }

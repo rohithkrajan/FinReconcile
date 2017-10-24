@@ -201,8 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MarkOffReader\CSVMarkOffFileReader.cs" />
-    <Compile Include="MarkOffReader\IMarkOffFileReader.cs" />
+    <Compile Include="MarkOffReader\CSVMarkOffFileParser.cs" />
+    <Compile Include="MarkOffReader\IMarkOffFileParser.cs" />
+    <Compile Include="MarkOffReader\ParserResult.cs" />
     <Compile Include="Models\CompareResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IMarkOffFileProvider.cs" />

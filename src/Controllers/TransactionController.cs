@@ -16,9 +16,9 @@ namespace FinReconcile.Controllers
     public class TransactionController : Controller
     {        
         private IMarkOffFileProvider _markOffFileProvider;
-        private IMarkOffFileReader _csvFileReader;
+        private IMarkOffFileParser _csvFileReader;
         private IReconcileEngine _reconcileEngine;
-        public TransactionController(IMarkOffFileProvider markoffFileProvider, IMarkOffFileReader csvFileReader, IReconcileEngine reconcileEngine)
+        public TransactionController(IMarkOffFileProvider markoffFileProvider, IMarkOffFileParser csvFileReader, IReconcileEngine reconcileEngine)
         {
             _markOffFileProvider = markoffFileProvider;
             _csvFileReader = csvFileReader;

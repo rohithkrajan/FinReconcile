@@ -7,9 +7,9 @@ using System.Web;
 
 namespace FinReconcile.MarkOffReader
 {
-    public interface IMarkOffFileReader
+    public interface IMarkOffFileParser
     {
-        IEnumerable<Transaction> GetRecords(TextReader reader);
-        IEnumerable<Transaction> GetRecords(string markOffFileContent);
+        ParserResult GetRecords(TextReader reader);
+        ParserResult GetRecords(string markOffFileContent);
     }
 }
