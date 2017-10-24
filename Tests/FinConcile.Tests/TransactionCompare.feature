@@ -12,7 +12,7 @@ Scenario: Browse Compare Page
 Scenario: On Successful upload of Transaction Files,user should be shown Comparison Result Page
 	Given ClientMarkOffFile and TutukaMarkOffFile
 	When the user clicks on the Compare button
-	Then user should be shown compare result Page
+	Then user should be redirected to compare result Page
 
 @transactioncompare
 Scenario: Details in Comparison Result Page

@@ -271,6 +271,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Transaction\Compare.cshtml" />
     <Content Include="Views\Transaction\CompareResult.cshtml" />
+    <Content Include="Views\Transaction\CompareResultPartial.cshtml" />
+    <Content Include="Views\Transaction\UnmatchedReport.cshtml" />
+    <Content Include="Views\Transaction\UnmatchedReportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

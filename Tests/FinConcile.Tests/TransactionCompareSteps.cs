@@ -65,8 +65,8 @@ namespace FinConcile.Tests
         {
             var assembly = Assembly.GetExecutingAssembly();
             //read the file from assembly resource and convert to http posted file
-            _clientMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.ClientMarkoffFile20140113,"ClientMarkoffFile20140113");
-            _tutukaMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.TutukaMarkoffFile20140113, "TutukaMarkoffFile20140113");            
+            _clientMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.ClientMarkoffFile20140113, ClientMarkoffFileName);
+            _tutukaMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.TutukaMarkoffFile20140113, TutukaMarkoffFileName);            
         }
 
 
@@ -77,12 +77,14 @@ namespace FinConcile.Tests
            _result= _controller.Compare(_clientMarkOffFile, _tutukaMarkOffFile);
         }
 
-        [Then(@"user should be shown compare result Page")]
+        [Then(@"user should be redirected to compare result Page")]
         public void ThenUserShouldBeRedirectedToTheCompareResultPage()
         {
-            Assert.IsInstanceOf<ViewResult>(_result);
-            Assert.AreEqual("CompareResult", ((ViewResult)_result).ViewName);
-            
+            Assert.IsInstanceOf<RedirectToRouteResult>(_result);
+            Assert.IsNotEmpty(((RedirectToRouteResult)_result).RouteValues["sessionId"].ToString());
+            Assert.AreEqual(ClientMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["clientFileName"].ToString());
+            Assert.AreEqual(TutukaMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["tutukaFileName"].ToString());
+
         }
 
         [Then(@"Comparison Result should contain Both Names of the Files '(.*)' and '(.*)'")]

@@ -97,7 +97,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
  testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.Then("user should be shown compare result Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("user should be redirected to compare result Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

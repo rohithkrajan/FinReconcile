@@ -1,0 +1,18 @@
+﻿@model FinReconcile.Models.CompareResult
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="container">
+       @Html.Partial("CompareResultPartial", Model)
+        <div class="row text-center">
+            @if (Model.UnmatchedRecords > 0)
+            {
+                <a class="btn btn-primary" href="@Url.Action("UnmatchedReport","Transaction",new { sessionId = Request.QueryString["sessionId"], clientFileName = Request.QueryString["clientFileName"], tutukaFileName = Request.QueryString["tutukaFileName"] })">Unmatched Report</a>                
+            }            
+        </div>
+        @Html.Partial("UnmatchedReportPartial", Model)
+    </div>
+</div>

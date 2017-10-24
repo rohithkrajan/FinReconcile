@@ -4,56 +4,15 @@
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>View</h2>
-
-<div>
-    <h4>CompareResult</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClientMarkOffFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClientMarkOffFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TutukaMarkOffFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TutukaMarkOffFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalRecords)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalRecords)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MatchingRecords)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MatchingRecords)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnmatchedRecords)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnmatchedRecords)
-        </dd>
-
-    </dl>
+<div class="main-content">
+    <div class="container">
+       @Html.Partial("CompareResultPartial", Model)
+        <div class="row text-center">
+            @if (Model.UnmatchedRecords > 0)
+            {
+                <a class="btn btn-primary" href="@Url.Action("UnmatchedReport","Transaction",new { sessionId = Request.QueryString["sessionId"], clientFileName = Request.QueryString["clientFileName"], tutukaFileName = Request.QueryString["tutukaFileName"] })">Unmatched Report</a>
+            }
+            
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

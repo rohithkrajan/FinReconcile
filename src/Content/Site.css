@@ -8,7 +8,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.main-content{
+    margin-top:20px;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
