@@ -96,12 +96,18 @@
       <DependentUpon>ReconcileEngine.feature</DependentUpon>
     </Compile>
     <Compile Include="ReconcileEngineSteps.cs" />
+    <Compile Include="Rules.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rules.feature</DependentUpon>
+    </Compile>
     <Compile Include="RulesEvaluator.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RulesEvaluator.feature</DependentUpon>
     </Compile>
     <Compile Include="RulesEvaluatorSteps.cs" />
+    <Compile Include="RulesSteps.cs" />
     <Compile Include="Steps\TransactionTestData.cs" />
     <Compile Include="TestUtils\SpecflowExtensions.cs" />
     <Compile Include="TestUtils\Utilities.cs" />
@@ -125,6 +131,10 @@
     </None>
     <None Include="Resources\ClientMarkoffFile20140113.csv" />
     <None Include="Resources\TutukaMarkoffFile20140113.csv" />
+    <None Include="Rules.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Rules.feature.cs</LastGenOutput>
+    </None>
     <None Include="RulesEvaluator.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RulesEvaluator.feature.cs</LastGenOutput>

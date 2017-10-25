@@ -10,7 +10,7 @@ namespace FinConcile.Tests.TestUtils
 {
     public static class SpecflowExtensions
     {
-        public static IEnumerable<Transaction> GetTransactions(this Table table)
+        public static IList<Transaction> GetTransactions(this Table table)
         {
             List<Transaction> transactions = new List<Transaction>();
             foreach (var row in table.Rows)

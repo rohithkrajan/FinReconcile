@@ -8,7 +8,7 @@ namespace FinReconcile.RuleEngine
     public class RuleSet
     {
         private IList<IRule> _rules;
-
+        
         public RuleSet(IEnumerable<IRule> rules)
         {
             _rules = new List<IRule>();

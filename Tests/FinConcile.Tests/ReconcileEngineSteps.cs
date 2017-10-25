@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using FinReconcile.ReconcileEngine;
 using FinReconcile.Domain.Interfaces;
 using NUnit.Framework;
+using FinReconcile.RuleEngine;
 
 namespace FinConcile.Tests
 {
@@ -16,6 +17,9 @@ namespace FinConcile.Tests
         private IEnumerable<Transaction> _tutukaTransactions;
         private IReconcileEngine _reconcileEngine;
         private IReconcileResult _result;
+        IRule rule;
+        private RuleSet _ruleSet;
+        IRuleEvaluator _ruleEvaluator;
 
         [Given(@"A list of Client transactions")]
         public void GivenAListOfClientTransactions(Table table)

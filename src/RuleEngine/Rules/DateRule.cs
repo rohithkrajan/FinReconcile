@@ -10,27 +10,14 @@ namespace FinReconcile.RuleEngine.Rules
     /// <summary>
     /// This Rule can match dates if if they are different within the allowed delta value
     /// </summary>
-    public class DateRule : IRule
-    {
-        private double _delta;
+    public class DateRule : MethodBaseRule<double>
+    {        
 
-        public DateRule(double delta)
+        public DateRule(double delta):base(CompareDateWithDelta)
         {
-            _delta = delta;
+            constantArgument = delta;
         }
-        private  string PropertyName<T>(Expression<Func<T, object>> expression)
-        {
-            var body = ((UnaryExpression)expression.Body).Operand as MemberExpression;
-            return body.Member.Name;
-        }
-
-        public Expression BuildExpression(ParameterExpression source, ParameterExpression target)
-        {
-            var tMethod = this.GetType().GetMethod("CompareDateWithDelta");
-            
-            return Expression.Call(tMethod, source, target,Expression.Constant(_delta));
-
-        }
+      
         public static bool CompareDateWithDelta(Transaction source,Transaction target,double delta)
         {
             if (source.Date==target.Date)
@@ -49,7 +36,6 @@ namespace FinReconcile.RuleEngine.Rules
                 }
                 
             }
-
         }
 
         

@@ -38,6 +38,14 @@ namespace FinReconcile.ReconcileEngine
                 new DateRule(120)
                 }), ReconciledMatchType.Matched));
 
+            _ruleSetEvaulators.Add(new RuleSetEvaluator("MatchDateWithDeltaof120SecondsAndAllOtherFields", new RuleSet(new IRule[] {
+                new PropertyRule("Id", "Equal", "Id") ,
+                new PropertyRule("Amount", "Equal", "Amount"),                                
+                new PropertyRule("Narrative", "Equal", "Narrative"),
+                new PropertyRule("WalletReference", "Equal", "WalletReference"),
+                new DateRule(120)
+                }), ReconciledMatchType.Matched));
+
             _result = new ReconcileResult();
             _alignedTransactions = new Dictionary<string, TransactionSet>();
         }

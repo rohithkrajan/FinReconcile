@@ -10,7 +10,7 @@
         <div class="row text-center">
             @if (Model.UnmatchedRecords > 0)
             {
-                <a class="btn btn-primary" href="@Url.Action("UnmatchedReport","Transaction",new { sessionId = Request.QueryString["sessionId"], clientFileName = Request.QueryString["clientFileName"], tutukaFileName = Request.QueryString["tutukaFileName"] })">Unmatched Report</a>
+                <a class="btn btn-primary" href="@Url.Action("UnmatchedReport","Transaction",new { sid = Request.QueryString["sid"], cfn = Request.QueryString["cfn"], tfn = Request.QueryString["tfn"] })">Unmatched Report</a>
             }
             
         </div>

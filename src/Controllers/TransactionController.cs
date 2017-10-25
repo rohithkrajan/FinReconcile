@@ -44,7 +44,7 @@ namespace FinReconcile.Controllers
                
                     tutukaFileName = Path.GetFileName(tutukaMarkOfffile.FileName);
                     _markOffFileProvider.SaveMarkOffFile(tutukaMarkOfffile.InputStream, sessionId, tutukaFileName);                    
-                    return RedirectToAction("compareresult", new { sessionId = sessionId, clientFileName = clientFileName, tutukaFileName = tutukaFileName });
+                    return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = tutukaFileName });
                 }
                 return View();                
             }
@@ -57,24 +57,24 @@ namespace FinReconcile.Controllers
 
         [HttpGet]
         [Route("transaction/{sessionid}/compareresult",Name ="compareresult")]
-        public ActionResult CompareResult(string sessionid,string clientFileName,string tutukaFileName)
+        public ActionResult CompareResult(string sid,string cfn,string tfn)
         {
-            var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sessionid, clientFileName));
-            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sessionid, tutukaFileName));
+            var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, cfn));
+            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
             IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, tutukaTransactions);            
-            CompareResult model = new CompareResult(clientFileName, tutukaFileName,result);
+            CompareResult model = new CompareResult(cfn, tfn,result);
             ViewBag.Title = "Compare Files Result";
             return View("CompareResult", model);
         }
 
         [HttpGet]
         [Route("transaction/unmatchedreport", Name = "unmatchedreport")]
-        public ActionResult UnmatchedReport(string sessionid, string clientFileName, string tutukaFileName)
+        public ActionResult UnmatchedReport(string sid, string cfn, string tfn)
         {
-            var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sessionid, clientFileName));
-            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sessionid, tutukaFileName));
+            var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, cfn));
+            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
             IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, tutukaTransactions);
-            CompareResult model = new CompareResult(clientFileName, tutukaFileName, result);
+            CompareResult model = new CompareResult(cfn, tfn, result);
             ViewBag.Title = "Compare Files Result";
             return View("UnmatchedReport", model);
         }
