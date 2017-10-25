@@ -15,11 +15,11 @@ namespace FinReconcile.RuleEngine.Rules
     }
     public class PropertyFuzzyMatchRule : MethodBaseRule<FuzzyMatchParam>
     {
-        FuzzyMatchParam _factoryMethodParam;       
+             
 
         public PropertyFuzzyMatchRule(string sourceProperty,string targetproperty,int levenshteinDistance) :base(FuzzyMatch)
         {
-            _factoryMethodParam = new FuzzyMatchParam
+            constantArgument = new FuzzyMatchParam
             {
                 SourceProperty=sourceProperty,
                 TargetProperty=targetproperty,
@@ -41,15 +41,17 @@ namespace FinReconcile.RuleEngine.Rules
             {
                 text = sourceValue;
                 pattern = targetValue;
+                allowedIndex = sourceValue.Length - targetValue.Length;
             }
             else
             {
                 pattern = sourceValue;
                 text = targetValue;
+                allowedIndex = targetValue.Length - sourceValue.Length;
             }
             int result = FuzzyMatchString(text,pattern , k.LevenshteinDistance);
 
-            if (result<allowedIndex)
+            if (result<=allowedIndex)
             {
                 return true;
             }

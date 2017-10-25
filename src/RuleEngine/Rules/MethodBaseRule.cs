@@ -30,7 +30,7 @@ namespace FinReconcile.RuleEngine.Rules
 
         public MethodBaseRule(Func<Transaction,Transaction,T,bool> factoryMethod)
         {
-            _factoryMethod = factoryMethod;
+            _factoryMethod = factoryMethod;            
         }     
 
         public Expression BuildExpression(ParameterExpression source, ParameterExpression target)

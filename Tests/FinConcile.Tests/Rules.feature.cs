@@ -78,8 +78,8 @@ this.ScenarioSetup(scenarioInfo);
                         "targetproperty",
                         "levenshteidistance"});
             table1.AddRow(new string[] {
-                        "Description",
-                        "Description",
+                        "Narrative",
+                        "Narrative",
                         "1"});
 #line 8
  testRunner.Given("I have a Rule", ((string)(null)), table1, "Given ");
@@ -128,7 +128,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Card Campaign",
                         "1/11/2014  10:27:00 PM",
                         "-20000",
-                        "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                        "*MLPS ATM25             MOLEPOLOLE    BW",
                         "DEDUCT",
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
