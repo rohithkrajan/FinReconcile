@@ -60,5 +60,22 @@ namespace FinReconcile.Domain
             get { return _notMatchedItems; }
             
         }
+
+        public IList<Transaction> GetMatchedClientTransactions()
+        {
+             return _matchedItems.SelectMany(x => x.GetAllClientTransactions()).ToList(); 
+        }
+        public IList<Transaction> GetMatchedTutukaTransactions()
+        {
+             return _matchedItems.SelectMany(x => x.GetAllTutukaTransactions()).ToList(); 
+        }
+        public IList<Transaction> GetUnMatchedClientTransactions()
+        {
+             return _notMatchedItems.SelectMany(x => x.GetAllClientTransactions()).ToList(); 
+        }
+        public IList<Transaction> GetUnMatchedTutukaTransactions()
+        {
+             return _notMatchedItems.SelectMany(x => x.GetAllTutukaTransactions()).ToList(); 
+        }
     }
 }

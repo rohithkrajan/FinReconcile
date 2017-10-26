@@ -99,21 +99,21 @@ namespace FinConcile.Tests
         public void ThenTotalRecords(int totalRecords)
         {
             var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(totalRecords, model.TotalRecords);
+            Assert.AreEqual(totalRecords, model.TotalClientRecords+model.TotalTutukaRecords);
         }
 
         [Then(@"MatchingRecords (.*)")]
         public void ThenMatchingRecords(int matchingRecords)
         {
             var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(matchingRecords, model.MatchingRecords);
+            Assert.AreEqual(matchingRecords, model.MatchingClientRecords+model.MatchingTutukaRecords);
         }
 
         [Then(@"UnmatchedRecords (.*)")]
         public void ThenUnmatchedRecords(int unMatchedRecords)
         {
             var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(unMatchedRecords, model.UnmatchedRecords);
+            Assert.AreEqual(unMatchedRecords, model.UnmatchedClientRecords+model.UnmatchedTutkaRecords);
         }
 
 

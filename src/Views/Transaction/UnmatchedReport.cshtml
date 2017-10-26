@@ -8,7 +8,7 @@
     <div class="container">
        @Html.Partial("CompareResultPartial", Model)
         <div class="row text-center">
-            @if (Model.UnmatchedRecords > 0)
+            @if (Model.UnmatchedClientRecords > 0 || Model.UnmatchedTutkaRecords > 0)
             {
                 <a class="btn btn-primary" href="@Url.Action("UnmatchedReport","Transaction",new { sid = Request.QueryString["sid"], cfn = Request.QueryString["cfn"], tfn = Request.QueryString["tfn"] })">Unmatched Report</a>                
             }            
