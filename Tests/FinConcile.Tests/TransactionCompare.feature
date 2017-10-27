@@ -19,6 +19,5 @@ Scenario: Details in Comparison Result Page
 	Given ClientMarkOffFile and TutukaMarkOffFile
 	When the user clicks on the Compare button
 	Then Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'TutukaMarkoffFile20140113'
-	And TotalRecords 5
-	And MatchingRecords 6
-	And UnmatchedRecords 7
+
+

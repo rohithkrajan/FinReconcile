@@ -81,18 +81,21 @@ namespace FinConcile.Tests
         public void ThenUserShouldBeRedirectedToTheCompareResultPage()
         {
             Assert.IsInstanceOf<RedirectToRouteResult>(_result);
-            Assert.IsNotEmpty(((RedirectToRouteResult)_result).RouteValues["sessionId"].ToString());
-            Assert.AreEqual(ClientMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["clientFileName"].ToString());
-            Assert.AreEqual(TutukaMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["tutukaFileName"].ToString());
+            Assert.IsNotEmpty(((RedirectToRouteResult)_result).RouteValues["sid"].ToString());
+            Assert.AreEqual(ClientMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["cfn"].ToString());
+            Assert.AreEqual(TutukaMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["tfn"].ToString());
 
         }
 
         [Then(@"Comparison Result should contain Both Names of the Files '(.*)' and '(.*)'")]
         public void ThenComparisonResultShouldContainBothNamesOfTheFilesAnd(string clientFileName, string tutukaFileName)
         {
-            var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(clientFileName, model.ClientMarkOffFile);
-            Assert.AreEqual(tutukaFileName, model.TutukaMarkOffFile);
+            Assert.IsInstanceOf<RedirectToRouteResult>(_result);
+            RedirectToRouteResult redirectResult = (RedirectToRouteResult)_result;
+            Assert.IsNotEmpty(redirectResult.RouteValues["sid"].ToString());
+            Assert.AreEqual("compareresult", redirectResult.RouteValues["action"]);
+            Assert.AreEqual(ClientMarkoffFileName, redirectResult.RouteValues["cfn"].ToString());
+            Assert.AreEqual(TutukaMarkoffFileName, redirectResult.RouteValues["tfn"].ToString());
         }
 
         [Then(@"TotalRecords (.*)")]

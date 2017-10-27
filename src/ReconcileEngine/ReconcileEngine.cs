@@ -14,12 +14,18 @@ namespace FinReconcile.ReconcileEngine
     public class ReconcileEngine : IReconcileEngine
     {
         IList<IRuleEvaluator> _ruleSetEvaulators = new List<IRuleEvaluator>();
-        IDictionary<string, TransactionSet> _alignedTransactions;
-        IReconcileResult _result;
+        IDictionary<string, TransactionSet> _alignedTransactions= new Dictionary<string, TransactionSet>();
+        IReconcileResult _result = new ReconcileResult();
+      
+        public ReconcileEngine(IList<IRuleEvaluator> ruleSetEvaluators)
+        {
+            foreach (var evaluator in ruleSetEvaluators)
+            {
+                _ruleSetEvaulators.Add(evaluator);
+            }
+        }
 
-        public IList<IRuleEvaluator> RuleEvaluators { get { return _ruleSetEvaulators; } }
-
-        public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
+            public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
         {          
 
             AlignTransactions(clientTransactions, tutukaTransactions);

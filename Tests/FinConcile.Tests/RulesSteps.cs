@@ -4,6 +4,7 @@ using FinReconcile.Domain.Interfaces;
 using FinReconcile.ReconcileEngine;
 using FinReconcile.RuleEngine;
 using FinReconcile.RuleEngine.Rules;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
@@ -20,7 +21,26 @@ namespace FinConcile.Tests
         private IRule rule;
         private RuleSet _ruleSet;
         private RuleSetEvaluator _evaluator;
-        private ReconciledItem _reconciledResult;
+        private IList<ReconciledItem> _reconciledResult = new List<ReconciledItem>();
+
+        [Given(@"a set of PropertyRules")]
+        public void GivenASetOfPropertyRules(Table table)
+        {
+            _ruleSet = new RuleSet();
+            foreach (var row in table.Rows)
+            {
+                rule = new PropertyRule(row["SourceProperty"], row["Operator"], row["TargetProperty"]);
+                _ruleSet.Rules.Add(rule);
+            }
+        }
+
+        [Given(@"a DateRule with Delta\tof (.*) seconds")]
+        public void GivenADateRuleWithDeltaOfSeconds(int delta)
+        {
+            _ruleSet = new RuleSet();
+            _ruleSet.Rules.Add(new DateRule(delta));
+        }
+
 
         [Given(@"I have a Rule")]
         public void GivenIHaveARule(Table table)
@@ -46,9 +66,19 @@ namespace FinConcile.Tests
             _evaluator = new RuleSetEvaluator(_ruleSet);
             for (int i = 0; i < _clientTransactions.Count; i++)
             {
-                _reconciledResult = _evaluator.Evaluate(_clientTransactions[i], _tutukaTransactions[i]);
+                _reconciledResult.Add(_evaluator.Evaluate(_clientTransactions[i], _tutukaTransactions[i]));
             }
             
         }
+
+        [Then(@"the result should be matched ReconciledItems as Follows")]
+        public void ThenTheResultShouldBeMatchedReconciledItemsAsFollows(Table table)
+        {
+            for (int i = 0; i < table.RowCount; i++)
+            {
+                Assert.AreEqual(Enum.Parse(typeof(ReconciledMatchType), table.Rows[i]["MatchType"]), _reconciledResult[i].MatchType);
+            }
+        }
+
     }
 }

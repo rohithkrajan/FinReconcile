@@ -7,6 +7,7 @@ using FinReconcile.ReconcileEngine;
 using FinReconcile.Domain.Interfaces;
 using NUnit.Framework;
 using FinReconcile.RuleEngine;
+using FinReconcile.RuleEngine.Rules;
 
 namespace FinConcile.Tests
 {
@@ -19,7 +20,7 @@ namespace FinConcile.Tests
         private IReconcileResult _result;
         IRule rule;
         private RuleSet _ruleSet;
-        IRuleEvaluator _ruleEvaluator;
+        IList<IRuleEvaluator> _ruleEvaluators = new List<IRuleEvaluator>();
 
         [Given(@"A list of Client transactions")]
         public void GivenAListOfClientTransactions(Table table)
@@ -32,11 +33,30 @@ namespace FinConcile.Tests
         {
             _tutukaTransactions = table.GetTransactions();
         }
-        
+
+        [Given(@"a list of Tutuka Transactions")]
+        public void GivenAListOfTutukaTransactions(Table table)
+        {
+            _tutukaTransactions = table.GetTransactions();
+        }
+
+        [Given(@"a RuleSet With PropertyRules")]
+        public void GivenARuleSetWithPropertyRules(Table table)
+        {
+            _ruleSet = new RuleSet();
+            foreach (var row in table.Rows)
+            {
+                rule = new PropertyRule(row["SourceProperty"], row["Operator"], row["TargetProperty"]);
+                _ruleSet.Rules.Add(rule);
+            }
+            _ruleEvaluators.Add(new RuleSetEvaluator(_ruleSet));
+        }
+
+
         [When(@"I call Reconcile")]
         public void WhenICallReconcile()
         {
-            _reconcileEngine = new ReconcileEngine();
+            _reconcileEngine = new ReconcileEngine(_ruleEvaluators);
             _result= _reconcileEngine.Reconcile(_clientTransactions, _tutukaTransactions);
         }
         
@@ -52,13 +72,22 @@ namespace FinConcile.Tests
         {
             _tutukaTransactions = table.GetTransactions();
         }
+   
 
-        [Then(@"the result should be (.*) Matched and (.*) NonMatched ReconciledItems")]
-        public void ThenTheResultShouldBeMatchedAndNonMatchedReconciledItems(int matchedCount, int nonMatchedCount)
+        [Then(@"the reconciled result should be (.*) Matched Client Transactions (.*) Unmatched Client transactions")]
+        public void ThenTheReconciledResultShouldBeMatchedClientTransactionsUnmatchedClientTransactions(int matchedCount, int nonMatchedCount)
         {
-            Assert.AreEqual(matchedCount, _result.MatchedItems.Count);
-            Assert.AreEqual(nonMatchedCount, _result.NotMatchedItems.Count);
+            Assert.AreEqual(matchedCount, _result.GetMatchedClientTransactions().Count);
+            Assert.AreEqual(nonMatchedCount, _result.GetUnMatchedClientTransactions().Count);
         }
+
+        [Then(@"(.*) Matched Tutuka Transactions (.*) Unmatched Tutuka transactions")]
+        public void ThenMatchedTutukaTransactionsUnmatchedTutukaTransactions(int matchedCount, int nonMatchedCount)
+        {
+            Assert.AreEqual(matchedCount, _result.GetMatchedTutukaTransactions().Count);
+            Assert.AreEqual(nonMatchedCount, _result.GetUnMatchedTutukaTransactions().Count);
+        }
+
 
         [Then(@"the result should be (.*) Matched ReconciledItems and (.*) Non Matched ReconciledItems")]
         public void ThenTheResultShouldBeMatchedReconciledItemsAndNonMatchedReconciledItems(int matched, int notMatched)

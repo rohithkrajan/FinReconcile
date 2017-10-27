@@ -118,12 +118,6 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
  testRunner.Then("Comparison Result should contain Both Names of the Files \'ClientMarkoffFile201401" +
                     "13\' and \'TutukaMarkoffFile20140113\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 22
- testRunner.And("TotalRecords 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.And("MatchingRecords 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
- testRunner.And("UnmatchedRecords 7", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
