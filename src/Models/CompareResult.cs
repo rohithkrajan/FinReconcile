@@ -29,7 +29,7 @@ namespace FinReconcile.Models
         public string TutukaMarkOffFile { get; private set; }       
 
         public int TotalClientRecords { get { return _matchedClient + _unMatchedClient; } }
-        public int TotalTutukaRecords { get { return _matchedClient + _unMatchedClient; } }
+        public int TotalTutukaRecords { get { return _matchedTutuka + _unMatchedTutuka; } }
         public int MatchingClientRecords { get { return _matchedClient; } }
         public int MatchingTutukaRecords { get { return _matchedTutuka; } }
 
