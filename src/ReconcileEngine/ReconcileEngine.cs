@@ -16,37 +16,7 @@ namespace FinReconcile.ReconcileEngine
         IList<IRuleEvaluator> _ruleSetEvaulators = new List<IRuleEvaluator>();
         IDictionary<string, TransactionSet> _alignedTransactions= new Dictionary<string, TransactionSet>();
         IReconcileResult _result = new ReconcileResult();
-        //public ReconcileEngine()
-        //{
-        //    _ruleSetEvaulators.Add(new RuleSetEvaluator("MatchAllFields",new RuleSet(new IRule[] {
-        //        new PropertyRule("Id", "Equal", "Id") ,
-        //        new PropertyRule("Amount", "Equal", "Amount"),
-        //        new PropertyRule("ProfileName", "Equal", "ProfileName"),
-        //        new PropertyRule("Description", "Equal", "Description"),
-        //        new PropertyRule("Narrative", "Equal", "Narrative"),
-        //        new PropertyRule("WalletReference", "Equal", "WalletReference"),
-        //        new PropertyRule("Date", "Equal", "Date")
-        //        }), ReconciledMatchType.Matched));
-
-        //    _ruleSetEvaulators.Add(new RuleSetEvaluator("MatchDateWithDeltaof120SecondsAndAllOtherFields", new RuleSet(new IRule[] {
-        //        new PropertyRule("Id", "Equal", "Id") ,
-        //        new PropertyRule("Amount", "Equal", "Amount"),
-        //        new PropertyRule("ProfileName", "Equal", "ProfileName"),
-        //        new PropertyRule("Description", "Equal", "Description"),
-        //        new PropertyRule("Narrative", "Equal", "Narrative"),
-        //        new PropertyRule("WalletReference", "Equal", "WalletReference"),
-        //        new DateRule(120)
-        //        }), ReconciledMatchType.Matched));
-
-        //    _ruleSetEvaulators.Add(new RuleSetEvaluator("DefaultRule", new RuleSet(new IRule[] {                
-        //        new PropertyRule("Amount", "Equal", "Amount"),                                                
-        //        new PropertyRule("WalletReference", "Equal", "WalletReference"),
-        //        new DateRule(120)
-        //        }), ReconciledMatchType.Matched));
-
-        //    _result = new ReconcileResult();
-        //    _alignedTransactions = new Dictionary<string, TransactionSet>();
-        //}
+      
         public ReconcileEngine(IList<IRuleEvaluator> ruleSetEvaluators)
         {
             foreach (var evaluator in ruleSetEvaluators)
