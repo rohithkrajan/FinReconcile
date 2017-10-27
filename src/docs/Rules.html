@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Rules</title>
+    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+  initializeToc();
+});
+</script>
+    <!-- We are using Font Awesome - http://fortawesome.github.com/Font-Awesome - licensed under CC BY 3.0 -->
+  </head>
+  <body>
+    <div id="container">
+      <div id="top" />
+      <div id="toc">
+        <p class="tocCollapser" title="Collapse Table of Content">«</p>
+        <ul class="features">
+          <li class="file" id="root">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="file">
+            <a href="TransactionCompare.html">Compare Transactions</a>
+          </li>
+          <li class="file">
+            <a href="CSVParser.html">CSVParser</a>
+          </li>
+          <li class="file">
+            <a href="ReconcileEngine.html">ReconcileEngine</a>
+          </li>
+          <li class="file">
+            <span class="current">Rules</span>
+          </li>
+          <li class="file">
+            <a href="RulesEvaluator.html">RulesEvaluator</a>
+          </li>
+        </ul>
+      </div>
+      <div id="feature">
+        <h1>Rules</h1>
+        <div class="description">
+          <p>In order to match transactions
+As a user
+I want to define custom rules</p>
+        </div>
+        <ul id="scenarios">
+          <li class="scenario">
+            <div class="scenario-heading" id="define-a-simple-propertyrule-to-equal-two-fields">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Define A simple PropertyRule to Equal two fields</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a set of PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>A list of client transactions to match<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>a list of tutuka transactions slightly different descriptions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call evaluate for each transactions</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItems as Follows<div class="table_container"><table class="datatable"><thead><tr><th>MatchType</th><th> </th></tr></thead><tbody><tr><td>Matched</td></tr><tr><td>Matched</td></tr></tbody></table></div></li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('define-a-simple-propertyrule-to-equal-two-fields')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="define-a-simple-daterule-to-equal-two-dates-within-a-delta-of-600-seconds">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Define A simple DateRule to Equal two dates within a delta of 600 seconds</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a DateRule with Delta	of 3600 seconds</li>
+                <li class="step">
+                  <span class="keyword">And </span>A list of client transactions to match<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>a list of tutuka transactions slightly different descriptions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:59:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  11:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call evaluate for each transactions</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItems as Follows<div class="table_container"><table class="datatable"><thead><tr><th>MatchType</th><th> </th></tr></thead><tbody><tr><td>Matched</td></tr><tr><td>Matched</td></tr></tbody></table></div></li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('define-a-simple-daterule-to-equal-two-dates-within-a-delta-of-600-seconds')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="define-propertyrules-to-equal-two-fields">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Define PropertyRules to Equal two fields</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a set of PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr><tr><td>Id</td><td>Id</td><td>Equal</td></tr><tr><td>Narrative</td><td>Narrative</td><td>Equal</td></tr><tr><td>Description</td><td>Description</td><td>Equal</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>A list of client transactions to match<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>a list of tutuka transactions slightly different descriptions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call evaluate for each transactions</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItems as Follows<div class="table_container"><table class="datatable"><thead><tr><th>MatchType</th><th> </th></tr></thead><tbody><tr><td>Matched</td></tr><tr><td>Matched</td></tr></tbody></table></div></li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('define-propertyrules-to-equal-two-fields')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="define-propertyrules-which-unmatch-if-any-two-fields-do-not-match">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Define PropertyRules Which Unmatch if any two fields do not match</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a set of PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>A list of client transactions to match<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>a list of tutuka transactions slightly different descriptions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-30000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/12/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call evaluate for each transactions</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItems as Follows<div class="table_container"><table class="datatable"><thead><tr><th>MatchType</th><th> </th></tr></thead><tbody><tr><td>NotMatched</td></tr><tr><td>NotMatched</td></tr><tr><td>NotMatched</td></tr></tbody></table></div></li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('define-propertyrules-which-unmatch-if-any-two-fields-do-not-match')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="define-propertyfuzzymatchrule-to-fuzzy-string-match-two-string-fields">
+              <p class="tags">Tags: <span>@rules</span></p>
+              <h2>Define PropertyFuzzyMatchRule to fuzzy string match two string fields</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>I have a Rule<div class="table_container"><table class="datatable"><thead><tr><th>sourceproperty</th><th>targetproperty</th><th>levenshteidistance</th><th> </th></tr></thead><tbody><tr><td>Narrative</td><td>Narrative</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>A list of client transactions to match<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">And </span>a list of tutuka transactions slightly different descriptions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MLPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call evaluate for each transactions</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be matched ReconciledItems as Follows<div class="table_container"><table class="datatable"><thead><tr><th>MatchType</th><th> </th></tr></thead><tbody><tr><td>Matched</td></tr><tr><td>Matched</td></tr></tbody></table></div></li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('define-propertyfuzzymatchrule-to-fuzzy-string-match-two-string-fields')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p>Test results generated for: Reconcile, version beta</p>
+        <p>Generated on: 27 October 2017 11:02:05</p>
+        <p>Produced by Pickles, version 2.16.2.0</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -21,7 +21,7 @@ namespace FinReconcile
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/paper.css",
                       "~/Content/site.css"));
         }
     }

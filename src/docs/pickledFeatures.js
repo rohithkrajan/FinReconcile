@@ -94,27 +94,6 @@ jsonPWrapper ({
                 "Name": "Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'TutukaMarkoffFile20140113'",
                 "StepComments": [],
                 "AfterLastStepComments": []
-              },
-              {
-                "Keyword": "And",
-                "NativeKeyword": "And ",
-                "Name": "TotalRecords 5",
-                "StepComments": [],
-                "AfterLastStepComments": []
-              },
-              {
-                "Keyword": "And",
-                "NativeKeyword": "And ",
-                "Name": "MatchingRecords 6",
-                "StepComments": [],
-                "AfterLastStepComments": []
-              },
-              {
-                "Keyword": "And",
-                "NativeKeyword": "And ",
-                "Name": "UnmatchedRecords 7",
-                "StepComments": [],
-                "AfterLastStepComments": []
               }
             ],
             "Tags": [
@@ -540,6 +519,52 @@ jsonPWrapper ({
                 "AfterLastStepComments": []
               },
               {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a RuleSet With PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ],
+                    [
+                      "Id",
+                      "Id",
+                      "Equal"
+                    ],
+                    [
+                      "Narrative",
+                      "Narrative",
+                      "Equal"
+                    ],
+                    [
+                      "Description",
+                      "Description",
+                      "Equal"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
                 "Keyword": "When",
                 "NativeKeyword": "When ",
                 "Name": "I call Reconcile",
@@ -648,7 +673,7 @@ jsonPWrapper ({
                       "5840118086495112",
                       "Card Campaign",
                       "1/11/2014  10:27:00 PM",
-                      "-20000",
+                      "-10000",
                       "*MOLEPS ATM25             MOLEPOLOLE    BW",
                       "DEDUCT",
                       "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
@@ -657,7 +682,7 @@ jsonPWrapper ({
                     [
                       "840122335818692",
                       "Card Campaign",
-                      "1/12/2014  6:26:00 AM",
+                      "1/13/2014  6:26:00 AM",
                       "-20000",
                       "Molepolole Filli100558    Gaborone      BW",
                       "DEDUCT",
@@ -668,7 +693,7 @@ jsonPWrapper ({
                       "05840123950720042",
                       "Card Campaign",
                       "2014-01-12 14:58:27",
-                      "-10000",
+                      "-40000",
                       "MAHALAPYE BRANCH          BOTSWANA      BW",
                       "DEDUCT",
                       "P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2",
@@ -677,12 +702,43 @@ jsonPWrapper ({
                     [
                       "01640124019253472",
                       "Card Campaign",
-                      "2014-01-12 15:09:52",
-                      "3880",
+                      "2014-02-12 15:09:52",
+                      "6880",
                       "370592 ENGEN LOBATSE      BOTSWANA      BW",
                       "REVERSAL",
                       "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
                       "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a RuleSet With PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
                     ]
                   ]
                 },
@@ -699,7 +755,14 @@ jsonPWrapper ({
               {
                 "Keyword": "Then",
                 "NativeKeyword": "Then ",
-                "Name": "the result should be 0 Matched and 8 NonMatched ReconciledItems",
+                "Name": "the reconciled result should be 0 Matched Client Transactions 4 Unmatched Client transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "0 Matched Tutuka Transactions 4 Unmatched Tutuka transactions",
                 "StepComments": [],
                 "AfterLastStepComments": []
               }
@@ -781,7 +844,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of matching Tutuka Transactions",
+                "Name": "a list of Tutuka Transactions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -828,11 +891,57 @@ jsonPWrapper ({
                       "01640124019253472",
                       "Card Campaign",
                       "2014-01-12 15:09:52",
-                      "3880",
+                      "38804",
                       "370592 ENGEN LOBATSE      BOTSWANA      BW",
                       "REVERSAL",
-                      "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
+                      "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA133",
                       "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a RuleSet With PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ],
+                    [
+                      "Id",
+                      "Id",
+                      "Equal"
+                    ],
+                    [
+                      "Narrative",
+                      "Narrative",
+                      "Equal"
+                    ],
+                    [
+                      "Description",
+                      "Description",
+                      "Equal"
                     ]
                   ]
                 },
@@ -950,6 +1059,52 @@ jsonPWrapper ({
                 "AfterLastStepComments": []
               },
               {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a RuleSet With PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ],
+                    [
+                      "Id",
+                      "Id",
+                      "Equal"
+                    ],
+                    [
+                      "Narrative",
+                      "Narrative",
+                      "Equal"
+                    ],
+                    [
+                      "Description",
+                      "Description",
+                      "Equal"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
                 "Keyword": "When",
                 "NativeKeyword": "When ",
                 "Name": "I call Reconcile",
@@ -966,6 +1121,788 @@ jsonPWrapper ({
             ],
             "Tags": [
               "@reconcileengine"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          }
+        ],
+        "Result": {
+          "WasExecuted": false,
+          "WasSuccessful": false
+        },
+        "Tags": []
+      },
+      "Result": {
+        "WasExecuted": false,
+        "WasSuccessful": false
+      }
+    },
+    {
+      "RelativeFolder": "Rules.feature",
+      "Feature": {
+        "Name": "Rules",
+        "Description": "In order to match transactions\r\nAs a user\r\nI want to define custom rules",
+        "FeatureElements": [
+          {
+            "Name": "Define A simple PropertyRule to Equal two fields",
+            "Slug": "define-a-simple-propertyrule-to-equal-two-fields",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a set of PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "A list of client transactions to match",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a list of tutuka transactions slightly different descriptions",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call evaluate for each transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be matched ReconciledItems as Follows",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "MatchType"
+                  ],
+                  "DataRows": [
+                    [
+                      "Matched"
+                    ],
+                    [
+                      "Matched"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@rules"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Define A simple DateRule to Equal two dates within a delta of 600 seconds",
+            "Slug": "define-a-simple-daterule-to-equal-two-dates-within-a-delta-of-600-seconds",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a DateRule with Delta\tof 3600 seconds",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "A list of client transactions to match",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a list of tutuka transactions slightly different descriptions",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:59:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  11:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call evaluate for each transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be matched ReconciledItems as Follows",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "MatchType"
+                  ],
+                  "DataRows": [
+                    [
+                      "Matched"
+                    ],
+                    [
+                      "Matched"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@rules"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Define PropertyRules to Equal two fields",
+            "Slug": "define-propertyrules-to-equal-two-fields",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a set of PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ],
+                    [
+                      "Id",
+                      "Id",
+                      "Equal"
+                    ],
+                    [
+                      "Narrative",
+                      "Narrative",
+                      "Equal"
+                    ],
+                    [
+                      "Description",
+                      "Description",
+                      "Equal"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "A list of client transactions to match",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a list of tutuka transactions slightly different descriptions",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call evaluate for each transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be matched ReconciledItems as Follows",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "MatchType"
+                  ],
+                  "DataRows": [
+                    [
+                      "Matched"
+                    ],
+                    [
+                      "Matched"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@rules"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Define PropertyRules Which Unmatch if any two fields do not match",
+            "Slug": "define-propertyrules-which-unmatch-if-any-two-fields-do-not-match",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a set of PropertyRules",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "SourceProperty",
+                    "TargetProperty",
+                    "Operator"
+                  ],
+                  "DataRows": [
+                    [
+                      "Date",
+                      "Date",
+                      "Equal"
+                    ],
+                    [
+                      "Amount",
+                      "Amount",
+                      "Equal"
+                    ],
+                    [
+                      "WalletReference",
+                      "WalletReference",
+                      "Equal"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "A list of client transactions to match",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a list of tutuka transactions slightly different descriptions",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-30000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/12/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call evaluate for each transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be matched ReconciledItems as Follows",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "MatchType"
+                  ],
+                  "DataRows": [
+                    [
+                      "NotMatched"
+                    ],
+                    [
+                      "NotMatched"
+                    ],
+                    [
+                      "NotMatched"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@rules"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Define PropertyFuzzyMatchRule to fuzzy string match two string fields",
+            "Slug": "define-propertyfuzzymatchrule-to-fuzzy-string-match-two-string-fields",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "I have a Rule",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "sourceproperty",
+                    "targetproperty",
+                    "levenshteidistance"
+                  ],
+                  "DataRows": [
+                    [
+                      "Narrative",
+                      "Narrative",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "A list of client transactions to match",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "a list of tutuka transactions slightly different descriptions",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Id",
+                    "ProfileName",
+                    "Date",
+                    "Amount",
+                    "Narrative",
+                    "Description",
+                    "WalletReference",
+                    "Type"
+                  ],
+                  "DataRows": [
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "-20000",
+                      "*MLPS ATM25             MOLEPOLOLE    BW",
+                      "DEDUCT",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ],
+                    [
+                      "584011808649511",
+                      "Card Campaign",
+                      "1/11/2014  10:27:00 PM",
+                      "20000",
+                      "*MOLEPS ATM25             MOLEPOLOLE    BW",
+                      "REVERSAL",
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
+                      "1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call evaluate for each transactions",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be matched ReconciledItems as Follows",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "MatchType"
+                  ],
+                  "DataRows": [
+                    [
+                      "Matched"
+                    ],
+                    [
+                      "Matched"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@rules"
             ],
             "Result": {
               "WasExecuted": false,
@@ -1483,10 +2420,10 @@ jsonPWrapper ({
       },
       {
         "Tag": "@rules",
-        "Total": 6,
+        "Total": 11,
         "Passing": 0,
         "Failing": 0,
-        "Inconclusive": 6
+        "Inconclusive": 11
       }
     ],
     "Folders": [
@@ -1510,6 +2447,13 @@ jsonPWrapper ({
         "Passing": 0,
         "Failing": 0,
         "Inconclusive": 4
+      },
+      {
+        "Folder": "Rules.feature",
+        "Total": 5,
+        "Passing": 0,
+        "Failing": 0,
+        "Inconclusive": 5
       },
       {
         "Folder": "RulesEvaluator.feature",
@@ -1542,6 +2486,13 @@ jsonPWrapper ({
         "Inconclusive": 0
       },
       {
+        "Folder": "Rules.feature",
+        "Total": 0,
+        "Passing": 0,
+        "Failing": 0,
+        "Inconclusive": 0
+      },
+      {
         "Folder": "RulesEvaluator.feature",
         "Total": 0,
         "Passing": 0,
@@ -1550,21 +2501,21 @@ jsonPWrapper ({
       }
     ],
     "Scenarios": {
-      "Total": 18,
+      "Total": 23,
       "Passing": 0,
       "Failing": 0,
-      "Inconclusive": 18
+      "Inconclusive": 23
     },
     "Features": {
-      "Total": 4,
+      "Total": 5,
       "Passing": 0,
       "Failing": 0,
-      "Inconclusive": 4
+      "Inconclusive": 5
     }
   },
   "Configuration": {
     "SutName": "Reconcile",
     "SutVersion": "beta",
-    "GeneratedOn": "25 October 2017 02:18:07"
+    "GeneratedOn": "27 October 2017 11:02:05"
   }
 });
