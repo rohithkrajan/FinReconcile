@@ -16,7 +16,9 @@ namespace FinReconcile.ReconcileEngine
         IList<IRuleEvaluator> _ruleSetEvaulators = new List<IRuleEvaluator>();
         IDictionary<string, TransactionSet> _alignedTransactions= new Dictionary<string, TransactionSet>();
         IReconcileResult _result = new ReconcileResult();
-      
+
+        public IList<IRuleEvaluator> RuleEvaluators { get { return _ruleSetEvaulators; } }
+
         public ReconcileEngine(IList<IRuleEvaluator> ruleSetEvaluators)
         {
             foreach (var evaluator in ruleSetEvaluators)
