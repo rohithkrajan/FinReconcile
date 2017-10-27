@@ -1,0 +1,34 @@
+﻿@model Dictionary<string,string>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rules Configured</h2>
+
+
+<div class="main-content">
+    <div class="container">
+    @foreach (var rule in Model)
+    {
+        <div class="row">
+           <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">@rule.Key</div>
+                    <div class="panel-body">
+                        <pre><code class="javascript">
+                              @rule.Value
+            </code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>    
+                </div>
+    }
+    </div>
+        </div>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>

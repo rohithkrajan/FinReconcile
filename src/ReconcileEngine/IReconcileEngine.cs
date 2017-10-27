@@ -11,5 +11,6 @@ namespace FinReconcile.ReconcileEngine
     public interface IReconcileEngine
     {
         IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions);
+        IList<IRuleEvaluator> RuleEvaluators { get; }
     }
 }

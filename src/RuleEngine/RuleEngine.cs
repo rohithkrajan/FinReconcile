@@ -26,7 +26,10 @@ namespace FinReconcile.RuleEngine
             this.RuleName = ruleName;
             this.RuleType = ruleType;
         }
-
+        public RuleSet RuleSet
+        {
+            get { return _ruleSet; }
+        }
         public string RuleName { get; }
         public ReconciledMatchType RuleType { get; }
 

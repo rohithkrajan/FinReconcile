@@ -12,5 +12,6 @@ namespace FinReconcile.Domain.Interfaces
         ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction);
         string RuleName { get; }
         ReconciledMatchType RuleType { get; }
+        RuleSet RuleSet { get; }
     }
 }

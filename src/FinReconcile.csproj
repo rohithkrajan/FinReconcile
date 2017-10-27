@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Domain\Interfaces\IReconcileEngine.cs" />
     <Compile Include="Domain\Interfaces\IReconcileResult.cs" />
@@ -226,6 +227,8 @@
     <Content Include="Views\Transaction\CompareResultPartial.cshtml" />
     <Content Include="Views\Transaction\UnmatchedReport.cshtml" />
     <Content Include="Views\Transaction\UnmatchedReportPartial.cshtml" />
+    <Content Include="Views\Transaction\UnmatchedDetailedReportPartial.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
