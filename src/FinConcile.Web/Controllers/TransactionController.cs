@@ -32,21 +32,25 @@ namespace FinReconcile.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Compare(HttpPostedFileBase clientMarkOffFile,HttpPostedFileBase tutukaMarkOfffile)
+        public ActionResult Compare(CompareModel compareFiles)
         {
             try
             {
-                string clientFileName = null, tutukaFileName = null, sessionId;
-                if (clientMarkOffFile.ContentLength>0 && tutukaMarkOfffile.ContentLength > 0)
-                {                    
-                    clientFileName = Path.GetFileName(clientMarkOffFile.FileName);
-                    sessionId = SessionIdGenerator.CreateNewId();
-                    _markOffFileProvider.SaveMarkOffFile(clientMarkOffFile.InputStream, sessionId, clientFileName);
-               
-                    tutukaFileName = Path.GetFileName(tutukaMarkOfffile.FileName);
-                    _markOffFileProvider.SaveMarkOffFile(tutukaMarkOfffile.InputStream, sessionId, tutukaFileName);                    
-                    return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = tutukaFileName });
+                if (ModelState.IsValid)
+                {
+                    string clientFileName = null, tutukaFileName = null, sessionId;
+                    if (compareFiles.ClientMarkOffFile.ContentLength > 0 && compareFiles.TutukaMarkOfffile.ContentLength > 0)
+                    {
+                        clientFileName = Path.GetFileName(compareFiles.ClientMarkOffFile.FileName);
+                        sessionId = SessionIdGenerator.CreateNewId();
+                        _markOffFileProvider.SaveMarkOffFile(compareFiles.ClientMarkOffFile.InputStream, sessionId, clientFileName);
+
+                        tutukaFileName = Path.GetFileName(compareFiles.TutukaMarkOfffile.FileName);
+                        _markOffFileProvider.SaveMarkOffFile(compareFiles.TutukaMarkOfffile.InputStream, sessionId, tutukaFileName);
+                        return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = tutukaFileName });
+                    }
                 }
+               
                 return View();                
             }
             catch (Exception)

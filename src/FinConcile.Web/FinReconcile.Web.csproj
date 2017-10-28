@@ -166,6 +166,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\CompareResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

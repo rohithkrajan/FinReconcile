@@ -75,7 +75,7 @@ namespace FinConcile.Tests
         public void WhenTheUserClicksOnTheCompareButton()
         {
             _controller = new TransactionController(_mockMarkOffFileProvider.Object,_csvReader,_mockReconcileEngine.Object);
-           _result= _controller.Compare(_clientMarkOffFile, _tutukaMarkOffFile);
+           _result= _controller.Compare( new CompareModel() { ClientMarkOffFile = _clientMarkOffFile, TutukaMarkOfffile = _tutukaMarkOffFile });
         }
 
         [Then(@"user should be redirected to compare result Page")]

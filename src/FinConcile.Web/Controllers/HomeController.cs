@@ -10,7 +10,7 @@ namespace FinReconcile.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "FinReconcile";
 
             return View();
         }

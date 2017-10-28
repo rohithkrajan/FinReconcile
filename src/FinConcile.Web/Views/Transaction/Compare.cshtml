@@ -1,41 +1,55 @@
-﻿
+﻿@model FinReconcile.Models.CompareModel
 @{
     ViewBag.Title = "Compare";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container main-content">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">Compare Files</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="inputFile1" class="col-md-2 control-label">Select Client File 1</label>
-                            <div class="col-md-8">
-                                <input type="file" name="clientMarkOffFile" />
+@using (Html.BeginForm("compare","transaction",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+            @Html.AntiForgeryToken()
+            <div class="container main-content">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Compare Files</div>
+                    <div class="panel-body">                       
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="inputFile1" class="col-md-3 control-label">Select Client File 1</label>
+                                    <div class="col-md-4">
+                                        <input type="file" name="clientMarkOffFile" />
+                                    </div>
+                                    <div class="col-md-3 text-danger">
+                                        @Html.ValidationMessageFor(model => model.ClientMarkOffFile)
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
                             </div>
-                            <div class="col-md-2"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputfile2" class="col-md-2 control-label">Select Tutuka File 2</label>
-                            <div class="col-md-8">
-                                <input type="file" name="tutukaMarkOfffile" />
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="inputfile2" class="col-md-3 control-label">Select Tutuka File 2</label>
+                                    <div class="col-md-4">
+                                        <input type="file" name="tutukaMarkOfffile" />
+                                    </div>
+                                    <div class="col-md-3 text-danger">
+                                        @Html.ValidationMessageFor(model => model.TutukaMarkOfffile)
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-default">Compare</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-default">Compare</button>
-                            </div>
-                        </div>
-                    </form>
+                      
+                    </div>
                 </div>
             </div>
+            <div class="col-md-2"></div>
+
         </div>
-        <div class="col-md-2"></div>
-        
+
+
     </div>
-    
-    
-        </div>
+}
+
 
 
