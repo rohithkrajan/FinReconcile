@@ -1,6 +1,5 @@
 ﻿using FinConcile.Tests.Properties;
-using FinReconcile.Domain;
-using FinReconcile.MarkOffReader;
+using FinReconcile.Infra.Parsers;
 using NUnit.Framework;
 using System;
 using System.Collections;

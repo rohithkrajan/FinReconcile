@@ -1,10 +1,11 @@
 ﻿using FinConcile.Tests.Properties;
 using FinConcile.Tests.TestUtils;
 using FinReconcile.Controllers;
-using FinReconcile.MarkOffReader;
+using FinReconcile.Core.Engines;
+using FinReconcile.Infra;
+using FinReconcile.Infra.Parsers;
+using FinReconcile.Infra.Providers;
 using FinReconcile.Models;
-using FinReconcile.Providers;
-using FinReconcile.ReconcileEngine;
 using Moq;
 using NUnit.Framework;
 using System;

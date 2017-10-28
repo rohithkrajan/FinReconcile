@@ -1,13 +1,12 @@
 ﻿using System;
 using TechTalk.SpecFlow;
 using FinConcile.Tests.TestUtils;
-using FinReconcile.Domain;
 using System.Collections.Generic;
-using FinReconcile.ReconcileEngine;
-using FinReconcile.Domain.Interfaces;
 using NUnit.Framework;
-using FinReconcile.RuleEngine;
-using FinReconcile.RuleEngine.Rules;
+using FinReconcile.Core.Domain;
+using FinReconcile.Core.Engines;
+using FinReconcile.Core.Domain.Interfaces;
+using FinReconcile.Core.Engines.Rules;
 
 namespace FinConcile.Tests
 {

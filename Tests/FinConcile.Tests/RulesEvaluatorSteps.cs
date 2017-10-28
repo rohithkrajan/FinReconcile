@@ -1,7 +1,7 @@
-﻿using FinReconcile.Domain;
-using FinReconcile.Domain.Interfaces;
-using FinReconcile.RuleEngine;
-using FinReconcile.RuleEngine.Rules;
+﻿using FinReconcile.Core.Domain;
+using FinReconcile.Core.Domain.Interfaces;
+using FinReconcile.Core.Engines;
+using FinReconcile.Core.Engines.Rules;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;

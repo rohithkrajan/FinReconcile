@@ -148,9 +148,17 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FinReconcile.csproj">
+    <ProjectReference Include="..\..\src\FinConcile.Web\FinReconcile.Web.csproj">
       <Project>{214c84ff-2c6b-4846-b40b-536caada8127}</Project>
       <Name>FinReconcile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\FinReconcile.Core\FinReconcile.Core.csproj">
+      <Project>{3f2136c8-bb7c-4e46-b671-4cd545b76955}</Project>
+      <Name>FinReconcile.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\FinReconcile.Infra\FinReconcile.Infra.csproj">
+      <Project>{757ee3de-ba4c-4559-b05f-066b23e36203}</Project>
+      <Name>FinReconcile.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
