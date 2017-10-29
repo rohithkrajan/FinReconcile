@@ -156,7 +156,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 33
  testRunner.And("2 Invalid Entries", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 34
- testRunner.And("Invalid entries matches last two rows", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Invalid entries matches line numbers 3 and 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -199,6 +199,145 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("the result should be 305 transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 46
  testRunner.And("0 Invalid Entries", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate file for Headers")]
+        [NUnit.Framework.CategoryAttribute("csvparser")]
+        public virtual void ValidateFileForHeaders()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate file for Headers", new string[] {
+                        "csvparser"});
+#line 48
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Lines"});
+            table4.AddRow(new string[] {
+                        "ProfileName,TransactionDate,TransactionAmount,TransactionNarrative,TransactionDes" +
+                            "cription,TransactionID,TransactionType,WalletReference"});
+            table4.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    " +
+                            "BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"});
+            table4.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  " +
+                            "BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"});
+            table4.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  B" +
+                            "W,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"});
+#line 49
+ testRunner.Given("a markofffile\twith content", ((string)(null)), table4, "Given ");
+#line 55
+ testRunner.When("I call Validate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
+ testRunner.Then("the result should be valid file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate file with wrong Headers")]
+        [NUnit.Framework.CategoryAttribute("csvparser")]
+        public virtual void ValidateFileWithWrongHeaders()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate file with wrong Headers", new string[] {
+                        "csvparser"});
+#line 58
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Lines"});
+            table5.AddRow(new string[] {
+                        "ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescr" +
+                            "iption,TransactionID,TransactionType,WalletReference"});
+            table5.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    " +
+                            "BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"});
+            table5.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  " +
+                            "BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"});
+            table5.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  B" +
+                            "W,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"});
+#line 59
+ testRunner.Given("a markofffile\twith content", ((string)(null)), table5, "Given ");
+#line 65
+ testRunner.When("I call Validate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 66
+ testRunner.Then("the result should be invalid file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 67
+ testRunner.And("Error Message should contain headername \'TransactionDate\' with LineNo 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate file with multiple wrong Headers")]
+        public virtual void ValidateFileWithMultipleWrongHeaders()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate file with multiple wrong Headers", ((string[])(null)));
+#line 69
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Lines"});
+            table6.AddRow(new string[] {
+                        "ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescr" +
+                            "iption,TransactionID,TransactionType,WalletReference"});
+            table6.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    " +
+                            "BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"});
+            table6.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  " +
+                            "BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"});
+            table6.AddRow(new string[] {
+                        "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  B" +
+                            "W,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"});
+#line 70
+ testRunner.Given("a markofffile\twith content", ((string)(null)), table6, "Given ");
+#line 76
+ testRunner.When("I call Validate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 77
+ testRunner.Then("the result should be invalid file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 78
+ testRunner.And("Error Messages should contain headername \'TransactionDate\' and \'TransactionAmount" +
+                    "\' with LineNo 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate file for different headers order")]
+        public virtual void ValidateFileForDifferentHeadersOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate file for different headers order", ((string[])(null)));
+#line 79
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Lines"});
+            table7.AddRow(new string[] {
+                        "WalletReference,ProfileName,TransactionDate,TransactionAmount,TransactionNarrativ" +
+                            "e,TransactionDescription,TransactionID,TransactionType"});
+            table7.AddRow(new string[] {
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOL" +
+                            "EPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"});
+            table7.AddRow(new string[] {
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOL" +
+                            "EPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"});
+            table7.AddRow(new string[] {
+                        "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOL" +
+                            "EPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"});
+#line 80
+ testRunner.Given("a markofffile\twith content", ((string)(null)), table7, "Given ");
+#line 86
+ testRunner.When("I call Validate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 87
+ testRunner.Then("the result should be valid file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 88
+ testRunner.And("with 3 Transactions and No Errors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

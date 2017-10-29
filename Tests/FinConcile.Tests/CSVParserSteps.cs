@@ -52,12 +52,14 @@ namespace FinConcile.Tests
             Assert.AreEqual(invalidEntriesCount, _parserResult.InvalidEntries.Count);
            
         }
-        [Then(@"Invalid entries matches last two rows")]
-        public void ThenInvalidEntriesMatchesLastTwoRows()
+        [Then(@"Invalid entries matches line numbers (.*) and (.*)")]
+        public void ThenInvalidEntriesMatchesLineNumbersAnd(int p0, int p1)
         {
-            Assert.AreEqual(_contentTable.Rows[2][0].Trim(), _parserResult.InvalidEntries[0].Trim());
-            Assert.AreEqual(_contentTable.Rows[3][0].Trim(), _parserResult.InvalidEntries[1].Trim());
+            Assert.AreEqual(_contentTable.Rows[2][0].Trim(), _parserResult.InvalidEntries[p0].Trim());
+            Assert.AreEqual(_contentTable.Rows[3][0].Trim(), _parserResult.InvalidEntries[p1].Trim());
         }
+
+        
 
         [Given(@"a large client markofffile with content")]
         public void GivenALargeMarkofffileWithContent()
@@ -69,6 +71,47 @@ namespace FinConcile.Tests
         public void GivenALargeTutukaMarkofffileWithContent()
         {
             _content = Resources.TutukaMarkoffFile20140113;
+        }
+
+        [When(@"I call Validate")]
+        public void WhenICallValidate()
+        {
+            _parserResult = _csvParser.GetRecords(_content);
+        }
+
+        [Then(@"the result should be valid file")]
+        public void ThenTheResultShouldBeValidFile()
+        {
+            Assert.IsTrue(_parserResult.IsValid);
+        }
+
+        [Then(@"the result should be invalid file")]
+        public void ThenTheResultShouldBeInvalidFile()
+        {
+            Assert.IsFalse(_parserResult.IsValid);
+            Assert.AreEqual(_parserResult.Errors.Count, 1);
+            
+        }
+
+        
+        [Then(@"Error Message should contain headername '(.*)' with LineNo (.*)")]
+        public void ThenErrorMessageShouldContainHeadernameWithLineNo(string headerName, int lineno)
+        {
+            Assert.IsTrue(_parserResult.Errors[lineno].Contains(headerName));
+        }
+
+        [Then(@"Error Messages should contain headername '(.*)' and '(.*)' with LineNo (.*)")]
+        public void ThenErrorMessagesShouldContainHeadernameAndWithLineNo(string header1, string header2, int linenum)
+        {
+            Assert.IsTrue(_parserResult.Errors[linenum].Contains(header1));
+            Assert.IsTrue(_parserResult.Errors[linenum].Contains(header2));
+        }
+
+        [Then(@"with (.*) Transactions and No Errors")]
+        public void ThenWithTransactionsAndNoErrors(int transCount)
+        {
+            Assert.AreEqual(transCount, _parserResult.Count);
+            Assert.AreEqual(0, _parserResult.Errors.Count);
         }
 
 

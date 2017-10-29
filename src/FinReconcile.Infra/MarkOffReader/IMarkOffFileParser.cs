@@ -8,6 +8,8 @@ namespace FinReconcile.Infra.Parsers
 {
     public interface IMarkOffFileParser
     {
+        ParserResult Validate(Stream stream);
+        ParserResult Validate(string markOffFileContent);
         ParserResult GetRecords(TextReader reader);
         ParserResult GetRecords(string markOffFileContent);
     }

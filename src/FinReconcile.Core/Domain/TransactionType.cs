@@ -8,7 +8,7 @@ namespace FinReconcile.Core.Domain
     public enum TransactionType
     {
         Store = 0,
-        ATM =1       
-
+        ATM =1,       
+        Unknown=9
     }
 }

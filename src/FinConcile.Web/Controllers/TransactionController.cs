@@ -43,10 +43,30 @@ namespace FinReconcile.Controllers
                     {
                         clientFileName = Path.GetFileName(compareFiles.ClientMarkOffFile.FileName);
                         sessionId = SessionIdGenerator.CreateNewId();
-                        _markOffFileProvider.SaveMarkOffFile(compareFiles.ClientMarkOffFile.InputStream, sessionId, clientFileName);
 
-                        tutukaFileName = Path.GetFileName(compareFiles.TutukaMarkOfffile.FileName);
-                        _markOffFileProvider.SaveMarkOffFile(compareFiles.TutukaMarkOfffile.InputStream, sessionId, tutukaFileName);
+                        var parser = DependencyResolver.Current.GetService<IMarkOffFileParser>();
+                        ParserResult result = parser.Validate(compareFiles.ClientMarkOffFile.InputStream);
+                        if (!result.IsValid)
+                        {
+                            ModelState.AddModelError("ClientMarkOffFile", result.Errors[1]);
+                            return View();
+                        }
+                        else
+                        {
+                            _markOffFileProvider.SaveMarkOffFile(compareFiles.ClientMarkOffFile.InputStream, sessionId, clientFileName);
+                        }
+                         parser = DependencyResolver.Current.GetService<IMarkOffFileParser>();
+                         result = parser.Validate(compareFiles.TutukaMarkOfffile.InputStream);
+                        if (!result.IsValid)
+                        {
+                            ModelState.AddModelError("TutukaMarkOfffile", result.Errors[1]);
+                            return View();
+                        }
+                        else
+                        {
+                            tutukaFileName = Path.GetFileName(compareFiles.TutukaMarkOfffile.FileName);
+                            _markOffFileProvider.SaveMarkOffFile(compareFiles.TutukaMarkOfffile.InputStream, sessionId, tutukaFileName);
+                        }                        
                         return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = tutukaFileName });
                     }
                 }
