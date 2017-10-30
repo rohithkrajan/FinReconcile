@@ -102,7 +102,7 @@ I want to parse transactions from each line</p>
                 <li class="step">
                   <span class="keyword">And </span>2 Invalid Entries</li>
                 <li class="step">
-                  <span class="keyword">And </span>Invalid entries matches last two rows</li>
+                  <span class="keyword">And </span>Invalid entries matches line numbers 3 and 4</li>
               </ul>
             </div>
             <a class="scenario-link" href="javascript:showImageLink('ignore-invalid-lines-while-reading-transactions')" title="Copy scenario link to clipboard.">
@@ -151,11 +151,91 @@ I want to parse transactions from each line</p>
               <i class="icon-link"> </i>
             </a>
           </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="validate-file-for-headers">
+              <p class="tags">Tags: <span>@csvparser</span></p>
+              <h2>Validate file for Headers</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a markofffile	with content<div class="table_container"><table class="datatable"><thead><tr><th>Lines</th><th> </th></tr></thead><tbody><tr><td>ProfileName,TransactionDate,TransactionAmount,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference</td></tr><tr><td>Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,</td></tr><tr><td>Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,</td></tr><tr><td>Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Validate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be valid file</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('validate-file-for-headers')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="validate-file-with-wrong-headers">
+              <p class="tags">Tags: <span>@csvparser</span></p>
+              <h2>Validate file with wrong Headers</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a markofffile	with content<div class="table_container"><table class="datatable"><thead><tr><th>Lines</th><th> </th></tr></thead><tbody><tr><td>ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference</td></tr><tr><td>Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,</td></tr><tr><td>Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,</td></tr><tr><td>Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Validate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be invalid file</li>
+                <li class="step">
+                  <span class="keyword">And </span>Error Message should contain headername 'TransactionDate' with LineNo 1</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('validate-file-with-wrong-headers')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="validate-file-with-multiple-wrong-headers">
+              <h2>Validate file with multiple wrong Headers</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a markofffile	with content<div class="table_container"><table class="datatable"><thead><tr><th>Lines</th><th> </th></tr></thead><tbody><tr><td>ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference</td></tr><tr><td>Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,</td></tr><tr><td>Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,</td></tr><tr><td>Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Validate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be invalid file</li>
+                <li class="step">
+                  <span class="keyword">And </span>Error Messages should contain headername 'TransactionDate' and 'TransactionAmount' with LineNo 1</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('validate-file-with-multiple-wrong-headers')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
+          <li class="scenario">
+            <div class="scenario-heading" id="validate-file-for-different-headers-order">
+              <h2>Validate file for different headers order</h2>
+            </div>
+            <div class="steps">
+              <ul>
+                <li class="step">
+                  <span class="keyword">Given </span>a markofffile	with content<div class="table_container"><table class="datatable"><thead><tr><th>Lines</th><th> </th></tr></thead><tbody><tr><td>WalletReference,ProfileName,TransactionDate,TransactionAmount,TransactionNarrative,TransactionDescription,TransactionID,TransactionType</td></tr><tr><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1</td></tr><tr><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1</td></tr><tr><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1</td></tr></tbody></table></div></li>
+                <li class="step">
+                  <span class="keyword">When </span>I call Validate</li>
+                <li class="step">
+                  <span class="keyword">Then </span>the result should be valid file</li>
+                <li class="step">
+                  <span class="keyword">And </span>with 3 Transactions and No Errors</li>
+              </ul>
+            </div>
+            <a class="scenario-link" href="javascript:showImageLink('validate-file-for-different-headers-order')" title="Copy scenario link to clipboard.">
+              <i class="icon-link"> </i>
+            </a>
+          </li>
         </ul>
       </div>
       <div id="footer">
         <p>Test results generated for: Reconcile, version beta</p>
-        <p>Generated on: 27 October 2017 11:26:34</p>
+        <p>Generated on: 30 October 2017 10:16:07</p>
         <p>Produced by Pickles, version 2.16.2.0</p>
       </div>
     </div>

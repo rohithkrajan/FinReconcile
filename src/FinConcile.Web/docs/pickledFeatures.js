@@ -276,7 +276,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "Invalid entries matches last two rows",
+                "Name": "Invalid entries matches line numbers 3 and 4",
                 "StepComments": [],
                 "AfterLastStepComments": []
               }
@@ -368,6 +368,239 @@ jsonPWrapper ({
             "Tags": [
               "@csvparser"
             ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Validate file for Headers",
+            "Slug": "validate-file-for-headers",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a markofffile\twith content",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Lines"
+                  ],
+                  "DataRows": [
+                    [
+                      "ProfileName,TransactionDate,TransactionAmount,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call Validate",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be valid file",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@csvparser"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Validate file with wrong Headers",
+            "Slug": "validate-file-with-wrong-headers",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a markofffile\twith content",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Lines"
+                  ],
+                  "DataRows": [
+                    [
+                      "ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call Validate",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be invalid file",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "Error Message should contain headername 'TransactionDate' with LineNo 1",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [
+              "@csvparser"
+            ],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Validate file with multiple wrong Headers",
+            "Slug": "validate-file-with-multiple-wrong-headers",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a markofffile\twith content",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Lines"
+                  ],
+                  "DataRows": [
+                    [
+                      "ProfileName,TransactioDate,TransactionAmoun,TransactionNarrative,TransactionDescription,TransactionID,TransactionType,WalletReference"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1,P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,"
+                    ],
+                    [
+                      "Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  BW,DEDUCT,0464011844938429,1,P_NzI0NjE1NzhfMTM4NzE4ODExOC43NTYy,"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call Validate",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be invalid file",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "Error Messages should contain headername 'TransactionDate' and 'TransactionAmount' with LineNo 1",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [],
+            "Result": {
+              "WasExecuted": false,
+              "WasSuccessful": false
+            }
+          },
+          {
+            "Name": "Validate file for different headers order",
+            "Slug": "validate-file-for-different-headers-order",
+            "Description": "",
+            "Steps": [
+              {
+                "Keyword": "Given",
+                "NativeKeyword": "Given ",
+                "Name": "a markofffile\twith content",
+                "TableArgument": {
+                  "HeaderRow": [
+                    "Lines"
+                  ],
+                  "DataRows": [
+                    [
+                      "WalletReference,ProfileName,TransactionDate,TransactionAmount,TransactionNarrative,TransactionDescription,TransactionID,TransactionType"
+                    ],
+                    [
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"
+                    ],
+                    [
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"
+                    ],
+                    [
+                      "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5, Card Campaign,2014-01-11 22:27:44,-20000,*MOLEPS ATM25             MOLEPOLOLE    BW,DEDUCT,0584011808649511,1"
+                    ]
+                  ]
+                },
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "When",
+                "NativeKeyword": "When ",
+                "Name": "I call Validate",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "Then",
+                "NativeKeyword": "Then ",
+                "Name": "the result should be valid file",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              },
+              {
+                "Keyword": "And",
+                "NativeKeyword": "And ",
+                "Name": "with 3 Transactions and No Errors",
+                "StepComments": [],
+                "AfterLastStepComments": []
+              }
+            ],
+            "Tags": [],
             "Result": {
               "WasExecuted": false,
               "WasSuccessful": false
@@ -2406,10 +2639,10 @@ jsonPWrapper ({
       },
       {
         "Tag": "@csvparser",
-        "Total": 5,
+        "Total": 7,
         "Passing": 0,
         "Failing": 0,
-        "Inconclusive": 5
+        "Inconclusive": 7
       },
       {
         "Tag": "@reconcileengine",
@@ -2436,10 +2669,10 @@ jsonPWrapper ({
       },
       {
         "Folder": "CSVParser.feature",
-        "Total": 5,
+        "Total": 9,
         "Passing": 0,
         "Failing": 0,
-        "Inconclusive": 5
+        "Inconclusive": 9
       },
       {
         "Folder": "ReconcileEngine.feature",
@@ -2501,10 +2734,10 @@ jsonPWrapper ({
       }
     ],
     "Scenarios": {
-      "Total": 23,
+      "Total": 27,
       "Passing": 0,
       "Failing": 0,
-      "Inconclusive": 23
+      "Inconclusive": 27
     },
     "Features": {
       "Total": 5,
@@ -2516,6 +2749,6 @@ jsonPWrapper ({
   "Configuration": {
     "SutName": "Reconcile",
     "SutVersion": "beta",
-    "GeneratedOn": "27 October 2017 11:26:34"
+    "GeneratedOn": "30 October 2017 10:16:07"
   }
 });
