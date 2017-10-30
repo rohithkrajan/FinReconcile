@@ -14,10 +14,12 @@ namespace FinReconcile.Infra.Parsers
             Headers = new List<string>();
             IsValid = isValid;
             Errors = new Dictionary<int, string>();
+            HeaderIndexes = new Dictionary<string, int>();
         }
         public Dictionary<int,string> InvalidEntries { get; private set; }
         public List<string> Headers { get; private set; }
         public bool IsValid { get; private set; }
         public Dictionary<int,string> Errors { get; private set; }
+        public Dictionary<string, int> HeaderIndexes { get; set; }
     }
 }

@@ -5,19 +5,20 @@ using System.Linq;
 using System;
 using FinReconcile.Core.Domain;
 using System.Text.RegularExpressions;
+using FinReconcile.Infra.MarkOffReader;
 
 namespace FinReconcile.Infra.Parsers
 {
     public class CSVMarkOffFileParser : IMarkOffFileParser
     {        
-        Dictionary<string, int> _headerToIndexMap;
+        
         List<string> headersToMatch = new List<string>() { "ProfileName","TransactionDate","TransactionAmount"
             ,"TransactionNarrative","TransactionDescription","TransactionID","TransactionType","WalletReference" };
-        string _headerError = string.Empty;
+        
 
         public CSVMarkOffFileParser()
         {
-            _headerToIndexMap = new Dictionary<string, int>();            
+           
         }
         
         private ParserResult ValidateAndInitHeaders(CsvReader reader)
@@ -27,20 +28,22 @@ namespace FinReconcile.Infra.Parsers
             reader.Read();//read the header
             string headerLine = reader.Context.RawRecord;
 
+            ParserContext context = new ParserContext();
             
-            if (FindAndLoadAllHeaderIndexes(headerLine))
+            if (FindAndLoadAllHeaderIndexes(context,headerLine))
             {
                 result = new ParserResult(true);
 
-                result.Headers.AddRange(_headerToIndexMap.Keys.ToList());
+                result.Headers.AddRange(context.HeaderToIndexMap.Keys.ToList());
+                result.HeaderIndexes = context.HeaderToIndexMap;
                 return result;
             }
             else
             {
                 result = new ParserResult(false);
-                result.Errors.Add(1, _headerError);
+                result.Errors.Add(1, context.HeaderError);
             }
-
+            
             return result;
         }
         /// <summary>
@@ -48,7 +51,7 @@ namespace FinReconcile.Infra.Parsers
         /// </summary>
         /// <param name="headerLine"></param>
         /// <returns></returns>
-        private bool FindAndLoadAllHeaderIndexes(string headerLine)
+        private bool FindAndLoadAllHeaderIndexes(ParserContext context,string headerLine)
         {
             //create a map which stores the index of each header in a sorted dictionary in the order of index 
             SortedDictionary<int, string> _indexToHeaderMap = new SortedDictionary<int, string>();
@@ -74,16 +77,17 @@ namespace FinReconcile.Infra.Parsers
             }
             if (isValid==false)
             {
-                _headerError=string.Format("Invalid file, {0} header(s) are not found",headers);
+                context.HeaderError=string.Format("Invalid file, {0} header(s) are not found",headers);
                 return false;
             }
             
             index = 0;
             foreach (var value in _indexToHeaderMap.Values)
             {
-                _headerToIndexMap.Add(value, index);
+                context.HeaderToIndexMap.Add(value, index);
                 index++;
             }
+           
             return true;
         }
 
@@ -99,14 +103,14 @@ namespace FinReconcile.Infra.Parsers
                     try
                     {
                         Transaction trans = new Transaction();
-                        trans.ProfileName = csv.GetField<string>(_headerToIndexMap["ProfileName"]);
-                        trans.Id = csv.GetField<string>(_headerToIndexMap["TransactionID"]);
-                        trans.Amount = csv.GetField<long>(_headerToIndexMap["TransactionAmount"]);
-                        trans.Date = csv.GetField<DateTime>(_headerToIndexMap["TransactionDate"]);
-                        trans.Description = csv.GetField<string>(_headerToIndexMap["TransactionDescription"]);
-                        trans.Narrative = csv.GetField<string>(_headerToIndexMap["TransactionNarrative"]);
-                        trans.Type = (TransactionType)Enum.Parse(typeof(TransactionType), csv.GetField<string>(_headerToIndexMap["TransactionType"]));
-                        trans.WalletReference = csv.GetField<string>(_headerToIndexMap["WalletReference"]);
+                        trans.ProfileName = csv.GetField<string>(result.HeaderIndexes["ProfileName"]);
+                        trans.Id = csv.GetField<string>(result.HeaderIndexes["TransactionID"]);
+                        trans.Amount = csv.GetField<long>(result.HeaderIndexes["TransactionAmount"]);
+                        trans.Date = csv.GetField<DateTime>(result.HeaderIndexes["TransactionDate"]);
+                        trans.Description = csv.GetField<string>(result.HeaderIndexes["TransactionDescription"]);
+                        trans.Narrative = csv.GetField<string>(result.HeaderIndexes["TransactionNarrative"]);
+                        trans.Type = (TransactionType)Enum.Parse(typeof(TransactionType), csv.GetField<string>(result.HeaderIndexes["TransactionType"]));
+                        trans.WalletReference = csv.GetField<string>(result.HeaderIndexes["WalletReference"]);
                         result.Add(trans);
 
                     }
@@ -137,7 +141,20 @@ namespace FinReconcile.Infra.Parsers
 
         public ParserResult Validate(Stream stream)
         {
-            return ValidateAndInitHeaders(new CsvReader(new StreamReader(stream)));
+            try
+            {
+                stream.Position = 0;
+                var result = ValidateAndInitHeaders(new CsvReader(new StreamReader(stream)));
+                stream.Position = 0;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                stream.Position = 0;
+                stream.Close();
+                throw;
+            }
+            
         }
 
         public ParserResult Validate(string markOffFileContent)

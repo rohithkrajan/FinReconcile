@@ -44,8 +44,8 @@ namespace FinReconcile.Controllers
                         clientFileName = Path.GetFileName(compareFiles.ClientMarkOffFile.FileName);
                         sessionId = SessionIdGenerator.CreateNewId();
 
-                        var parser = DependencyResolver.Current.GetService<IMarkOffFileParser>();
-                        ParserResult result = parser.Validate(compareFiles.ClientMarkOffFile.InputStream);
+                        
+                        ParserResult result = _csvFileReader.Validate(compareFiles.ClientMarkOffFile.InputStream);
                         if (!result.IsValid)
                         {
                             ModelState.AddModelError("ClientMarkOffFile", result.Errors[1]);
@@ -55,8 +55,8 @@ namespace FinReconcile.Controllers
                         {
                             _markOffFileProvider.SaveMarkOffFile(compareFiles.ClientMarkOffFile.InputStream, sessionId, clientFileName);
                         }
-                         parser = DependencyResolver.Current.GetService<IMarkOffFileParser>();
-                         result = parser.Validate(compareFiles.TutukaMarkOfffile.InputStream);
+                         
+                         result = _csvFileReader.Validate(compareFiles.TutukaMarkOfffile.InputStream);
                         if (!result.IsValid)
                         {
                             ModelState.AddModelError("TutukaMarkOfffile", result.Errors[1]);

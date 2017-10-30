@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="MarkOffReader\CSVMarkOffFileParser.cs" />
     <Compile Include="MarkOffReader\IMarkOffFileParser.cs" />
+    <Compile Include="MarkOffReader\ParserContext.cs" />
     <Compile Include="MarkOffReader\ParserResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\IMarkOffFileProvider.cs" />
