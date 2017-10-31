@@ -7,16 +7,18 @@ using System.Web;
 
 namespace FinReconcile.Core.Engines.Rules
 {
+   //this will hold the values passed the rule at runtime
     public class FuzzyMatchParam
     {
         public string SourceProperty { get; set; }
         public string TargetProperty { get; set; }
         public int LevenshteinDistance { get; set; }
     }
+    //this is not really used but implemented to showcase the power of building a complex Rule using MethodBaseRule or IRule
     public class PropertyFuzzyMatchRule : MethodBaseRule<FuzzyMatchParam>
     {
              
-
+        //calling the base contructor is what initialize the rule with the custom Method and parameters
         public PropertyFuzzyMatchRule(string sourceProperty,string targetproperty,int levenshteinDistance) :base(FuzzyMatch)
         {
             constantArgument = new FuzzyMatchParam
@@ -31,6 +33,8 @@ namespace FinReconcile.Core.Engines.Rules
         {
             return (string)obj.GetType().GetProperty(propertyName).GetValue(obj, null);
         }
+        //this method is called by the rule at runtime for matching the two transactions
+        //you can have FuzzyMatch method implemented anywhere and initialize a rule with it 
         public static bool FuzzyMatch(Transaction source, Transaction target, FuzzyMatchParam k)
         {
             string sourceValue = GetValue(k.SourceProperty, source);
