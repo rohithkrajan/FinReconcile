@@ -183,16 +183,16 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Parse a large file Tutuka Transactions File")]
+        [NUnit.Framework.DescriptionAttribute("Parse a large file Bank Transactions File")]
         [NUnit.Framework.CategoryAttribute("csvparser")]
-        public virtual void ParseALargeFileTutukaTransactionsFile()
+        public virtual void ParseALargeFileBankTransactionsFile()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Parse a large file Tutuka Transactions File", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Parse a large file Bank Transactions File", new string[] {
                         "csvparser"});
 #line 42
 this.ScenarioSetup(scenarioInfo);
 #line 43
- testRunner.Given("a large tutuka markofffile with content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a large bank markofffile with content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 44
  testRunner.When("I call GetRecords", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 45

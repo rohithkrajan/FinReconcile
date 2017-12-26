@@ -67,10 +67,10 @@ namespace FinConcile.Tests
             _content = Resources.ClientMarkoffFile20140113;
         }
 
-        [Given(@"a large tutuka markofffile with content")]
-        public void GivenALargeTutukaMarkofffileWithContent()
+        [Given(@"a large bank markofffile with content")]
+        public void GivenALargeBankMarkofffileWithContent()
         {
-            _content = Resources.TutukaMarkoffFile20140113;
+            _content = Resources.BankMarkoffFile20140113;
         }
 
         [When(@"I call Validate")]

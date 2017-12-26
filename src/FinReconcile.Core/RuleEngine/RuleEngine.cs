@@ -56,10 +56,10 @@ namespace FinReconcile.Core.Engines
                 new ParameterExpression[] { transSource, transTarget }).Compile();
         }
 
-        public ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction)
+        public ReconciledItem Evaluate(Transaction clientTransaction,Transaction bankTransaction)
         {
-            bool matched = _compiledRule(clientTransaction, tutukaTransaction);
-            ReconciledItem resultItem = new ReconciledItem(clientTransaction, tutukaTransaction, matched ? ReconciledMatchType.Matched : ReconciledMatchType.NotMatched);
+            bool matched = _compiledRule(clientTransaction, bankTransaction);
+            ReconciledItem resultItem = new ReconciledItem(clientTransaction, bankTransaction, matched ? ReconciledMatchType.Matched : ReconciledMatchType.NotMatched);
 
             return resultItem;
         }

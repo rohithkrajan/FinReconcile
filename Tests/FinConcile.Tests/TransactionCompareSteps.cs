@@ -22,13 +22,13 @@ namespace FinConcile.Tests
     {
         ActionResult _result;
         TransactionController _controller;
-        HttpPostedFileBase _clientMarkOffFile, _tutukaMarkOffFile;
+        HttpPostedFileBase _clientMarkOffFile, _bankMarkOffFile;
 
         Mock<IMarkOffFileProvider> _mockMarkOffFileProvider;
         IMarkOffFileParser _csvReader;
         Mock<IReconcileEngine> _mockReconcileEngine;
         const string ClientMarkoffFileName = "ClientMarkoffFile20140113";
-        const string TutukaMarkoffFileName = "TutukaMarkoffFile20140113";
+        const string BankMarkoffFileName = "BankMarkoffFile20140113";
         string _sessionId;
 
         [BeforeScenario]
@@ -39,10 +39,10 @@ namespace FinConcile.Tests
             _csvReader = new CSVMarkOffFileParser();
             _sessionId = SessionIdGenerator.CreateNewId();
             _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, ClientMarkoffFileName)).Returns(ClientMarkoffFileName);
-            _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, TutukaMarkoffFileName)).Returns(TutukaMarkoffFileName);
+            _mockMarkOffFileProvider.Setup(x => x.SaveMarkOffFile(It.IsAny<Stream>(),_sessionId, BankMarkoffFileName)).Returns(BankMarkoffFileName);
 
             _mockMarkOffFileProvider.Setup(x=>x.GetMarkOffFile(_sessionId,ClientMarkoffFileName)).Returns(Resources.ClientMarkoffFile20140113);
-            _mockMarkOffFileProvider.Setup(x => x.GetMarkOffFile(_sessionId, TutukaMarkoffFileName)).Returns(Resources.TutukaMarkoffFile20140113);
+            _mockMarkOffFileProvider.Setup(x => x.GetMarkOffFile(_sessionId, BankMarkoffFileName)).Returns(Resources.BankMarkoffFile20140113);
         }
 
         [When(@"the user goes to compare user screen")]
@@ -61,13 +61,13 @@ namespace FinConcile.Tests
                    "Compare Files");
         }
 
-        [Given(@"ClientMarkOffFile and TutukaMarkOffFile")]
-        public void GivenClientMarkOffFileAndTutukaMarkOffFile()
+        [Given(@"ClientMarkOffFile and BankMarkOffFile")]
+        public void GivenClientMarkOffFileAndBankMarkOffFile()
         {
             var assembly = Assembly.GetExecutingAssembly();
             //read the file from assembly resource and convert to http posted file
             _clientMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.ClientMarkoffFile20140113, ClientMarkoffFileName);
-            _tutukaMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.TutukaMarkoffFile20140113, TutukaMarkoffFileName);            
+            _bankMarkOffFile = Utilities.GetMockHttpPostedFile(Resources.BankMarkoffFile20140113, BankMarkoffFileName);            
         }
 
 
@@ -75,7 +75,7 @@ namespace FinConcile.Tests
         public void WhenTheUserClicksOnTheCompareButton()
         {
             _controller = new TransactionController(_mockMarkOffFileProvider.Object,_csvReader,_mockReconcileEngine.Object);
-           _result= _controller.Compare( new CompareModel() { ClientMarkOffFile = _clientMarkOffFile, TutukaMarkOfffile = _tutukaMarkOffFile });
+           _result= _controller.Compare( new CompareModel() { ClientMarkOffFile = _clientMarkOffFile, BankMarkOfffile = _bankMarkOffFile });
         }
 
         [Then(@"user should be redirected to compare result Page")]
@@ -84,33 +84,33 @@ namespace FinConcile.Tests
             Assert.IsInstanceOf<RedirectToRouteResult>(_result);
             Assert.IsNotEmpty(((RedirectToRouteResult)_result).RouteValues["sid"].ToString());
             Assert.AreEqual(ClientMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["cfn"].ToString());
-            Assert.AreEqual(TutukaMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["tfn"].ToString());
+            Assert.AreEqual(BankMarkoffFileName, ((RedirectToRouteResult)_result).RouteValues["tfn"].ToString());
 
         }
 
         [Then(@"Comparison Result should contain Both Names of the Files '(.*)' and '(.*)'")]
-        public void ThenComparisonResultShouldContainBothNamesOfTheFilesAnd(string clientFileName, string tutukaFileName)
+        public void ThenComparisonResultShouldContainBothNamesOfTheFilesAnd(string clientFileName, string bankFileName)
         {
             Assert.IsInstanceOf<RedirectToRouteResult>(_result);
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)_result;
             Assert.IsNotEmpty(redirectResult.RouteValues["sid"].ToString());
             Assert.AreEqual("compareresult", redirectResult.RouteValues["action"]);
             Assert.AreEqual(ClientMarkoffFileName, redirectResult.RouteValues["cfn"].ToString());
-            Assert.AreEqual(TutukaMarkoffFileName, redirectResult.RouteValues["tfn"].ToString());
+            Assert.AreEqual(BankMarkoffFileName, redirectResult.RouteValues["tfn"].ToString());
         }
 
         [Then(@"TotalRecords (.*)")]
         public void ThenTotalRecords(int totalRecords)
         {
             var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(totalRecords, model.TotalClientRecords+model.TotalTutukaRecords);
+            Assert.AreEqual(totalRecords, model.TotalClientRecords+model.TotalBankRecords);
         }
 
         [Then(@"MatchingRecords (.*)")]
         public void ThenMatchingRecords(int matchingRecords)
         {
             var model = (CompareResult)((ViewResult)_result).Model;
-            Assert.AreEqual(matchingRecords, model.MatchingClientRecords+model.MatchingTutukaRecords);
+            Assert.AreEqual(matchingRecords, model.MatchingClientRecords+model.MatchingBankRecords);
         }
 
         [Then(@"UnmatchedRecords (.*)")]

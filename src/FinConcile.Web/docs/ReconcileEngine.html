@@ -45,20 +45,20 @@ $(document).ready(function() {
         <div class="description">
           <p>In order to reconcile transactions
 As a user
-I want to be told whether a list of client and tutuka tranascations are matched or notmatched</p>
+I want to be told whether a list of client and bank tranascations are matched or notmatched</p>
         </div>
         <ul id="scenarios">
           <li class="scenario">
-            <div class="scenario-heading" id="reconcile-matching-client-and-tutuka-transactions">
+            <div class="scenario-heading" id="reconcile-matching-client-and-bank-transactions">
               <p class="tags">Tags: <span>@reconcileengine</span></p>
-              <h2>Reconcile Matching Client and Tutuka Transactions</h2>
+              <h2>Reconcile Matching Client and Bank Transactions</h2>
             </div>
             <div class="steps">
               <ul>
                 <li class="step">
                   <span class="keyword">Given </span>A list of Client transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>0164012401925347</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>3880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
-                  <span class="keyword">And </span>a list of matching Tutuka Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>0164012401925347</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>3880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
+                  <span class="keyword">And </span>a list of matching Bank Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>0164012401925347</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>3880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
                   <span class="keyword">And </span>a RuleSet With PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr><tr><td>Id</td><td>Id</td><td>Equal</td></tr><tr><td>Narrative</td><td>Narrative</td><td>Equal</td></tr><tr><td>Description</td><td>Description</td><td>Equal</td></tr></tbody></table></div></li>
                 <li class="step">
@@ -67,21 +67,21 @@ I want to be told whether a list of client and tutuka tranascations are matched 
                   <span class="keyword">Then </span>the result should be 4 Matched ReconciledItem</li>
               </ul>
             </div>
-            <a class="scenario-link" href="javascript:showImageLink('reconcile-matching-client-and-tutuka-transactions')" title="Copy scenario link to clipboard.">
+            <a class="scenario-link" href="javascript:showImageLink('reconcile-matching-client-and-bank-transactions')" title="Copy scenario link to clipboard.">
               <i class="icon-link"> </i>
             </a>
           </li>
           <li class="scenario">
-            <div class="scenario-heading" id="reconcile-non-matching-client-and-tutuka-transactions">
+            <div class="scenario-heading" id="reconcile-non-matching-client-and-bank-transactions">
               <p class="tags">Tags: <span>@reconcileengine</span></p>
-              <h2>Reconcile Non Matching Client and Tutuka Transactions</h2>
+              <h2>Reconcile Non Matching Client and Bank Transactions</h2>
             </div>
             <div class="steps">
               <ul>
                 <li class="step">
                   <span class="keyword">Given </span>A list of Client transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>0164012401925347</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>3880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
-                  <span class="keyword">And </span>a list of Non matching Tutuka Transactions With Different Ids<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>5840118086495112</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-10000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>840122335818692</td><td>Card Campaign</td><td>1/13/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>05840123950720042</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-40000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>01640124019253472</td><td>Card Campaign</td><td>2014-02-12 15:09:52</td><td>6880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
+                  <span class="keyword">And </span>a list of Non matching Bank Transactions With Different Ids<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>5840118086495112</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-10000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>840122335818692</td><td>Card Campaign</td><td>1/13/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>05840123950720042</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-40000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>01640124019253472</td><td>Card Campaign</td><td>2014-02-12 15:09:52</td><td>6880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
                   <span class="keyword">And </span>a RuleSet With PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr></tbody></table></div></li>
                 <li class="step">
@@ -89,24 +89,24 @@ I want to be told whether a list of client and tutuka tranascations are matched 
                 <li class="step">
                   <span class="keyword">Then </span>the reconciled result should be 0 Matched Client Transactions 4 Unmatched Client transactions</li>
                 <li class="step">
-                  <span class="keyword">And </span>0 Matched Tutuka Transactions 4 Unmatched Tutuka transactions</li>
+                  <span class="keyword">And </span>0 Matched Bank Transactions 4 Unmatched Bank transactions</li>
               </ul>
             </div>
-            <a class="scenario-link" href="javascript:showImageLink('reconcile-non-matching-client-and-tutuka-transactions')" title="Copy scenario link to clipboard.">
+            <a class="scenario-link" href="javascript:showImageLink('reconcile-non-matching-client-and-bank-transactions')" title="Copy scenario link to clipboard.">
               <i class="icon-link"> </i>
             </a>
           </li>
           <li class="scenario">
-            <div class="scenario-heading" id="reconcile-mix-of-matching-and-non-matching-client-and-tutuka-transactions">
+            <div class="scenario-heading" id="reconcile-mix-of-matching-and-non-matching-client-and-bank-transactions">
               <p class="tags">Tags: <span>@reconcileengine</span></p>
-              <h2>Reconcile mix of matching and non matching Client and Tutuka Transactions</h2>
+              <h2>Reconcile mix of matching and non matching Client and Bank Transactions</h2>
             </div>
             <div class="steps">
               <ul>
                 <li class="step">
                   <span class="keyword">Given </span>A list of Client transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20000</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>0164012401925347</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>3880</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
-                  <span class="keyword">And </span>a list of Tutuka Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20005</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>01640124019253472</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>38804</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA133</td><td>1</td></tr></tbody></table></div></li>
+                  <span class="keyword">And </span>a list of Bank Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>84012233581869</td><td>Card Campaign</td><td>1/12/2014  6:26:00 AM</td><td>-20005</td><td>Molepolole Filli100558    Gaborone      BW</td><td>DEDUCT</td><td>P_NzI5OTE3NjZfMTM4MTkzNjk5Mi45NTc2</td><td>1</td></tr><tr><td>0584012395072004</td><td>Card Campaign</td><td>2014-01-12 14:58:27</td><td>-10000</td><td>MAHALAPYE BRANCH          BOTSWANA      BW</td><td>DEDUCT</td><td>P_NzUzMDAzODVfMTM4NzI4MTQ5NC4zNzI2</td><td>1</td></tr><tr><td>01640124019253472</td><td>Card Campaign</td><td>2014-01-12 15:09:52</td><td>38804</td><td>370592 ENGEN LOBATSE      BOTSWANA      BW</td><td>REVERSAL</td><td>P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA133</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
                   <span class="keyword">And </span>a RuleSet With PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr><tr><td>Id</td><td>Id</td><td>Equal</td></tr><tr><td>Narrative</td><td>Narrative</td><td>Equal</td></tr><tr><td>Description</td><td>Description</td><td>Equal</td></tr></tbody></table></div></li>
                 <li class="step">
@@ -115,21 +115,21 @@ I want to be told whether a list of client and tutuka tranascations are matched 
                   <span class="keyword">Then </span>the result should be 2 Matched ReconciledItems and 3 Non Matched ReconciledItems</li>
               </ul>
             </div>
-            <a class="scenario-link" href="javascript:showImageLink('reconcile-mix-of-matching-and-non-matching-client-and-tutuka-transactions')" title="Copy scenario link to clipboard.">
+            <a class="scenario-link" href="javascript:showImageLink('reconcile-mix-of-matching-and-non-matching-client-and-bank-transactions')" title="Copy scenario link to clipboard.">
               <i class="icon-link"> </i>
             </a>
           </li>
           <li class="scenario">
-            <div class="scenario-heading" id="reconcile-client-and-tutuka-transactions-with-duplicate-transactionids">
+            <div class="scenario-heading" id="reconcile-client-and-bank-transactions-with-duplicate-transactionids">
               <p class="tags">Tags: <span>@reconcileengine</span></p>
-              <h2>Reconcile Client and Tutuka Transactions With Duplicate TransactionIds</h2>
+              <h2>Reconcile Client and Bank Transactions With Duplicate TransactionIds</h2>
             </div>
             <div class="steps">
               <ul>
                 <li class="step">
                   <span class="keyword">Given </span>A list of Client transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
-                  <span class="keyword">And </span>a list of matching Tutuka Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
+                  <span class="keyword">And </span>a list of matching Bank Transactions<div class="table_container"><table class="datatable"><thead><tr><th>Id</th><th>ProfileName</th><th>Date</th><th>Amount</th><th>Narrative</th><th>Description</th><th>WalletReference</th><th>Type</th><th> </th></tr></thead><tbody><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>-20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>DEDUCT</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr><tr><td>584011808649511</td><td>Card Campaign</td><td>1/11/2014  10:27:00 PM</td><td>20000</td><td>*MOLEPS ATM25             MOLEPOLOLE    BW</td><td>REVERSAL</td><td>P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5</td><td>1</td></tr></tbody></table></div></li>
                 <li class="step">
                   <span class="keyword">And </span>a RuleSet With PropertyRules<div class="table_container"><table class="datatable"><thead><tr><th>SourceProperty</th><th>TargetProperty</th><th>Operator</th><th> </th></tr></thead><tbody><tr><td>Date</td><td>Date</td><td>Equal</td></tr><tr><td>Amount</td><td>Amount</td><td>Equal</td></tr><tr><td>WalletReference</td><td>WalletReference</td><td>Equal</td></tr><tr><td>Id</td><td>Id</td><td>Equal</td></tr><tr><td>Narrative</td><td>Narrative</td><td>Equal</td></tr><tr><td>Description</td><td>Description</td><td>Equal</td></tr></tbody></table></div></li>
                 <li class="step">
@@ -138,7 +138,7 @@ I want to be told whether a list of client and tutuka tranascations are matched 
                   <span class="keyword">Then </span>the result should 2 Matched ReconciledItem</li>
               </ul>
             </div>
-            <a class="scenario-link" href="javascript:showImageLink('reconcile-client-and-tutuka-transactions-with-duplicate-transactionids')" title="Copy scenario link to clipboard.">
+            <a class="scenario-link" href="javascript:showImageLink('reconcile-client-and-bank-transactions-with-duplicate-transactionids')" title="Copy scenario link to clipboard.">
               <i class="icon-link"> </i>
             </a>
           </li>

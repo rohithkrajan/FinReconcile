@@ -32,7 +32,7 @@ namespace FinConcile.Tests
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ReconcileEngine", "\tIn order to reconcile transactions\r\n\tAs a user\r\n\tI want to be told whether a lis" +
-                    "t of client and tutuka tranascations are matched or notmatched", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "t of client and bank tranascations are matched or notmatched", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,11 +65,11 @@ namespace FinConcile.Tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Reconcile Matching Client and Tutuka Transactions")]
+        [NUnit.Framework.DescriptionAttribute("Reconcile Matching Client and Bank Transactions")]
         [NUnit.Framework.CategoryAttribute("reconcileengine")]
-        public virtual void ReconcileMatchingClientAndTutukaTransactions()
+        public virtual void ReconcileMatchingClientAndBankTransactions()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Matching Client and Tutuka Transactions", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Matching Client and Bank Transactions", new string[] {
                         "reconcileengine"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
@@ -168,7 +168,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
                         "1"});
 #line 14
- testRunner.And("a list of matching Tutuka Transactions", ((string)(null)), table2, "And ");
+ testRunner.And("a list of matching Bank Transactions", ((string)(null)), table2, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "SourceProperty",
@@ -209,11 +209,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Reconcile Non Matching Client and Tutuka Transactions")]
+        [NUnit.Framework.DescriptionAttribute("Reconcile Non Matching Client and Bank Transactions")]
         [NUnit.Framework.CategoryAttribute("reconcileengine")]
-        public virtual void ReconcileNonMatchingClientAndTutukaTransactions()
+        public virtual void ReconcileNonMatchingClientAndBankTransactions()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Non Matching Client and Tutuka Transactions", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Non Matching Client and Bank Transactions", new string[] {
                         "reconcileengine"});
 #line 32
 this.ScenarioSetup(scenarioInfo);
@@ -312,7 +312,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA1",
                         "1"});
 #line 39
- testRunner.And("a list of Non matching Tutuka Transactions With Different Ids", ((string)(null)), table5, "And ");
+ testRunner.And("a list of Non matching Bank Transactions With Different Ids", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "SourceProperty",
@@ -338,17 +338,17 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("the reconciled result should be 0 Matched Client Transactions 4 Unmatched Client " +
                     "transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 52
- testRunner.And("0 Matched Tutuka Transactions 4 Unmatched Tutuka transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("0 Matched Bank Transactions 4 Unmatched Bank transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Reconcile mix of matching and non matching Client and Tutuka Transactions")]
+        [NUnit.Framework.DescriptionAttribute("Reconcile mix of matching and non matching Client and Bank Transactions")]
         [NUnit.Framework.CategoryAttribute("reconcileengine")]
-        public virtual void ReconcileMixOfMatchingAndNonMatchingClientAndTutukaTransactions()
+        public virtual void ReconcileMixOfMatchingAndNonMatchingClientAndBankTransactions()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile mix of matching and non matching Client and Tutuka Transactions", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile mix of matching and non matching Client and Bank Transactions", new string[] {
                         "reconcileengine"});
 #line 55
 this.ScenarioSetup(scenarioInfo);
@@ -447,7 +447,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzUzNDA5MjRfMTM4MDg4NDc0OC4yNjA133",
                         "1"});
 #line 62
- testRunner.And("a list of Tutuka Transactions", ((string)(null)), table8, "And ");
+ testRunner.And("a list of Bank Transactions", ((string)(null)), table8, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "SourceProperty",
@@ -488,11 +488,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Reconcile Client and Tutuka Transactions With Duplicate TransactionIds")]
+        [NUnit.Framework.DescriptionAttribute("Reconcile Client and Bank Transactions With Duplicate TransactionIds")]
         [NUnit.Framework.CategoryAttribute("reconcileengine")]
-        public virtual void ReconcileClientAndTutukaTransactionsWithDuplicateTransactionIds()
+        public virtual void ReconcileClientAndBankTransactionsWithDuplicateTransactionIds()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Client and Tutuka Transactions With Duplicate TransactionIds", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconcile Client and Bank Transactions With Duplicate TransactionIds", new string[] {
                         "reconcileengine"});
 #line 80
 this.ScenarioSetup(scenarioInfo);
@@ -555,7 +555,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 85
- testRunner.And("a list of matching Tutuka Transactions", ((string)(null)), table11, "And ");
+ testRunner.And("a list of matching Bank Transactions", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "SourceProperty",

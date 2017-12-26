@@ -142,7 +142,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 15
- testRunner.And("a list of tutuka transactions slightly different descriptions", ((string)(null)), table3, "And ");
+ testRunner.And("a list of bank transactions slightly different descriptions", ((string)(null)), table3, "And ");
 #line 19
  testRunner.When("I call evaluate for each transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -228,7 +228,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 32
- testRunner.And("a list of tutuka transactions slightly different descriptions", ((string)(null)), table6, "And ");
+ testRunner.And("a list of bank transactions slightly different descriptions", ((string)(null)), table6, "And ");
 #line 36
  testRunner.When("I call evaluate for each transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -343,7 +343,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 55
- testRunner.And("a list of tutuka transactions slightly different descriptions", ((string)(null)), table10, "And ");
+ testRunner.And("a list of bank transactions slightly different descriptions", ((string)(null)), table10, "And ");
 #line 59
  testRunner.When("I call evaluate for each transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -464,7 +464,7 @@ this.ScenarioSetup(scenarioInfo);
                         "NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 77
- testRunner.And("a list of tutuka transactions slightly different descriptions", ((string)(null)), table14, "And ");
+ testRunner.And("a list of bank transactions slightly different descriptions", ((string)(null)), table14, "And ");
 #line 82
  testRunner.When("I call evaluate for each transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -561,7 +561,7 @@ this.ScenarioSetup(scenarioInfo);
                         "P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5",
                         "1"});
 #line 98
- testRunner.And("a list of tutuka transactions slightly different descriptions", ((string)(null)), table18, "And ");
+ testRunner.And("a list of bank transactions slightly different descriptions", ((string)(null)), table18, "And ");
 #line 102
  testRunner.When("I call evaluate for each transactions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

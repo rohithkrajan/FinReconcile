@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ClientMarkoffFile20140113" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClientMarkoffFile20140113.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="BankMarkoffFile20140113" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\bankmarkofffile20140113.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="TutukaMarkoffFile20140113" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TutukaMarkoffFile20140113.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="ClientMarkoffFile20140113" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\clientmarkofffile20140113.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

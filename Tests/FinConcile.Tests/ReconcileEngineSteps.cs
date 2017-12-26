@@ -14,7 +14,7 @@ namespace FinConcile.Tests
     public class ReconcileEngineSteps
     {
         private IEnumerable<Transaction> _clientTransactions;
-        private IEnumerable<Transaction> _tutukaTransactions;
+        private IEnumerable<Transaction> _bankTransactions;
         private IReconcileEngine _reconcileEngine;
         private IReconcileResult _result;
         IRule rule;
@@ -27,16 +27,16 @@ namespace FinConcile.Tests
              _clientTransactions = table.GetTransactions();
         }
         
-        [Given(@"a list of matching Tutuka Transactions")]
-        public void GivenAListOfMatchingTutukaTransactions(Table table)
+        [Given(@"a list of matching Bank Transactions")]
+        public void GivenAListOfMatchingBankTransactions(Table table)
         {
-            _tutukaTransactions = table.GetTransactions();
+            _bankTransactions = table.GetTransactions();
         }
 
-        [Given(@"a list of Tutuka Transactions")]
-        public void GivenAListOfTutukaTransactions(Table table)
+        [Given(@"a list of Bank Transactions")]
+        public void GivenAListOfBankTransactions(Table table)
         {
-            _tutukaTransactions = table.GetTransactions();
+            _bankTransactions = table.GetTransactions();
         }
 
         [Given(@"a RuleSet With PropertyRules")]
@@ -56,7 +56,7 @@ namespace FinConcile.Tests
         public void WhenICallReconcile()
         {
             _reconcileEngine = new ReconcileEngine(_ruleEvaluators);
-            _result= _reconcileEngine.Reconcile(_clientTransactions, _tutukaTransactions);
+            _result= _reconcileEngine.Reconcile(_clientTransactions, _bankTransactions);
         }
         
         [Then(@"the result should be (.*) Matched ReconciledItem")]
@@ -66,10 +66,10 @@ namespace FinConcile.Tests
             Assert.AreEqual(0, _result.NotMatchedItems.Count);
         }
 
-        [Given(@"a list of Non matching Tutuka Transactions With Different Ids")]
-        public void GivenAListOfNonMatchingTutukaTransactionsWithDifferentIds(Table table)
+        [Given(@"a list of Non matching Bank Transactions With Different Ids")]
+        public void GivenAListOfNonMatchingBankTransactionsWithDifferentIds(Table table)
         {
-            _tutukaTransactions = table.GetTransactions();
+            _bankTransactions = table.GetTransactions();
         }
    
 
@@ -80,11 +80,11 @@ namespace FinConcile.Tests
             Assert.AreEqual(nonMatchedCount, _result.GetUnMatchedClientTransactions().Count);
         }
 
-        [Then(@"(.*) Matched Tutuka Transactions (.*) Unmatched Tutuka transactions")]
-        public void ThenMatchedTutukaTransactionsUnmatchedTutukaTransactions(int matchedCount, int nonMatchedCount)
+        [Then(@"(.*) Matched Bank Transactions (.*) Unmatched Bank transactions")]
+        public void ThenMatchedBankTransactionsUnmatchedBankTransactions(int matchedCount, int nonMatchedCount)
         {
-            Assert.AreEqual(matchedCount, _result.GetMatchedTutukaTransactions().Count);
-            Assert.AreEqual(nonMatchedCount, _result.GetUnMatchedTutukaTransactions().Count);
+            Assert.AreEqual(matchedCount, _result.GetMatchedBankTransactions().Count);
+            Assert.AreEqual(nonMatchedCount, _result.GetUnMatchedBankTransactions().Count);
         }
 
 

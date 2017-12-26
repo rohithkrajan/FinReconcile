@@ -9,7 +9,7 @@
                             <th>@Model.ClientMarkOffFile</th>                            
                             <th></th>
                             <th></th>
-                            <th>@Model.TutukaMarkOffFile</th>
+                            <th>@Model.BankMarkOffFile</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -39,18 +39,18 @@
                             @for (int i = 0; i < Model.Result.NotMatchedItems.Count; i++)
                             {
                                 var clientTrans = Model.Result.NotMatchedItems[i].ClientTransaction;
-                                var tutukaTrans = Model.Result.NotMatchedItems[i].TutukaTransaction;
+                                var bankTrans = Model.Result.NotMatchedItems[i].BankTransaction;
                                 <tr>
                                    @if (clientTrans != null)
                                    {
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Date==tutukaTrans.Date?"":"warning")">@clientTrans.Date.ToString()</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Amount==tutukaTrans.Amount?"":"warning")">@clientTrans.Amount.ToString()</td>
-                                        <td class="@(tutukaTrans != null && clientTrans.WalletReference==tutukaTrans.WalletReference?"":"warning")">@clientTrans.WalletReference</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Id==tutukaTrans.Id?"":"warning")">@clientTrans.Id</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Description==tutukaTrans.Description?"":"warning")">@clientTrans.Description</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.ProfileName==tutukaTrans.ProfileName?"":"warning")">@clientTrans.ProfileName</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Narrative==tutukaTrans.Narrative?"":"warning")">@clientTrans.Narrative</td>                                        
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Type==tutukaTrans.Type?"":"warning")">@clientTrans.Type</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Date==bankTrans.Date?"":"warning")">@clientTrans.Date.ToString()</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Amount==bankTrans.Amount?"":"warning")">@clientTrans.Amount.ToString()</td>
+                                        <td class="@(bankTrans != null && clientTrans.WalletReference==bankTrans.WalletReference?"":"warning")">@clientTrans.WalletReference</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Id==bankTrans.Id?"":"warning")">@clientTrans.Id</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Description==bankTrans.Description?"":"warning")">@clientTrans.Description</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.ProfileName==bankTrans.ProfileName?"":"warning")">@clientTrans.ProfileName</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Narrative==bankTrans.Narrative?"":"warning")">@clientTrans.Narrative</td>                                        
+                                        <td class="@(bankTrans!=null&&clientTrans.Type==bankTrans.Type?"":"warning")">@clientTrans.Type</td>
                                    }
                                    else
                                    {
@@ -61,16 +61,16 @@
                                         <td></td>
                                         <td></td>
                                    }
-@if (tutukaTrans != null)
+@if (bankTrans != null)
 {
-                                       <td>@tutukaTrans.Date.ToString()</td>
-                                    <td>@tutukaTrans.Amount.ToString()</td>
-                                    <td>@tutukaTrans.WalletReference</td>
-                                    <td>@tutukaTrans.Id</td>
-                                    <td>@tutukaTrans.Description</td>
-                                        <td>@tutukaTrans.ProfileName</td>
-                                        <td>@tutukaTrans.Narrative</td>
-                                        <td>@tutukaTrans.Type</td>
+                                       <td>@bankTrans.Date.ToString()</td>
+                                    <td>@bankTrans.Amount.ToString()</td>
+                                    <td>@bankTrans.WalletReference</td>
+                                    <td>@bankTrans.Id</td>
+                                    <td>@bankTrans.Description</td>
+                                        <td>@bankTrans.ProfileName</td>
+                                        <td>@bankTrans.Narrative</td>
+                                        <td>@bankTrans.Type</td>
 }
 else
 {

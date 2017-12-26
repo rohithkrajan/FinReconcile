@@ -130,7 +130,7 @@
       <LastGenOutput>ReconcileEngine.feature.cs</LastGenOutput>
     </None>
     <None Include="Resources\ClientMarkoffFile20140113.csv" />
-    <None Include="Resources\TutukaMarkoffFile20140113.csv" />
+    <None Include="Resources\BankMarkoffFile20140113.csv" />
     <None Include="Rules.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Rules.feature.cs</LastGenOutput>

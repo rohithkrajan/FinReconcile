@@ -8,16 +8,16 @@ namespace FinReconcile.Core.Domain
     public class TransactionSet
     {
         private List<Transaction> _clientSet;
-        private List<Transaction> _tutukaSet;
+        private List<Transaction> _bankSet;
         private bool _initialized = false;
         public TransactionSet()
         {
             _clientSet = new List<Transaction>();
-            _tutukaSet = new List<Transaction>();
+            _bankSet = new List<Transaction>();
         }
         public int Id { get; set; }
         public IEnumerable<Transaction> ClientSet { get { return _clientSet; }  }
-        public IEnumerable<Transaction> TutukaSet { get { return _tutukaSet; }  }
+        public IEnumerable<Transaction> BankSet { get { return _bankSet; }  }
 
         public bool IsReconciled
         {
@@ -25,7 +25,7 @@ namespace FinReconcile.Core.Domain
             {
                 if (_initialized)
                 {
-                    return _clientSet.Count == 0 && _tutukaSet.Count == 0;
+                    return _clientSet.Count == 0 && _bankSet.Count == 0;
                 }
 
                 return false;
@@ -37,15 +37,15 @@ namespace FinReconcile.Core.Domain
             _clientSet.Add(clientTransaction);
             _initialized = true;
         }
-        public void AddTutukaTransaction(Transaction tutukaTransaction)
+        public void AddBankTransaction(Transaction bankTransaction)
         {
-            _tutukaSet.Add(tutukaTransaction);
+            _bankSet.Add(bankTransaction);
             _initialized = true;
         }
-        public void RemoveTransactions(Transaction clientTransaction, Transaction tutukaTransaction)
+        public void RemoveTransactions(Transaction clientTransaction, Transaction bankTransaction)
         {
             _clientSet.Remove(clientTransaction);
-            _tutukaSet.Remove(tutukaTransaction);         
+            _bankSet.Remove(bankTransaction);         
         }
       
     }

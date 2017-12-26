@@ -7,10 +7,10 @@ namespace FinReconcile.Core.Domain
 {
     public class ReconciledItem
     {        
-        public ReconciledItem(Transaction clientTrans,Transaction tutukaTrans,ReconciledMatchType matchedType)
+        public ReconciledItem(Transaction clientTrans,Transaction bankTrans,ReconciledMatchType matchedType)
         {
             _clientTransaction = clientTrans;
-            _tutukaTransaction = tutukaTrans;
+            _bankTransaction = bankTrans;
             MatchType = matchedType;
         }
         public ReconciledItem(TransactionSet transSet, ReconciledMatchType matchedType)
@@ -36,19 +36,19 @@ namespace FinReconcile.Core.Domain
                 }
             }
         }
-        public Transaction TutukaTransaction
+        public Transaction BankTransaction
         {
             get
             {
-                if (_tutukaTransaction != null)
+                if (_bankTransaction != null)
                 {
-                    return _tutukaTransaction;
+                    return _bankTransaction;
                 }
                 else
                 {
-                    if (_resultSet != null && _resultSet.TutukaSet != null )
+                    if (_resultSet != null && _resultSet.BankSet != null )
                     {
-                        return _resultSet.TutukaSet.FirstOrDefault();
+                        return _resultSet.BankSet.FirstOrDefault();
                     }
                     return null;
                 }
@@ -65,20 +65,20 @@ namespace FinReconcile.Core.Domain
                 return _resultSet.ClientSet;
             }
         }
-        public IEnumerable<Transaction> GetAllTutukaTransactions()
+        public IEnumerable<Transaction> GetAllBankTransactions()
         {
-            if (_resultSet == null&& TutukaTransaction!=null)
+            if (_resultSet == null&& BankTransaction!=null)
             {
-                return new Transaction[] { TutukaTransaction };
+                return new Transaction[] { BankTransaction };
             }
             else
             {
-                return _resultSet.TutukaSet;
+                return _resultSet.BankSet;
             }
         }
 
         private Transaction _clientTransaction;
-        private Transaction _tutukaTransaction;
+        private Transaction _bankTransaction;
         private TransactionSet _resultSet;
 
         public ReconciledMatchType MatchType { get; private set; }

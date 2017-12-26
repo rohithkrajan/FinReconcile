@@ -1,7 +1,7 @@
 ﻿Feature: Compare Transactions
 	In order to reconcile transactions
 	As a user
-	I want to compare client and tutuka markoff files
+	I want to compare client and bank markoff files
 
 @tranascationcompare
 Scenario: Browse Compare Page	
@@ -10,14 +10,14 @@ Scenario: Browse Compare Page
 
 @transactioncompare
 Scenario: On Successful upload of Transaction Files,user should be shown Comparison Result Page
-	Given ClientMarkOffFile and TutukaMarkOffFile
+	Given ClientMarkOffFile and BankMarkOffFile
 	When the user clicks on the Compare button
 	Then user should be redirected to compare result Page
 
 @transactioncompare
 Scenario: Details in Comparison Result Page
-	Given ClientMarkOffFile and TutukaMarkOffFile
+	Given ClientMarkOffFile and BankMarkOffFile
 	When the user clicks on the Compare button
-	Then Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'TutukaMarkoffFile20140113'
+	Then Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'BankMarkoffFile20140113'
 
 

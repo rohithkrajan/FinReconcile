@@ -14,7 +14,7 @@ namespace FinConcile.Tests
     public class RulesSteps
     {
         private IList<Transaction> _clientTransactions;
-        private IList<Transaction> _tutukaTransactions;
+        private IList<Transaction> _bankTransactions;
         private IReconcileEngine _reconcileEngine;
         private IReconcileResult _result;
         private IRule rule;
@@ -53,10 +53,10 @@ namespace FinConcile.Tests
         {
             _clientTransactions = table.GetTransactions();
         }
-        [Given(@"a list of tutuka transactions slightly different descriptions")]
-        public void GivenAListOfMatchingTutukaTransactions(Table table)
+        [Given(@"a list of bank transactions slightly different descriptions")]
+        public void GivenAListOfMatchingBankTransactions(Table table)
         {
-            _tutukaTransactions = table.GetTransactions();
+            _bankTransactions = table.GetTransactions();
         }
 
         [When(@"I call evaluate for each transactions")]       
@@ -65,7 +65,7 @@ namespace FinConcile.Tests
             _evaluator = new RuleSetEvaluator(_ruleSet);
             for (int i = 0; i < _clientTransactions.Count; i++)
             {
-                _reconciledResult.Add(_evaluator.Evaluate(_clientTransactions[i], _tutukaTransactions[i]));
+                _reconciledResult.Add(_evaluator.Evaluate(_clientTransactions[i], _bankTransactions[i]));
             }
             
         }

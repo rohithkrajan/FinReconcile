@@ -26,10 +26,10 @@ namespace FinReconcile.Core.Engines
             }
         }
 
-            public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
+            public IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> bankTransactions)
         {          
 
-            AlignTransactions(clientTransactions, tutukaTransactions);
+            AlignTransactions(clientTransactions, bankTransactions);
 
             foreach (var transId in _alignedTransactions.Keys)
             {
@@ -39,13 +39,13 @@ namespace FinReconcile.Core.Engines
 
         }
 
-        private void AlignTransactions(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions)
+        private void AlignTransactions(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> bankTransactions)
         {
             foreach (var clientTransaction in clientTransactions)
             {
                 AlignTransaction(clientTransaction, null);
             }
-            foreach (var tutkaTransaction in tutukaTransactions)
+            foreach (var tutkaTransaction in bankTransactions)
             {
                 AlignTransaction(null, tutkaTransaction);
             }
@@ -59,13 +59,13 @@ namespace FinReconcile.Core.Engines
             {
                 foreach (var cTrans in transSet.ClientSet.ToList())
                 {                     
-                    foreach (var tTrans in transSet.TutukaSet.ToList())
+                    foreach (var tTrans in transSet.BankSet.ToList())
                     {
                         ReconciledItem currentResult = ruleEvaluator.Evaluate(cTrans, tTrans);
                         if (currentResult.MatchType == ReconciledMatchType.Matched)
                         {
                             reconciledItemList.Add(currentResult);
-                            transSet.RemoveTransactions(currentResult.ClientTransaction, currentResult.TutukaTransaction);
+                            transSet.RemoveTransactions(currentResult.ClientTransaction, currentResult.BankTransaction);
                         }                       
                     }
                 }
@@ -83,7 +83,7 @@ namespace FinReconcile.Core.Engines
 
       
 
-        private void AlignTransaction(Transaction clientTranaction,Transaction tutukaTransaction)
+        private void AlignTransaction(Transaction clientTranaction,Transaction bankTransaction)
         {
             if (clientTranaction!=null)
             {
@@ -93,13 +93,13 @@ namespace FinReconcile.Core.Engines
                 }
                 _alignedTransactions[clientTranaction.WalletReference].AddClientTransaction(clientTranaction);
             }
-            if (tutukaTransaction != null)
+            if (bankTransaction != null)
             {
-                if (!_alignedTransactions.ContainsKey(tutukaTransaction.WalletReference))
+                if (!_alignedTransactions.ContainsKey(bankTransaction.WalletReference))
                 {
-                    _alignedTransactions.Add(tutukaTransaction.WalletReference, new TransactionSet());
+                    _alignedTransactions.Add(bankTransaction.WalletReference, new TransactionSet());
                 }
-                _alignedTransactions[tutukaTransaction.WalletReference].AddTutukaTransaction(tutukaTransaction);
+                _alignedTransactions[bankTransaction.WalletReference].AddBankTransaction(bankTransaction);
             }
         }
     }

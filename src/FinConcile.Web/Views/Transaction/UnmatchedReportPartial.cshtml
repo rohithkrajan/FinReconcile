@@ -9,7 +9,7 @@
                             <th>@Model.ClientMarkOffFile</th>                            
                             <th></th>
                             <th></th>
-                            <th>@Model.TutukaMarkOffFile</th>
+                            <th>@Model.BankMarkOffFile</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -30,13 +30,13 @@
                             @for (int i = 0; i < Model.Result.NotMatchedItems.Count; i++)
                             {
                                 var clientTrans = Model.Result.NotMatchedItems[i].ClientTransaction;
-                                var tutukaTrans = Model.Result.NotMatchedItems[i].TutukaTransaction;
+                                var bankTrans = Model.Result.NotMatchedItems[i].BankTransaction;
                                 <tr>
                                    @if (clientTrans != null)
                                    {
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Date==tutukaTrans.Date?"":"warning")">@clientTrans.Date.ToString()</td>
-                                        <td class="@(tutukaTrans!=null&&clientTrans.Amount==tutukaTrans.Amount?"":"warning")">@clientTrans.Amount.ToString()</td>
-                                        <td class="@(tutukaTrans != null && clientTrans.WalletReference==tutukaTrans.WalletReference?"":"warning")">@clientTrans.WalletReference</td>                                       
+                                        <td class="@(bankTrans!=null&&clientTrans.Date==bankTrans.Date?"":"warning")">@clientTrans.Date.ToString()</td>
+                                        <td class="@(bankTrans!=null&&clientTrans.Amount==bankTrans.Amount?"":"warning")">@clientTrans.Amount.ToString()</td>
+                                        <td class="@(bankTrans != null && clientTrans.WalletReference==bankTrans.WalletReference?"":"warning")">@clientTrans.WalletReference</td>                                       
                                    }
                                    else
                                    {
@@ -45,11 +45,11 @@
                                     <td></td>
                                     
                                    }
-@if (tutukaTrans != null)
+@if (bankTrans != null)
 {
-                                       <td>@tutukaTrans.Date.ToString()</td>
-                                    <td>@tutukaTrans.Amount.ToString()</td>
-                                    <td>@tutukaTrans.WalletReference</td>
+                                       <td>@bankTrans.Date.ToString()</td>
+                                    <td>@bankTrans.Amount.ToString()</td>
+                                    <td>@bankTrans.WalletReference</td>
                                     
 }
 else

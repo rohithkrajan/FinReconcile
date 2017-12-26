@@ -38,8 +38,8 @@ namespace FinReconcile.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    string clientFileName = null, tutukaFileName = null, sessionId;
-                    if (compareFiles.ClientMarkOffFile.ContentLength > 0 && compareFiles.TutukaMarkOfffile.ContentLength > 0)
+                    string clientFileName = null, bankFileName = null, sessionId;
+                    if (compareFiles.ClientMarkOffFile.ContentLength > 0 && compareFiles.BankMarkOfffile.ContentLength > 0)
                     {
                         clientFileName = Path.GetFileName(compareFiles.ClientMarkOffFile.FileName);
                         sessionId = SessionIdGenerator.CreateNewId();
@@ -56,18 +56,18 @@ namespace FinReconcile.Controllers
                             _markOffFileProvider.SaveMarkOffFile(compareFiles.ClientMarkOffFile.InputStream, sessionId, clientFileName);
                         }
                          
-                         result = _csvFileReader.Validate(compareFiles.TutukaMarkOfffile.InputStream);
+                         result = _csvFileReader.Validate(compareFiles.BankMarkOfffile.InputStream);
                         if (!result.IsValid)
                         {
-                            ModelState.AddModelError("TutukaMarkOfffile", result.Errors[1]);
+                            ModelState.AddModelError("BankMarkOfffile", result.Errors[1]);
                             return View();
                         }
                         else
                         {
-                            tutukaFileName = Path.GetFileName(compareFiles.TutukaMarkOfffile.FileName);
-                            _markOffFileProvider.SaveMarkOffFile(compareFiles.TutukaMarkOfffile.InputStream, sessionId, tutukaFileName);
+                            bankFileName = Path.GetFileName(compareFiles.BankMarkOfffile.FileName);
+                            _markOffFileProvider.SaveMarkOffFile(compareFiles.BankMarkOfffile.InputStream, sessionId, bankFileName);
                         }                        
-                        return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = tutukaFileName });
+                        return RedirectToAction("compareresult", new { sid = sessionId, cfn = clientFileName, tfn = bankFileName });
                     }
                 }
                
@@ -85,8 +85,8 @@ namespace FinReconcile.Controllers
         public ActionResult CompareResult(string sid,string cfn,string tfn)
         {
             var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, cfn));
-            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
-            IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, tutukaTransactions);            
+            var bankTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
+            IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, bankTransactions);            
             CompareResult model = new CompareResult(cfn, tfn,result);
             ViewBag.Title = "Compare Files Result";
             return View("CompareResult", model);
@@ -97,8 +97,8 @@ namespace FinReconcile.Controllers
         public ActionResult UnmatchedReport(string sid, string cfn, string tfn)
         {
             var clientTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, cfn));
-            var tutukaTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
-            IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, tutukaTransactions);
+            var bankTransactions = _csvFileReader.GetRecords(_markOffFileProvider.GetMarkOffFile(sid, tfn));
+            IReconcileResult result = _reconcileEngine.Reconcile(clientTransactions, bankTransactions);
             CompareResult model = new CompareResult(cfn, tfn, result);
             ViewBag.Title = "Compare Files Result";
             return View("UnmatchedReport", model);

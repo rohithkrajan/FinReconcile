@@ -12,7 +12,7 @@ Scenario: Define A simple PropertyRule to Equal two fields
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
-	And a list of tutuka transactions slightly different descriptions
+	And a list of bank transactions slightly different descriptions
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
@@ -29,7 +29,7 @@ Scenario: Define A simple DateRule to Equal two dates within a delta of 600 seco
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
-	And a list of tutuka transactions slightly different descriptions
+	And a list of bank transactions slightly different descriptions
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:59:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  11:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
@@ -52,7 +52,7 @@ Scenario: Define PropertyRules to Equal two fields
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
-	And a list of tutuka transactions slightly different descriptions
+	And a list of bank transactions slightly different descriptions
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
@@ -74,7 +74,7 @@ Scenario: Define PropertyRules Which Unmatch if any two fields do not match
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
-	And a list of tutuka transactions slightly different descriptions
+	And a list of bank transactions slightly different descriptions
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -30000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/12/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
@@ -95,7 +95,7 @@ Scenario: Define PropertyFuzzyMatchRule to fuzzy string match two string fields
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MOLEPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |	
-	And a list of tutuka transactions slightly different descriptions
+	And a list of bank transactions slightly different descriptions
 	| Id              | ProfileName   | Date                   | Amount | Narrative                                  | Description | WalletReference                    | Type |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | -20000 | *MLPS ATM25             MOLEPOLOLE    BW | DEDUCT      | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |
 	| 584011808649511 | Card Campaign | 1/11/2014  10:27:00 PM | 20000  | *MOLEPS ATM25             MOLEPOLOLE    BW | REVERSAL    | P_NzI2ODY2ODlfMTM4MjcwMTU2NS45MzA5 | 1    |

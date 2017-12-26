@@ -65,17 +65,17 @@ namespace FinReconcile.Core.Domain
         {
              return _matchedItems.SelectMany(x => x.GetAllClientTransactions()).ToList(); 
         }
-        public IList<Transaction> GetMatchedTutukaTransactions()
+        public IList<Transaction> GetMatchedBankTransactions()
         {
-             return _matchedItems.SelectMany(x => x.GetAllTutukaTransactions()).ToList(); 
+             return _matchedItems.SelectMany(x => x.GetAllBankTransactions()).ToList(); 
         }
         public IList<Transaction> GetUnMatchedClientTransactions()
         {
              return _notMatchedItems.SelectMany(x => x.GetAllClientTransactions()).ToList(); 
         }
-        public IList<Transaction> GetUnMatchedTutukaTransactions()
+        public IList<Transaction> GetUnMatchedBankTransactions()
         {
-             return _notMatchedItems.SelectMany(x => x.GetAllTutukaTransactions()).ToList(); 
+             return _notMatchedItems.SelectMany(x => x.GetAllBankTransactions()).ToList(); 
         }
     }
 }

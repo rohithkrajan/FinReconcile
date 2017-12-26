@@ -31,8 +31,8 @@ namespace FinConcile.Tests
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Compare Transactions", "\tIn order to reconcile transactions\r\n\tAs a user\r\n\tI want to compare client and tu" +
-                    "tuka markoff files", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Compare Transactions", "\tIn order to reconcile transactions\r\n\tAs a user\r\n\tI want to compare client and ba" +
+                    "nk markoff files", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -93,7 +93,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
 this.ScenarioSetup(scenarioInfo);
 #line 13
- testRunner.Given("ClientMarkOffFile and TutukaMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("ClientMarkOffFile and BankMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 14
  testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
@@ -112,12 +112,12 @@ this.ScenarioSetup(scenarioInfo);
 #line 18
 this.ScenarioSetup(scenarioInfo);
 #line 19
- testRunner.Given("ClientMarkOffFile and TutukaMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("ClientMarkOffFile and BankMarkOffFile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 20
  testRunner.When("the user clicks on the Compare button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 21
  testRunner.Then("Comparison Result should contain Both Names of the Files \'ClientMarkoffFile201401" +
-                    "13\' and \'TutukaMarkoffFile20140113\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                    "13\' and \'BankMarkoffFile20140113\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

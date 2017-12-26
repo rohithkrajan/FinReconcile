@@ -170,7 +170,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 36
  testRunner.Given(string.Format("ClientTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", c_Id, c_Profilename, c_Date, c_Amount, c_Narrative, c_Description, c_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 37
- testRunner.And(string.Format("TutukaTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", t_Id, t_Profilename, t_Date, t_Amount, t_Narrative, t_Description, t_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("BankTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", t_Id, t_Profilename, t_Date, t_Amount, t_Narrative, t_Description, t_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
  testRunner.And("A ruleset to match all fields of Transaction", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39
@@ -202,7 +202,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 52
  testRunner.Given(string.Format("ClientTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", c_Id, c_Profilename, c_Date, c_Amount, c_Narrative, c_Description, c_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 53
- testRunner.And(string.Format("TutukaTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", t_Id, t_Profilename, t_Date, t_Amount, t_Narrative, t_Description, t_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("BankTransacion with \'{0}\' \'{1}\' \'{2}\' \'{3}\' \'{4}\' \'{5}\' \'{6}\'", t_Id, t_Profilename, t_Date, t_Amount, t_Narrative, t_Description, t_Walletreference), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 54
  testRunner.And("A ruleset to match all fields exactly and date field with a delta of 120 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 55

@@ -12,6 +12,6 @@ namespace FinReconcile.Models
         public HttpPostedFileBase ClientMarkOffFile { get; set; }
         
         [Required(ErrorMessage = "Please provide mark off file")]
-        public HttpPostedFileBase TutukaMarkOfffile { get; set; }
+        public HttpPostedFileBase BankMarkOfffile { get; set; }
     }
 }

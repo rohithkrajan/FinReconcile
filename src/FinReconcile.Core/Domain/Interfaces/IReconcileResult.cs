@@ -10,8 +10,8 @@ namespace FinReconcile.Core.Domain.Interfaces
         void AddItems(IEnumerable<ReconciledItem> items);
         void Add(ReconciledItem item);
         IList<Transaction> GetMatchedClientTransactions();
-        IList<Transaction> GetMatchedTutukaTransactions();
+        IList<Transaction> GetMatchedBankTransactions();
         IList<Transaction> GetUnMatchedClientTransactions();
-        IList<Transaction> GetUnMatchedTutukaTransactions();
+        IList<Transaction> GetUnMatchedBankTransactions();
     }
 }

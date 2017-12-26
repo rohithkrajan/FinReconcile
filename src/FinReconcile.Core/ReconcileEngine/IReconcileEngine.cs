@@ -10,7 +10,7 @@ namespace FinReconcile.Core.Engines
 {
     public interface IReconcileEngine
     {
-        IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> tutukaTransactions);
+        IReconcileResult Reconcile(IEnumerable<Transaction> clientTransactions, IEnumerable<Transaction> bankTransactions);
         IList<IRuleEvaluator> RuleEvaluators { get; }
     }
 }

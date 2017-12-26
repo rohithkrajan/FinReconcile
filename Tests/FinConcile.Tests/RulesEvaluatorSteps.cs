@@ -138,8 +138,8 @@ namespace FinConcile.Tests
             };
         }
 
-        [Given(@"TutukaTransacion with '(.*)' '(.*)' '(.*)' '(.*)' '(.*)' '(.*)' '(.*)'")]
-        public void GivenTutukaTransacionWith(string id, string profileName, string date, string amount, string narrative, string description, string walletReference)
+        [Given(@"BankTransacion with '(.*)' '(.*)' '(.*)' '(.*)' '(.*)' '(.*)' '(.*)'")]
+        public void GivenBankTransacionWith(string id, string profileName, string date, string amount, string narrative, string description, string walletReference)
         {
             trans2 = new Transaction()
             {
@@ -182,7 +182,7 @@ namespace FinConcile.Tests
         }
 
         [Given(@"two transacions with same id '(.*)' and dates '(.*)' and '(.*)' respectively")]
-        public void GivenTwoTransacionsWithSameIdAndDatesAndRespectively(string id, string clientDate, string tutukaDate)
+        public void GivenTwoTransacionsWithSameIdAndDatesAndRespectively(string id, string clientDate, string bankDate)
         {
             trans1 = new Transaction()
             {                
@@ -191,7 +191,7 @@ namespace FinConcile.Tests
             };
             trans2 = new Transaction()
             {                
-                Date = DateTime.Parse(tutukaDate),                
+                Date = DateTime.Parse(bankDate),                
                 Id = "584011808649511"                
             };
         }

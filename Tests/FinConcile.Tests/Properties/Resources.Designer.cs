@@ -66,9 +66,9 @@ namespace FinConcile.Tests.Properties {
         ///Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,
         ///Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  B [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ClientMarkoffFile20140113 {
+        internal static string BankMarkoffFile20140113 {
             get {
-                return ResourceManager.GetString("ClientMarkoffFile20140113", resourceCulture);
+                return ResourceManager.GetString("BankMarkoffFile20140113", resourceCulture);
             }
         }
         
@@ -78,9 +78,9 @@ namespace FinConcile.Tests.Properties {
         ///Card Campaign,2014-01-11 22:39:11,-10000,*MOGODITSHANE2            MOGODITHSANE  BW,DEDUCT,0584011815513406,1,P_NzI1MjA1NjZfMTM3ODczODI3Mi4wNzY5,
         ///Card Campaign,2014-01-11 23:28:11,-5000,CAPITAL BANK              MOGODITSHANE  B [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TutukaMarkoffFile20140113 {
+        internal static string ClientMarkoffFile20140113 {
             get {
-                return ResourceManager.GetString("TutukaMarkoffFile20140113", resourceCulture);
+                return ResourceManager.GetString("ClientMarkoffFile20140113", resourceCulture);
             }
         }
     }

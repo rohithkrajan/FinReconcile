@@ -34,7 +34,7 @@ Scenario: Match Ids and But Not Amount
 @rules
 Scenario Outline: Match all the fields of transactions
 	Given ClientTransacion with '<c_id>' '<c_profilename>' '<c_date>' '<c_amount>' '<c_narrative>' '<c_description>' '<c_walletreference>'
-	And TutukaTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'
+	And BankTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'
 	And A ruleset to match all fields of Transaction
 	When I call Evaluate
 	Then the result should be matched ReconciledItem
@@ -50,7 +50,7 @@ Examples:
 @rules
 Scenario Outline: Match all the fields exactly and dates with a delta of 120 seconds
 	Given ClientTransacion with '<c_id>' '<c_profilename>' '<c_date>' '<c_amount>' '<c_narrative>' '<c_description>' '<c_walletreference>'
-	And TutukaTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'
+	And BankTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'
 	And A ruleset to match all fields exactly and date field with a delta of 120 seconds
 	When I call Evaluate
 	Then the result should be matched ReconciledItem

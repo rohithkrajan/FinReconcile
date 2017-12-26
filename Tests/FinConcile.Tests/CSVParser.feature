@@ -39,8 +39,8 @@ Scenario: Parse a large file Client Transactions File
 	Then the result should be 306 transactions
 	And 0 Invalid Entries
 @csvparser
-Scenario: Parse a large file Tutuka Transactions File
-	Given a large tutuka markofffile with content	
+Scenario: Parse a large file Bank Transactions File
+	Given a large bank markofffile with content	
 	When I call GetRecords 
 	Then the result should be 305 transactions
 	And 0 Invalid Entries

@@ -4,7 +4,7 @@ jsonPWrapper ({
       "RelativeFolder": "TransactionCompare.feature",
       "Feature": {
         "Name": "Compare Transactions",
-        "Description": "In order to reconcile transactions\r\nAs a user\r\nI want to compare client and tutuka markoff files",
+        "Description": "In order to reconcile transactions\r\nAs a user\r\nI want to compare client and bank markoff files",
         "FeatureElements": [
           {
             "Name": "Browse Compare Page",
@@ -42,7 +42,7 @@ jsonPWrapper ({
               {
                 "Keyword": "Given",
                 "NativeKeyword": "Given ",
-                "Name": "ClientMarkOffFile and TutukaMarkOffFile",
+                "Name": "ClientMarkOffFile and BankMarkOffFile",
                 "StepComments": [],
                 "AfterLastStepComments": []
               },
@@ -77,7 +77,7 @@ jsonPWrapper ({
               {
                 "Keyword": "Given",
                 "NativeKeyword": "Given ",
-                "Name": "ClientMarkOffFile and TutukaMarkOffFile",
+                "Name": "ClientMarkOffFile and BankMarkOffFile",
                 "StepComments": [],
                 "AfterLastStepComments": []
               },
@@ -91,7 +91,7 @@ jsonPWrapper ({
               {
                 "Keyword": "Then",
                 "NativeKeyword": "Then ",
-                "Name": "Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'TutukaMarkoffFile20140113'",
+                "Name": "Comparison Result should contain Both Names of the Files 'ClientMarkoffFile20140113' and 'BankMarkoffFile20140113'",
                 "StepComments": [],
                 "AfterLastStepComments": []
               }
@@ -332,14 +332,14 @@ jsonPWrapper ({
             }
           },
           {
-            "Name": "Parse a large file Tutuka Transactions File",
-            "Slug": "parse-a-large-file-tutuka-transactions-file",
+            "Name": "Parse a large file Bank Transactions File",
+            "Slug": "parse-a-large-file-bank-transactions-file",
             "Description": "",
             "Steps": [
               {
                 "Keyword": "Given",
                 "NativeKeyword": "Given ",
-                "Name": "a large tutuka markofffile with content",
+                "Name": "a large bank markofffile with content",
                 "StepComments": [],
                 "AfterLastStepComments": []
               },
@@ -622,11 +622,11 @@ jsonPWrapper ({
       "RelativeFolder": "ReconcileEngine.feature",
       "Feature": {
         "Name": "ReconcileEngine",
-        "Description": "In order to reconcile transactions\r\nAs a user\r\nI want to be told whether a list of client and tutuka tranascations are matched or notmatched",
+        "Description": "In order to reconcile transactions\r\nAs a user\r\nI want to be told whether a list of client and bank tranascations are matched or notmatched",
         "FeatureElements": [
           {
-            "Name": "Reconcile Matching Client and Tutuka Transactions",
-            "Slug": "reconcile-matching-client-and-tutuka-transactions",
+            "Name": "Reconcile Matching Client and Bank Transactions",
+            "Slug": "reconcile-matching-client-and-bank-transactions",
             "Description": "",
             "Steps": [
               {
@@ -693,7 +693,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of matching Tutuka Transactions",
+                "Name": "a list of matching Bank Transactions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -821,8 +821,8 @@ jsonPWrapper ({
             }
           },
           {
-            "Name": "Reconcile Non Matching Client and Tutuka Transactions",
-            "Slug": "reconcile-non-matching-client-and-tutuka-transactions",
+            "Name": "Reconcile Non Matching Client and Bank Transactions",
+            "Slug": "reconcile-non-matching-client-and-bank-transactions",
             "Description": "",
             "Steps": [
               {
@@ -889,7 +889,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of Non matching Tutuka Transactions With Different Ids",
+                "Name": "a list of Non matching Bank Transactions With Different Ids",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -995,7 +995,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "0 Matched Tutuka Transactions 4 Unmatched Tutuka transactions",
+                "Name": "0 Matched Bank Transactions 4 Unmatched Bank transactions",
                 "StepComments": [],
                 "AfterLastStepComments": []
               }
@@ -1009,8 +1009,8 @@ jsonPWrapper ({
             }
           },
           {
-            "Name": "Reconcile mix of matching and non matching Client and Tutuka Transactions",
-            "Slug": "reconcile-mix-of-matching-and-non-matching-client-and-tutuka-transactions",
+            "Name": "Reconcile mix of matching and non matching Client and Bank Transactions",
+            "Slug": "reconcile-mix-of-matching-and-non-matching-client-and-bank-transactions",
             "Description": "",
             "Steps": [
               {
@@ -1077,7 +1077,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of Tutuka Transactions",
+                "Name": "a list of Bank Transactions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -1205,8 +1205,8 @@ jsonPWrapper ({
             }
           },
           {
-            "Name": "Reconcile Client and Tutuka Transactions With Duplicate TransactionIds",
-            "Slug": "reconcile-client-and-tutuka-transactions-with-duplicate-transactionids",
+            "Name": "Reconcile Client and Bank Transactions With Duplicate TransactionIds",
+            "Slug": "reconcile-client-and-bank-transactions-with-duplicate-transactionids",
             "Description": "",
             "Steps": [
               {
@@ -1253,7 +1253,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of matching Tutuka Transactions",
+                "Name": "a list of matching Bank Transactions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -1448,7 +1448,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of tutuka transactions slightly different descriptions",
+                "Name": "a list of bank transactions slightly different descriptions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -1578,7 +1578,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of tutuka transactions slightly different descriptions",
+                "Name": "a list of bank transactions slightly different descriptions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -1747,7 +1747,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of tutuka transactions slightly different descriptions",
+                "Name": "a list of bank transactions slightly different descriptions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -1911,7 +1911,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of tutuka transactions slightly different descriptions",
+                "Name": "a list of bank transactions slightly different descriptions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -2068,7 +2068,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "a list of tutuka transactions slightly different descriptions",
+                "Name": "a list of bank transactions slightly different descriptions",
                 "TableArgument": {
                   "HeaderRow": [
                     "Id",
@@ -2434,7 +2434,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "TutukaTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'",
+                "Name": "BankTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'",
                 "StepComments": [],
                 "AfterLastStepComments": []
               },
@@ -2574,7 +2574,7 @@ jsonPWrapper ({
               {
                 "Keyword": "And",
                 "NativeKeyword": "And ",
-                "Name": "TutukaTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'",
+                "Name": "BankTransacion with '<t_id>' '<t_profilename>' '<t_date>' '<t_amount>' '<t_narrative>' '<t_description>' '<t_walletreference>'",
                 "StepComments": [],
                 "AfterLastStepComments": []
               },

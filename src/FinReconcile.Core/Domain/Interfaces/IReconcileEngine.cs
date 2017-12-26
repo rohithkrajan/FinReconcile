@@ -9,7 +9,7 @@ namespace FinReconcile.Core.Domain.Interfaces
 {
     public interface IRuleEvaluator
     {
-        ReconciledItem Evaluate(Transaction clientTransaction,Transaction tutukaTransaction);
+        ReconciledItem Evaluate(Transaction clientTransaction,Transaction bankTransaction);
         string RuleName { get; }
         ReconciledMatchType RuleType { get; }
         RuleSet RuleSet { get; }
