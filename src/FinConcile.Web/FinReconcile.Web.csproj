@@ -171,6 +171,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Onion Architecture.png" />
     <Content Include="Content\paper.css" />
     <Content Include="docs\css\bootstrap.min.css" />
     <Content Include="docs\css\font-awesome.css" />
