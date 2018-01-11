@@ -215,6 +215,7 @@
     <Content Include="docs\RulesEvaluator.html" />
     <Content Include="docs\TransactionCompare.html" />
     <Content Include="favicon.ico" />
+    <Content Include="finreconcile.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
